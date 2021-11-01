@@ -9,14 +9,14 @@ error_reporting(E_ALL);
 
 // Autoloader
 /* pour le chargement automatique des classes d'Eloquent (dans le répertoire vendor) */
-require_once 'vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 
 // Router
 use mf\router\Router as Router;
 
 // Models
-use tweeterapp\model\User as User;
+use app\model\User as User;
 
 // Controllers
 use app\control\AppController as AppController;
