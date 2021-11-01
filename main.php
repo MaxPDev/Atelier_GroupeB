@@ -50,15 +50,15 @@ AppView::addStyleSheet('html/css/style.css');
 $router = new Router();
 $router->addRoute('home', //alias
                   '/home/',   //route
-                  '\app\control\TweeterController',   // controller
+                  '\app\control\AppController',   // controller
                   'viewHome',                 // methode
-                  TweeterAuthentification::ACCESS_LEVEL_NONE);      // niveau accès
+                  AppAuthentification::ACCESS_LEVEL_NONE);      // niveau accès
 
 $router->addRoute('login',
                   '/login/',
-                  '\app\control\TweeterAdminController',
+                  '\app\control\AppAdminController',
                   'login',
-                  TweeterAuthentification::ACCESS_LEVEL_NONE);
+                  AppAuthentification::ACCESS_LEVEL_NONE);
 
 $router->setDefaultRoute('/home/');
 $router->run();

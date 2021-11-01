@@ -3,6 +3,7 @@
 namespace app\view;
 
 use mf\router\Router as Router;
+use app\auth\AppAuthentification as AppAuthentification;
 
 
 use mf\utils\HttpRequest as HttpRequest;
@@ -51,20 +52,20 @@ class AppView extends \mf\view\AbstractView {
     public function renderLogin() 
     {
 
-        $route = new Router();
-        $check_login_route = $route->urlFor('check_login');
+        // $route = new Router();
+        // $check_login_route = $route->urlFor('check_login');
 
 $login_form = <<<EOT
-<article class='theme-backcolor1'>
-    <form id="login" method="post" class="form" action="$check_login_route">    
+<article>
+    <form id="login" method="post" class="form" action="">    
 
         <label> User Name </label>    
-        <input type="text" name="username" id="username" class="forms-text" placeholder="Username">        
+        <input type="text" name="username" id="username" placeholder="Username">        
 
         <label> Password </label>    
-        <input type="password" name="password" id="password" class="forms-text" placeholder="Password">    
+        <input type="password" name="password" id="password" placeholder="Password">    
         
-        <input type="submit" name="log" id="log" class="forms-button" value="Log In Here" >       
+        <input type="submit" name="log" id="log" value="Log In Here" >       
 
     </form>
 </article>
@@ -85,7 +86,7 @@ EOT;
     public function renderBody($selector)
     {
 
-        $auth = new TweeterAuthentification;
+        $auth = new AppAuthentification;
 
         /*
          * voire la classe AbstractView

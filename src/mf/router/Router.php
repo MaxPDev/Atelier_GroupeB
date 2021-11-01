@@ -22,7 +22,7 @@ class Router extends AbstractRouter {
     public function addRoute($name, $url, $ctrl, $mth, $lvl) 
     {
 
-        (!isset(self::$routes[$url])) {
+        if (!isset(self::$routes[$url])) {
             self::$routes[$url] = [$ctrl, $mth, $lvl];
             self::$aliases[$name] = $url;
         } else {
