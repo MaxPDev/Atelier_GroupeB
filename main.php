@@ -68,4 +68,4 @@ $router->addRoute('products', //alias
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
 $router->setDefaultRoute('/home/');
-$router->run();
+$router->run(); 
