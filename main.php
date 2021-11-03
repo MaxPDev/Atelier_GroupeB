@@ -61,4 +61,4 @@ $router->addRoute('login',
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
 $router->setDefaultRoute('/home/');
-$router->run();
+$router->run(); 
