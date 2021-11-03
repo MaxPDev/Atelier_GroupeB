@@ -48,16 +48,37 @@ class ClientView extends \mf\view\AbstractView {
 
     }
 
-    private function renderTopMain() 
+    private function renderTopCategoriesMain($categories) 
     {
-        return "<nav> categories </nav>";
+        $nav_categories = '';
+
+        foreach($categories as $category) {
+            $nav_categories .= "<a href=''> $category->name </a>";
+        }
+
+        return $nav_categories;
     }
 
     private function renderAllProducts()
     {
+
+        $categories = $this->data[0];
+        $products = $this->data[1];
+
+        $categories_list = $this->renderTopCategoriesMain($categories);
+        $products_list = '';
+
+        foreach ($products as $product) {
+            $products_list .= "<div>$product->name </div> 
+                              price : $product->unit_price </div>";
+        }
+
         $products_html = <<<EOT
+<nav>
+ $categories_list
+</nav>
 <article>
- Articles
+ $products_list
 </article>
 EOT;
         return $products_html;
