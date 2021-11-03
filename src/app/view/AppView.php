@@ -53,7 +53,7 @@ class AppView extends \mf\view\AbstractView {
         return "<nav> categories </nav>";
     }
 
-    private function renderProducts()
+    private function renderAllProducts()
     {
         $products_html = <<<EOT
 <article>
@@ -63,9 +63,25 @@ EOT;
         return $products_html;
     }
 
+    private function renderCategories()
+    {
+        //
+    }
+
+
+    private function renderProductsByCategory()
+    {
+        $products_by_category_html = <<<EOT
+<article>
+ Prod by cat
+</article>
+EOT;
+        return $products_by_category_html;
+    }
+
   
 
-    public function renderLogin() 
+    private function renderLogin() 
     {
 
         // $route = new Router();

@@ -35,7 +35,7 @@ class ClientController extends \mf\control\AbstractController {
         $view->render('renderHome');
     }
 
-    public function viewProducts() 
+    public function viewAllProducts() 
     {
 
         $categories = null; // all products
@@ -49,14 +49,15 @@ class ClientController extends \mf\control\AbstractController {
         $categories = null; // categories
 
         $view_categories = new AppView($categorie);
-        $view_categories->render('render') // ?
+        $view_categories->render('renderCategories'); // ?
     }
 
     public function viewProductsByCategory()
     {
-        $products_by_category = null // products by cat
+        $products_by_category = null; // products by cat
 
-        //
+        $view_product_by_category = new AppView($products_by_category);
+        $view_product_by_category->render('renderProductsByCategory')
 
 
     }

@@ -64,7 +64,7 @@ $router->addRoute('login',
 $router->addRoute('products', //alias
                   '/products/',   //route
                   '\app\control\ClientController',   // controller
-                  'viewProducts',                 // methode
+                  'viewAllProducts',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
 $router->setDefaultRoute('/home/');
