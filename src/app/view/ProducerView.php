@@ -8,7 +8,7 @@ use app\auth\AppAuthentification as AppAuthentification;
 
 use mf\utils\HttpRequest as HttpRequest;
 
-class AppView extends \mf\view\AbstractView {
+class ProducerView extends \mf\view\AbstractView {
   
     /* Constructeur 
     *
@@ -25,7 +25,7 @@ class AppView extends \mf\view\AbstractView {
      */ 
     private function renderHeader()
     {
-        return '<header> App </header>';
+        return '<header> Producer View </header>';
     }
     
     /* Méthode renderFooter
@@ -47,38 +47,6 @@ class AppView extends \mf\view\AbstractView {
         return "<article><h2>Informations</h2></article>";
 
     }
-
-    private function renderTopMain() 
-    {
-        return "<nav> categories </nav>";
-    }
-
-    private function renderAllProducts()
-    {
-        $products_html = <<<EOT
-<article>
- Articles
-</article>
-EOT;
-        return $products_html;
-    }
-
-    private function renderCategories()
-    {
-        //
-    }
-
-
-    private function renderProductsByCategory()
-    {
-        $products_by_category_html = <<<EOT
-<article>
- Prod by cat
-</article>
-EOT;
-        return $products_by_category_html;
-    }
-
   
 
     private function renderLogin() 
@@ -125,30 +93,10 @@ EOT;
          * 
          */
         $header = $this->renderHeader();
+        $center= $this->$selector();
         $footer = $this->renderFooter();
         
 
-
-        $center= $this->$selector();
-        // switch ($selector) {
-        //     case 'renderHome':
-        //         $center = $this->renderHome();
-        //         break;
-
-        //     case 'viewLogin':
-        //         $center = $this->renderLogin();
-        //         break;
-
-
-        //     case 'viewSignup':
-        //         $center = $this->renderSignup();
-        //         break;
-
-        //     default:
-        //         echo "Pas de fonction view correspondante";
-        //         break;
-        // }
-        
 $body = <<<EOT
 ${header}
 ${center}

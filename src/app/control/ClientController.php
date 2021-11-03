@@ -5,7 +5,7 @@ namespace app\control;
 
 use mf\utils\HttpRequest as HttpRequest;
 use mf\router\Router as Router;
-use app\view\AppView as AppView;
+use app\view\ClientView as ClientView;
 // use Categorie
 
 
@@ -31,7 +31,7 @@ class ClientController extends \mf\control\AbstractController {
     
     public function viewHome()
     {
-        $view = new AppView(null);
+        $view = new ClientView(null);
         $view->render('renderHome');
     }
 
@@ -40,15 +40,15 @@ class ClientController extends \mf\control\AbstractController {
 
         $categories = null; // all products
 
-        $view_all_products = new AppView($categories);
-        $view_all_products->render('renderProducts');
+        $view_all_products = new ClientView($categories);
+        $view_all_products->render('renderAllProducts');
     }
 
     public function viewCategories()
     {
         $categories = null; // categories
 
-        $view_categories = new AppView($categorie);
+        $view_categories = new ClientView($categorie);
         $view_categories->render('renderCategories'); // ?
     }
 
@@ -56,8 +56,8 @@ class ClientController extends \mf\control\AbstractController {
     {
         $products_by_category = null; // products by cat
 
-        $view_product_by_category = new AppView($products_by_category);
-        $view_product_by_category->render('renderProductsByCategory')
+        $view_product_by_category = new ClientView($products_by_category);
+        $view_product_by_category->render('renderProductsByCategory');
 
 
     }
