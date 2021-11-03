@@ -6,7 +6,10 @@ namespace app\control;
 use mf\utils\HttpRequest as HttpRequest;
 use mf\router\Router as Router;
 use app\view\ClientView as ClientView;
-// use Categorie
+use app\model\Product as Product;
+use app\model\Category as Category;
+use app\model\User as User;
+use app\model\Order as Order;
 
 
 class ClientController extends \mf\control\AbstractController {
@@ -37,14 +40,14 @@ class ClientController extends \mf\control\AbstractController {
 
     public function viewAllProducts() 
     {
+        $categories = Category::get();
+        $products = Product::orderBy('name','asc')->get();
 
-        $categories = null; // all products
-
-        $view_all_products = new ClientView($categories);
+        $view_all_products = new ClientView([$categories, $products]);
         $view_all_products->render('renderAllProducts');
     }
 
-    public function viewCategories()
+    public function viewCategories($categories)
     {
         $categories = null; // categories
 

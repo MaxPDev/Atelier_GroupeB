@@ -49,7 +49,7 @@ ClientView::addStyleSheet('html/css/style.css');
 
 //////////////////////////////
 
-$router = new Router();
+$router = new Router(); //52
 
 $router->addRoute('home', //alias
                   '/home/',   //route
