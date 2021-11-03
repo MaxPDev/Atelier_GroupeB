@@ -6,7 +6,10 @@ namespace app\control;
 use mf\utils\HttpRequest as HttpRequest;
 use mf\router\Router as Router;
 use app\view\ClientView as ClientView;
-// use Categorie
+use app\model\Product as Product;
+use app\model\Categorie as Categorie;
+use app\model\User as User;
+use app\model\Order as Order;
 
 
 class ClientController extends \mf\control\AbstractController {
