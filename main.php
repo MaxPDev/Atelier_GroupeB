@@ -48,6 +48,7 @@ AppView::addStyleSheet('html/css/style.css');
 //////////////////////////////
 
 $router = new Router();
+
 $router->addRoute('home', //alias
                   '/home/',   //route
                   '\app\control\AppController',   // controller
@@ -58,6 +59,12 @@ $router->addRoute('login',
                   '/login/',
                   '\app\control\AppAdminController',
                   'login',
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
+$router->addRoute('products', //alias
+                  '/products/',   //route
+                  '\app\control\ClientController',   // controller
+                  'viewProducts',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
 $router->setDefaultRoute('/home/');

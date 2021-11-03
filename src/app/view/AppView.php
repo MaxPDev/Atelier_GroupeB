@@ -44,9 +44,25 @@ class AppView extends \mf\view\AbstractView {
     {
 
 
-        return "<article><h2>Let's Code !</h2></article>";
+        return "<article><h2>Informations</h2></article>";
 
     }
+
+    private function renderTopMain() 
+    {
+        return "<nav> categories </nav>";
+    }
+
+    private function renderProducts()
+    {
+        $products_html = <<<EOT
+<article>
+ Articles
+</article>
+EOT;
+        return $products_html;
+    }
+
   
 
     public function renderLogin() 
@@ -95,24 +111,27 @@ EOT;
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
         
-        switch ($selector) {
-            case 'renderHome':
-                $center = $this->renderHome();
-                break;
-
-            case 'viewLogin':
-                $center = $this->renderLogin();
-                break;
 
 
-            case 'viewSignup':
-                $center = $this->renderSignup();
-                break;
+        $center= $this->$selector();
+        // switch ($selector) {
+        //     case 'renderHome':
+        //         $center = $this->renderHome();
+        //         break;
 
-            default:
-                echo "Pas de fonction view correspondante";
-                break;
-        }
+        //     case 'viewLogin':
+        //         $center = $this->renderLogin();
+        //         break;
+
+
+        //     case 'viewSignup':
+        //         $center = $this->renderSignup();
+        //         break;
+
+        //     default:
+        //         echo "Pas de fonction view correspondante";
+        //         break;
+        // }
         
 $body = <<<EOT
 ${header}
@@ -124,15 +143,4 @@ EOT;
         
     }
 
-
-
-
-
-
-
-
-
-
-
-    
 }
