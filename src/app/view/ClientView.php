@@ -138,7 +138,7 @@ PROD;
     $producer_product_html = '';
 
     foreach ($producer_products as $product) {
-        $product_link = $route->urlFor('product',[['id',$product->id]]);
+        $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
         
         $producer_product_html .= <<<PRODUCT
 <img src="$product->img_url" style="width:200px">
