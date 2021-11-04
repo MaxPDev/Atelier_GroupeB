@@ -147,5 +147,41 @@ $router->addRoute('producer', //alias
                   'viewProducer',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
+//Manager dashboard
+$router->addRoute('dashboard', 
+                  '/dashboard/',   
+                  '\app\control\ManagerController',   
+                  'viewDashboard',                 
+                  AppAuthentification::ACCESS_LEVEL_NONE); //Change me to manager access level after auth
+
+//List all orders
+$router->addRoute('managerOrders', 
+                  '/managerOrders/',   
+                  '\app\control\ManagerController',   
+                  'viewOrders',                 
+                  AppAuthentification::ACCESS_LEVEL_NONE); //Change me to manager access level after auth
+
+//View One order
+$router->addRoute('checkOrder', 
+                  '/checkOrder/',   
+                  '\app\control\ManagerController',   
+                  'viewOrder',                 
+                  AppAuthentification::ACCESS_LEVEL_NONE); //Change me to manager access level after auth
+
+//Paid order
+$router->addRoute('markPaid', 
+                  '/markPaid/',   
+                  '\app\control\ManagerController',   
+                  'changeStatusPaid',                 
+                  AppAuthentification::ACCESS_LEVEL_NONE); //Change me to manager access level after auth
+  
+//Delivered order
+$router->addRoute('markDelivered', 
+                  '/markDelivered/',   
+                  '\app\control\ManagerController',   
+                  'changeStatusDelivered',                 
+                  AppAuthentification::ACCESS_LEVEL_NONE); //Change me to manager access level after auth
+
+       
 $router->setDefaultRoute('/home/');
 $router->run();
