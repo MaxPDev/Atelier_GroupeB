@@ -117,6 +117,6 @@ EOT;
 
     public function renderMyProducts()
     {
-        return $this->data;
+        return json_encode($this->data);
     }
 }

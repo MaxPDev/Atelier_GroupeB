@@ -61,4 +61,22 @@ class ProducerController extends \mf\control\AbstractController
         $view->render('renderMyProducts');
     }
 
+    public function viewMyOrderedProducts()
+    {
+        $producer_id = 1; //
+
+        $producer = Producer::find($producer_id);
+
+        $products =  $producer->products()->get();
+
+        $productsOrdered = [];
+        foreach ($products as $product) {
+            if ($product->orders()->get()->count() > 0)
+                array_push($productsOrdered, $product);
+        }
+
+        $view = new ProducerView($products);
+
+        $view->render('renderMyProducts');
+    }
 }

@@ -99,33 +99,33 @@ $router->addRoute(
 
 $router->addRoute(
     'producerProfile',
-    '/myProfile/',   //route
-    '\app\control\ProducerController',   // controller
-    'viewMyProfile',                 // methode
+    '/myProfile/',
+    '\app\control\ProducerController',
+    'viewMyProfile',
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
 $router->addRoute(
     'producerProducts',
-    '/myProducts/',   //route
-    '\app\control\ProducerController',   // controller
-    'viewMyProducts',                 // methode
+    '/myProducts/',
+    '\app\control\ProducerController',
+    'viewMyProducts',
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
 $router->addRoute(
-    'producerProfile',
-    '/myProfile/',   //route
-    '\app\control\ProducerController',   // controller
-    'viewMyProfile',                 // methode
+    'producerOrderedProducts',
+    '/myOrderedProducts/',
+    '\app\control\ProducerController',
+    'viewMyOrderedProducts',
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
 $router->addRoute(
     'product',
-    '/product/',   //route
-    '\app\control\ProducerController',   // controller
-    'viewProduct',                 // methode
+    '/product/',
+    '\app\control\ProducerController',
+    'viewProduct',
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
