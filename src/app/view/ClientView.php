@@ -94,14 +94,14 @@ EOT;
     {
         $product = $this->data[0];
         $producer = $this->data[1]; //passer producer en param ou select seulent id + name
-        $var_dump[$producer];
+        $producer_user = $producer->user;
         // to do : add to panier
 
         $product_article = <<<IMG
         <img src="$product->img_url">
         <p>$product->unit_price</p>
         <button> nb ajouté TO DO link panier TO DO </button>
-        <p> $producer->name TO DO </p>
+        <p> $producer_user->name TO DO </p>
         <p> $product->description </p>
 IMG;
 
@@ -112,6 +112,17 @@ IMG;
 EOT;
         return $product_html;
     }
+
+    private function renderProducer()
+    {
+        
+    }
+
+    private function renderProducers()
+    {
+        //
+    }
+
 
     private function renderCategories()
     {
