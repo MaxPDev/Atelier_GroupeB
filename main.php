@@ -99,7 +99,7 @@ $router->addRoute(
 
 $router->addRoute(
     'producerProfile',
-    '/myProfile/',
+    '/producerProfile/',
     '\app\control\ProducerController',
     'viewMyProfile',
     AppAuthentification::ACCESS_LEVEL_NONE
@@ -107,7 +107,7 @@ $router->addRoute(
 
 $router->addRoute(
     'producerProducts',
-    '/myProducts/',
+    '/producerProducts/',
     '\app\control\ProducerController',
     'viewMyProducts',
     AppAuthentification::ACCESS_LEVEL_NONE
@@ -115,37 +115,43 @@ $router->addRoute(
 
 $router->addRoute(
     'producerOrderedProducts',
-    '/myOrderedProducts/',
+    '/producerOrderedProducts/',
     '\app\control\ProducerController',
     'viewMyOrderedProducts',
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
 $router->addRoute(
-    'product',
-    '/product/',
+    'producerProduct',
+    '/producerProduct/',
     '\app\control\ProducerController',
     'viewProduct',
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
-$router->addRoute('product', //alias
-                  '/product/',   //route
-                  '\app\control\ClientController',   // controller
-                  'viewProduct',                 // methode
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'product', //alias
+    '/product/',   //route
+    '\app\control\ClientController',   // controller
+    'viewProduct',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
-$router->addRoute('producers', //alias
-                  '/producers/',   //route
-                  '\app\control\ClientController',   // controller
-                  'viewProducers',                 // methode
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'producers', //alias
+    '/producers/',   //route
+    '\app\control\ClientController',   // controller
+    'viewProducers',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
-$router->addRoute('producer', //alias
-                  '/producer/',   //route
-                  '\app\control\ClientController',   // controller
-                  'viewProducer',                 // methode
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'producer', //alias
+    '/producer/',   //route
+    '\app\control\ClientController',   // controller
+    'viewProducer',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
 $router->setDefaultRoute('/home/');
 $router->run();
