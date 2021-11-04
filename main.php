@@ -129,5 +129,23 @@ $router->addRoute(
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
+$router->addRoute('product', //alias
+                  '/product/',   //route
+                  '\app\control\ClientController',   // controller
+                  'viewProduct',                 // methode
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
+$router->addRoute('producers', //alias
+                  '/producers/',   //route
+                  '\app\control\ClientController',   // controller
+                  'viewProducers',                 // methode
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
+$router->addRoute('producer', //alias
+                  '/producer/',   //route
+                  '\app\control\ClientController',   // controller
+                  'viewProducer',                 // methode
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
 $router->setDefaultRoute('/home/');
 $router->run();

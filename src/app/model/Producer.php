@@ -12,7 +12,6 @@ class Producer extends \Illuminate\Database\Eloquent\Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
-
     public function products()
     {
         return $this->hasMany(Product::class, 'id_producer');

@@ -3,13 +3,14 @@
 namespace app\control;
 
 
-use mf\utils\HttpRequest as HttpRequest;
-use mf\router\Router as Router;
-use app\view\ClientView as ClientView;
-use app\model\Product as Product;
-use app\model\Category as Category;
-use app\model\User as User;
-use app\model\Order as Order;
+use mf\utils\HttpRequest;
+use mf\router\Router;
+use app\view\ClientView;
+use app\model\Product;
+use app\model\Category;
+use app\model\Producer;
+use app\model\User;
+use app\model\Order;
 
 
 class ClientController extends \mf\control\AbstractController {
@@ -47,22 +48,52 @@ class ClientController extends \mf\control\AbstractController {
         $view_all_products->render('renderAllProducts');
     }
 
-    public function viewCategories($categories)
+    public function viewProduct() 
     {
-        $categories = null; // categories
+        $id_product = $this->request->get['id'];
 
-        $view_categories = new ClientView($categorie);
-        $view_categories->render('renderCategories'); // ?
+        $product = Product::find($id_product);
+        $producer = Producer::select()->where('id','=',$product->id_producer)->first();
+        
+        $view_product = new ClientView([$product, $producer]);
+        $view_product->render('renderProduct');
+
     }
 
-    public function viewProductsByCategory()
+    public function viewProducer()
     {
-        $products_by_category = null; // products by cat
+        $id_producer = $this->request->get['id'];
+        $producer = Producer::find($id_producer);
 
-        $view_product_by_category = new ClientView($products_by_category);
-        $view_product_by_category->render('renderProductsByCategory');
+        $view_producer = new ClientView($producer);
+        $view_producer->render('renderProducer');
+    }
+    
+    public function viewProducers()
+    {
+        $producers = Producer::get();
 
+        $view_producers = new ClientView($producers);
+        $view_producers->render('renderProducers');
 
     }
+
+
+    // public function viewCategories($categories)
+    // {
+    //     $categories = null; // categories
+
+    //     $view_categories = new ClientView($categorie);
+    //     $view_categories->render('renderCategories'); // ?
+    // }
+
+    // public function viewProductsByCategory()
+    // {
+    //     $products_by_category = null; // products by cat
+
+    //     $view_product_by_category = new ClientView($products_by_category);
+    //     $view_product_by_category->render('renderProductsByCategory');
+
+    // }
 
 }
