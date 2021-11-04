@@ -8,6 +8,7 @@ use mf\router\Router;
 use app\view\ClientView;
 use app\model\Product;
 use app\model\Category;
+use app\model\Producer;
 use app\model\User;
 use app\model\Order;
 
@@ -50,8 +51,14 @@ class ClientController extends \mf\control\AbstractController {
     public function viewProduct() 
     {
         $id_product = $this->request->get['id'];
-        
-        return "<div> produit </div>";
+        $product = Product::find($id_product);
+
+        $producer = Producer::select()->where('id','=',$product->id_producer)->first();
+        var_dump($producer->user->name);
+
+        $view_product = new ClientView([$product, $producer]);
+        $view_product->render('renderProduct');
+
     }
 
     public function viewCategories($categories)

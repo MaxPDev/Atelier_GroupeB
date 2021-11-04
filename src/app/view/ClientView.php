@@ -25,7 +25,7 @@ class ClientView extends \mf\view\AbstractView {
      */ 
     private function renderHeader()
     {
-        return '<header> App </header>';
+        return '<header> App MENU TO DO </header>';
     }
     
     /* Méthode renderFooter
@@ -92,8 +92,22 @@ EOT;
 
     private function renderProduct()
     {
+        $product = $this->data[0];
+        $producer = $this->data[1]; //passer producer en param ou select seulent id + name
+        $var_dump[$producer];
+        // to do : add to panier
+
+        $product_article = <<<IMG
+        <img src="$product->img_url">
+        <p>$product->unit_price</p>
+        <button> nb ajouté TO DO link panier TO DO </button>
+        <p> $producer->name TO DO </p>
+        <p> $product->description </p>
+IMG;
+
         $product_html = <<<EOT
 <article>
+        $product_article
 </article>
 EOT;
         return $product_html;
