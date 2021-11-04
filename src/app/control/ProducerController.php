@@ -2,6 +2,7 @@
 
 namespace app\control;
 
+use app\model\Producer;
 use app\model\Product;
 use mf\utils\HttpRequest as HttpRequest;
 use mf\router\Router as Router;
@@ -34,5 +35,16 @@ class ProducerController extends \mf\control\AbstractController
         $view = new ProducerView($product);
 
         $view->render('renderProduct');
+    }
+
+    public function viewMyProfile()
+    {
+        $producer_id = 1; //
+
+        $producer = Producer::find($producer_id);
+
+        $view = new ProducerView($producer);
+
+        $view->render('renderProfile');
     }
 }

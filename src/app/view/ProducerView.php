@@ -109,4 +109,9 @@ EOT;
     {
         return $this->data;
     }
+
+    public function renderProfile()
+    {
+        return $this->data;
+    }
 }
