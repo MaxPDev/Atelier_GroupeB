@@ -48,13 +48,8 @@ $db->setAsGlobal();            /* rendre la connexion visible dans tout le proje
 $db->bootEloquent();           /* établir la connexion */
 
 
-<<<<<<< HEAD
 //AppView::addStyleSheet('html/css/style.css');
-=======
-ClientView::addStyleSheet('html/css/style.css');
->>>>>>> 527affb64414ee1c576ee67e113438e3bdc41a93
 
-//////////////////////////////
 
 $router = new Router(); //52
 
@@ -71,7 +66,6 @@ $router->addRoute('login_producer',
                   'login',
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
-<<<<<<< HEAD
 
 //List all products by categories
 $router->addRoute('dashboard', 
@@ -79,7 +73,6 @@ $router->addRoute('dashboard',
                   '\app\control\ManagerController',   
                   'viewDashboard',                 
                   AppAuthentification::ACCESS_LEVEL_NONE); 
-=======
 $router->addRoute('login_manager',
                   '/login_manager/',
                   '\app\control\ManagerAdminController',
@@ -92,6 +85,5 @@ $router->addRoute('products', //alias
                   'viewAllProducts',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
->>>>>>> 527affb64414ee1c576ee67e113438e3bdc41a93
 $router->setDefaultRoute('/home/');
 $router->run(); 

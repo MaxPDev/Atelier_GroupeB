@@ -1,21 +1,12 @@
 <?php
 
 namespace app\control;
-
-
-<<<<<<< HEAD
 use mf\utils\HttpRequest;
 use mf\router\Router;
 use app\view\AppView;
 use app\model\Product;
 use app\model\Producer;
 use app\model\Order;
-=======
-use mf\utils\HttpRequest as HttpRequest;
-use mf\router\Router as Router;
-use app\view\AppView as AppView;
-
->>>>>>> 527affb64414ee1c576ee67e113438e3bdc41a93
 
 class ManagerController extends \mf\control\AbstractController {
 
@@ -34,7 +25,6 @@ class ManagerController extends \mf\control\AbstractController {
     }
 
 
-<<<<<<< HEAD
     /**
      * Return manager dashboard interface with statistics
      */
@@ -58,15 +48,6 @@ class ManagerController extends \mf\control\AbstractController {
         $stats['totalEarning']=$totalEarning;     
        
         var_dump($stats);
-=======
-    /* Méthode viewHome : 
-     */
-    
-    public function viewHome()
-    {
-        $view = new AppView(null);
-        $view->render('renderHome');
->>>>>>> 527affb64414ee1c576ee67e113438e3bdc41a93
     }
 
 }
