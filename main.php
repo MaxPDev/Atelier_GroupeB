@@ -26,7 +26,9 @@ use app\control\AppController as AppController;
 use app\control\AppAdminController as AppAdminController;
 
 // View
-use app\view\AppView as AppView;
+use app\view\ClientView as ClientView;
+use app\view\ProducerView as ProducerView;
+use app\view\ManagerView as ManagerView;
 
 
 // Auth
@@ -46,23 +48,30 @@ $db->setAsGlobal();            /* rendre la connexion visible dans tout le proje
 $db->bootEloquent();           /* établir la connexion */
 
 
+<<<<<<< HEAD
 //AppView::addStyleSheet('html/css/style.css');
+=======
+ClientView::addStyleSheet('html/css/style.css');
+>>>>>>> 527affb64414ee1c576ee67e113438e3bdc41a93
 
 //////////////////////////////
 
-$router = new Router();
+$router = new Router(); //52
+
 $router->addRoute('home', //alias
                   '/home/',   //route
-                  '\app\control\AppController',   // controller
+                  '\app\control\ClientController',   // controller
                   'viewHome',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);      // niveau accès
 
-$router->addRoute('login',
-                  '/login/',
-                  '\app\control\AppAdminController',
+
+$router->addRoute('login_producer',
+                  '/login_producer/',
+                  '\app\control\ProducerAdminController',
                   'login',
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
+<<<<<<< HEAD
 
 //List all products by categories
 $router->addRoute('dashboard', 
@@ -70,5 +79,19 @@ $router->addRoute('dashboard',
                   '\app\control\ManagerController',   
                   'viewDashboard',                 
                   AppAuthentification::ACCESS_LEVEL_NONE); 
+=======
+$router->addRoute('login_manager',
+                  '/login_manager/',
+                  '\app\control\ManagerAdminController',
+                  'login',
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
+$router->addRoute('products', //alias
+                  '/products/',   //route
+                  '\app\control\ClientController',   // controller
+                  'viewAllProducts',                 // methode
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
+>>>>>>> 527affb64414ee1c576ee67e113438e3bdc41a93
 $router->setDefaultRoute('/home/');
 $router->run(); 
