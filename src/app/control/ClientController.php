@@ -60,6 +60,15 @@ class ClientController extends \mf\control\AbstractController {
 
     }
 
+    public function viewProducer()
+    {
+        $id_producer = $this->request->get['id'];
+        $producer = Producer::find($id_producer);
+
+        $view_producer = new ClientView($producer);
+        $view_producer->render('renderProducer');
+    }
+    
     public function viewProducers()
     {
         $producers = Producer::get();
@@ -69,14 +78,6 @@ class ClientController extends \mf\control\AbstractController {
 
     }
 
-    public function viewProducer()
-    {
-        $id_producer = $this->request->get['id'];
-        $producer = Producer::find($id_producer);
-
-        $view_producer = new ClientView($producer);
-        $view_producer->render('renderProducer');
-    }
 
     // public function viewCategories($categories)
     // {

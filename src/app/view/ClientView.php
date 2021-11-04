@@ -92,17 +92,19 @@ EOT;
 
     private function renderProduct()
     {
+        $route = new Router();
+
         $product = $this->data[0];
         $producer = $this->data[1]; //passer producer en param ou select seulent id + name
         $producer_user = $producer->user;
         // to do : add to panier
 
         $product_article = <<<IMG
-        <img src="$product->img_url">
-        <p>$product->unit_price</p>
-        <button> nb ajouté TO DO link panier TO DO </button>
-        <p> $producer_user->name TO DO </p>
-        <p> $product->description </p>
+<img src="$product->img_url">
+<p>Price :$product->unit_price</p>
+<button> nb ajouté TO DO link panier TO DO </button>
+<p>Producer : $producer_user->name TO DO </p>
+<p> $product->description </p>
 IMG;
 
         $product_html = <<<EOT
@@ -113,14 +115,59 @@ EOT;
         return $product_html;
     }
 
+    // Render One Producer View
     private function renderProducer()
     {
+        $route = new Router();
+
+        $producer = $this->data;
+        $producer_user = $producer->user;
+        $producer_products = $producer->products()->get();
         
+        // html for producer top view
+        $producer_html = <<<PROD
+<div>
+<h2>Producer</h2>
+<p>$producer_user->name</p>
+<p>$producer_user->mail | $producer_user->phone</p>
+
+</div>
+PROD;
+
+    // html for producer's products
+    $producer_product_html = '';
+
+    foreach ($producer_products as $product) {
+        $product_link = $route->urlFor('product',[['id',$product->id]]);
+        
+        $producer_product_html .= <<<PRODUCT
+<img src="$product->img_url" style="width:200px">
+<p>Price : $product->unit_price</p>
+<button> nb ajouté TO DO link panier TO DO </button><br>
+PRODUCT;
     }
+
+    $producer_all_html = <<<EOL
+$producer_html
+$producer_product_html
+EOL;
+
+
+        return $producer_all_html;
+    }
+
+
 
     private function renderProducers()
     {
-        //
+        
+        // header 1 , header 2 ?
+        $producers = $this->data;
+        
+        $producers_html = <<<PRODS
+PRODS;
+
+        return $producers_html;
     }
 
 
