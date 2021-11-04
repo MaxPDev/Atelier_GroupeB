@@ -13,7 +13,7 @@ body {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, auto);
     grid-auto-flow: row;
-    grid-gap: 0;
+    grid-gap: 0 1em;
     grid-template-rows: auto 1fr;
   }
 }
@@ -148,10 +148,14 @@ body header nav > ul > li:nth-child(3) {
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 1;
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 3;
-  grid-row-end: 3;
+}
+@media screen and (min-width: 62em) {
+  body header nav > ul > li:nth-child(3) {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 3;
+    grid-row-end: 3;
+  }
 }
 body main#adminAllOrders {
   grid-column-start: 1;
@@ -205,6 +209,11 @@ body main#adminOrderPage {
     grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: 1;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, auto);
+    grid-auto-flow: row;
+    grid-gap: 10px;
   }
 }
 body main#adminOrderPage > h1 {
@@ -213,6 +222,14 @@ body main#adminOrderPage > h1 {
   grid-row-start: 1;
   grid-row-end: 1;
   margin: 0;
+}
+@media screen and (min-width: 62em) {
+  body main#adminOrderPage > h1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
 }
 body main#adminOrderPage > div#orderActions {
   grid-column-start: 1;
@@ -227,6 +244,19 @@ body main#adminOrderPage > div#orderActions {
   font-size: 1em;
   text-align: center;
 }
+@media screen and (min-width: 62em) {
+  body main#adminOrderPage > div#orderActions {
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: row;
+    grid-gap: 10px;
+  }
+}
 body main#adminOrderPage > div#orderActions > p {
   grid-column-start: 1;
   grid-column-end: 1;
@@ -235,6 +265,14 @@ body main#adminOrderPage > div#orderActions > p {
   margin: 0;
   background-color: #a1a1a1;
   color: #fff;
+}
+@media screen and (min-width: 62em) {
+  body main#adminOrderPage > div#orderActions > p {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
 }
 body main#adminOrderPage > div#orderActions > a {
   font-size: 0.8em;
@@ -250,11 +288,27 @@ body main#adminOrderPage > div#orderActions > a:nth-of-type(1) {
   grid-row-start: 1;
   grid-row-end: 1;
 }
+@media screen and (min-width: 62em) {
+  body main#adminOrderPage > div#orderActions > a:nth-of-type(1) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+}
 body main#adminOrderPage > div#orderActions > a:nth-of-type(2) {
   grid-column-start: 3;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 1;
+}
+@media screen and (min-width: 62em) {
+  body main#adminOrderPage > div#orderActions > a:nth-of-type(2) {
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
 }
 body main#adminOrderPage > section#orderInformations {
   grid-column-start: 7;
@@ -262,10 +316,19 @@ body main#adminOrderPage > section#orderInformations {
   grid-row-start: 1;
   grid-row-end: 5;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, auto);
   grid-auto-flow: row;
   grid-gap: 10px 0;
+}
+@media screen and (min-width: 62em) {
+  body main#adminOrderPage > section#orderInformations {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    text-align: center;
+  }
 }
 body main#adminOrderPage > section#orderInformations > article > p {
   margin: 0;
@@ -286,10 +349,10 @@ body main#adminOrderPage > section#orderInformations > article:nth-of-type(2) {
   grid-row-end: 1;
 }
 body main#adminOrderPage > section#orderInformations > article:nth-of-type(3) {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 2;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 1;
 }
 body main#adminOrderPage > section#orderInformations > article:nth-of-type(4) {
   grid-column-start: 2;

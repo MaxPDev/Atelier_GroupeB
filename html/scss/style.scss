@@ -2,7 +2,7 @@
 @import 'mixin';
 
 //VARIABLES
-$lightBlack : #3d3d3d;
+$lightBlack : #3d3d3d; 
 $headerTextColor : #dedede;
 $headerBackgroundColor : #618d4d;
 $darkGreen : #255d2e;
@@ -14,7 +14,7 @@ body{
     @include grid(1, 1fr, 2, auto, 1em 0);
     //media-queries for desktop version
     @media screen and (min-width : 62em) {
-        @include grid(5, 1fr, 2, auto, 0);
+        @include grid(5, 1fr, 2, auto, 0 1em);
         grid-template-rows: auto 1fr;
     }
     font-family:sans-serif;
@@ -97,7 +97,9 @@ body{
                 }
                 &>li:nth-child(3){
                     @include element(3,3,1,1);
-                    @include element(1,1,3,3)
+                    @media screen and (min-width : 62em) {
+                        @include element(1,1,3,3)
+                    }
                 }
             }
         }
@@ -133,16 +135,20 @@ body{
     main#adminOrderPage{
         //in the body's grid : main is a element of 1,2 (100% width) on row 2
         @include element(1,2,2,2);
-        @media screen and (min-width : 62em) {
-            @include element(2,6,1,1);
-        }
         //but also a grid, of 10col 1fr, 5 rows auto and gap of 10px (only top&bottom)
         @include grid(10, 1fr, 5, auto, 10px 0);
+        @media screen and (min-width : 62em) {
+            @include element(2,6,1,1);
+            @include grid(6, 1fr, 5, auto, 10px);
+        }
 
         //h1 (Order NNNNN)
         &>h1{
             //h1 is a element of 3col width, in the 1st row
             @include element(1,4,1,1);
+            @media screen and (min-width : 62em) {
+                @include element(1,3,1,1);
+            }
             margin: 0;
         }
         //#orderActions is the box of buttons
@@ -151,12 +157,19 @@ body{
             @include element(1,6,3,3);
             //but also a grid, of 3col 1fr, 1 row auto and gap of 10px (only left&right)
             @include grid(3, 1fr, 1, auto,0 10px);
+            @media screen and (min-width : 62em) {
+                @include element(2,6,2,2);
+                @include grid(6, 1fr, 2, auto, 10px);
+            }
             font-size: 1em;
             text-align: center;
             //p (Statut of order)
             &>p{
                 //p is a element of 1col width, in the 1st row
                 @include element(1,1,1,1);
+                @media screen and (min-width : 62em) {
+                    @include element(3,5,1,1);
+                }
                 margin: 0;
                 background-color: rgb(161, 161, 161);
                 color: #fff;
@@ -173,10 +186,16 @@ body{
             &>a:nth-of-type(1){
                 //a is a element of 1col width, in the 1st row
                 @include element(2,2,1,1);
+                @media screen and (min-width : 62em) {
+                    @include element(1,3,2,2);
+                }
             }
             &>a:nth-of-type(2){
                 //a is a element of 1col width, in the 1st row
                 @include element(3,3,1,1);
+                @media screen and (min-width : 62em) {
+                    @include element(5,7,2,2);
+                }
             }
         }
 
@@ -185,7 +204,11 @@ body{
             //#orderActions is a element of 4col width, in the 1st to 5th row (all the rows of this grid)
             @include element(7,11,1,5);
             //but also a grid, of 2col 1fr, 2 rows auto and gap of 10px (only top&bottom)
-            @include grid(2, 1fr, 2, auto, 10px 0);
+            @include grid(3, 1fr, 1, auto, 10px 0);
+            @media screen and (min-width : 62em) {
+                @include element(1,7,3,3);
+                text-align: center;
+            }
 
             //style for the p in the articles
             &>article>p{
@@ -203,7 +226,7 @@ body{
                 @include element(2,3,1,1);
             }
             &>article:nth-of-type(3){
-                @include element(1,2,2,2);
+                @include element(3,4,1,1);
             }
             &>article:nth-of-type(4){
                 @include element(2,3,2,2);
