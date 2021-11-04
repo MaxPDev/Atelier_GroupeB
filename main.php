@@ -88,8 +88,8 @@ $router->addRoute(
 );
 
 $router->addRoute(
-    'products', //alias
-    '/products/',   //route
+    'clientProducts', //alias
+    '/clientproducts/',   //route
     '\app\control\ClientController',   // controller
     'viewAllProducts',                 // methode
     AppAuthentification::ACCESS_LEVEL_NONE
@@ -129,20 +129,20 @@ $router->addRoute(
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
-$router->addRoute('product', //alias
-                  '/product/',   //route
+$router->addRoute('clientProduct', //alias
+                  '/clientproduct/',   //route
                   '\app\control\ClientController',   // controller
                   'viewProduct',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
-$router->addRoute('producers', //alias
-                  '/producers/',   //route
+$router->addRoute('clientProducers', //alias
+                  '/clientproducers/',   //route
                   '\app\control\ClientController',   // controller
                   'viewProducers',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
-$router->addRoute('producer', //alias
-                  '/producer/',   //route
+$router->addRoute('clientProducer', //alias
+                  '/clientproducer/',   //route
                   '\app\control\ClientController',   // controller
                   'viewProducer',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);

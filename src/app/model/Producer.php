@@ -12,8 +12,14 @@ class Producer extends \Illuminate\Database\Eloquent\Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
+
     public function products()
     {
         return $this->hasMany(Product::class, 'id_producer');
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany('app\model\Order','quantity','id_product','id_order')->withPivot('quantity');
     }
 }

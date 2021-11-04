@@ -158,13 +158,28 @@ EOL;
 
 
 
+    // render html for Fproducers
     private function renderProducers()
     {
         
         // header 1 , header 2 ?
         $producers = $this->data;
+
+        $producers_article = '';
+        
+        foreach ($producers as $producer) {
+            $producer_user = $producer->user;
+            $products_count = $producer->products()->get()->count();
+            
+
+            $producers_article .= "<div>Nom : $producer_user->name</div>
+                                   <div>location $producer->location</div>
+                                   <div>Produit nombre $products_count</div>
+                                   <div>Nombre order by Producer TO DO </div>";
+        }
         
         $producers_html = <<<PRODS
+$producers_article
 PRODS;
 
         return $producers_html;
@@ -173,7 +188,7 @@ PRODS;
 
     private function renderCategories()
     {
-        //
+        
     }
 
 
