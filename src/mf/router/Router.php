@@ -35,25 +35,21 @@ class Router extends AbstractRouter {
         self::$aliases['default'] = $url;
     }
 
-    public function run() 
+    public function run()
     {
-    
-        $auth = new Authentification();
-        $url = $this->http_req->path_info;
-        
-        if(array_key_exists($url, self::$routes)) {
-
-            if($auth->checkAccessRight(self::$routes[$url][2])) {
-                
-                $controler = new self::$routes[$url][0];
-                $mth = self::$routes[$url][1];
-                $controler->$mth();
-            }
+        $auth =new Authentification;
+        $currentPath = $this->http_req->path_info;
+        if (array_key_exists($currentPath, self::$routes) && $auth->checkAccessRight(self::$routes[$currentPath][2])) {
+            //Personalized route
+            $controler = new self::$routes[$currentPath][0]();
+            $fn = self::$routes[$currentPath][1];
+            $controler->$fn();
         } else {
-            $default_url = self::$aliases['default'];
-            $controler = new self::$routes[$default_url][0];
-            $default_mth= self::$routes[$default_url][1];;
-            $controler->$default_mth();
+            //Default route
+            $defaultUrl = self::$aliases["default"];
+            $controler = new self::$routes[$defaultUrl][0]();
+            $fn = self::$routes[$defaultUrl][1];
+            $controler->$fn();
         }
     }
 
@@ -75,12 +71,12 @@ class Router extends AbstractRouter {
     }
 
     // !! : Gérer erreur/exception toussa toussa
-    public static function executeRoute(string $alias) 
+    static function executeRoute($aliase)
     {
-        $url = self::$aliases[$alias];
-        $controler = new self::$routes[$url][0];
-        $mth = self::$routes[$url][1];
-        $ctrl_obj->$mth();
+        $url = self::$aliases[$aliase];
+        $controler = new self::$routes[$url][0]();
+        $fn = self::$routes[$url][1];
+        $controler->$fn();
     }
 
 }
