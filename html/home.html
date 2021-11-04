@@ -1,12 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>HTML Tree</title>
 </head>
 <body>
+    <header>
+        <img id="header_logo" src="./img/logo.png" alt="Le Hangar Local">
+        <h3>Producteur|Gérant</h3>
+        <nav>
+            <ul>
+                <li>Dashboard</li>
+                <li>Orders</li>
+                <li>Logout</li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+    <!-- PAGE ADMIN - ALL ORDERS -->
+    <!--Dans la balise tbody, le nmbre de tr correpsond au nombres de lignes, donc géré par PHP & BD-->
+    <!-- <main id="adminAllOrders">
+        <h1>All Orders</h1>
+        <table class="tableList">
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Ref</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>DUPONT Jacques</td>
+                    <td>KA65E</td>
+                    <td>25€</td>
+                    <td>02/11/2021</td>
+                    <td><a href="">View</a></td>
+                </tr>
+                <tr>
+                    <td>DUPONT Jacques</td>
+                    <td>KA65E</td>
+                    <td>16€</td>
+                    <td>02/11/2021</td>
+                    <td><a href="">View</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </main> -->
+
+    <!-- PAGE ADMIN - ORDER KA65E -->
+
+    <main id="adminOrderPage">
+        <h1>Order KA65E</h1>
+        <div id="orderActions">
+            <p>Order confirmed</p>
+            <a href="https://www.google.fr">Mark as paied</a>
+            <a href="https://www.google.fr">Mark as paied & delivered</a>
+       </div>
+        <section id="orderInformations">
+            <article>
+                <p>Client</p>
+                <p>Lorem Ipsum</p>
+            </article>
+            <article>
+                <p>Producer</p>
+                <p>Lorem Ipsum</p>
+            </article>
+            <article>
+                <p>Total</p>
+                <p>50€</p>
+            </article>
+            <article>
+                <p>Date</p>
+                <p>02/11/2021</p>
+            </article>
+        </section>
+        <table class="tableList">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Producers</th>
+                    <th>Quantity</th>
+                    <th>Unit price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Potatoes</td>
+                    <td>Le producteur de Nancy</td>
+                    <td>6</td>
+                    <td>2€</td>
+                    <td>12€</td>
+                    <td><a href="https://www.google.fr">View in store</a></td>
+                </tr>
+                <tr>
+                    <td>Potatoes</td>
+                    <td>Le producteur de Nancy</td>
+                    <td>6</td>
+                    <td>2€</td>
+                    <td>12€</td>
+                    <td><a href="https://www.google.fr">View in store</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+
+    <!-- PAGE ADMIN - DASHBOARD -->
+    <!-- <main id="adminDashboard">
+        <h1>My Dashboard</h1>
+        <section>
+            <article id="nbrProducers"><p><span>50</span> Producers</p></article>
+            <article id="nbrProducts"><p><span>50</span> Products</p></article>
+            <article id="earning"><p><span>1150E</span> Earning</p></article>
+            <article id="nbrOrders"><p><span>100</span> Orders</p></article>
+            <article id="nbrClients"><p><span>50</span> Clients</p></article>
+        </section>
+    </main> -->
+
     
 </body>
 </html>
