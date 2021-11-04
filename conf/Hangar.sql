@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 04, 2021 at 02:01 PM
--- Server version: 5.7.31
--- PHP Version: 7.3.21
+-- Hôte : localhost:3306
+-- Généré le : jeu. 04 nov. 2021 à 17:49
+-- Version du serveur :  8.0.27-0ubuntu0.20.04.1
+-- Version de PHP : 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,25 +19,23 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hangar`
+-- Base de données : `Hangar`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Structure de la table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `category` (
+  `id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `category`
+-- Déchargement des données de la table `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `description`) VALUES
@@ -54,20 +53,17 @@ INSERT INTO `category` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manager`
+-- Structure de la table `manager`
 --
 
-DROP TABLE IF EXISTS `manager`;
-CREATE TABLE IF NOT EXISTS `manager` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_user` int(11) NOT NULL,
-  `cooperation_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `manager_user_FK` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `manager` (
+  `id` int NOT NULL,
+  `id_user` int NOT NULL,
+  `cooperation_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `manager`
+-- Déchargement des données de la table `manager`
 --
 
 INSERT INTO `manager` (`id`, `id_user`, `cooperation_name`) VALUES
@@ -77,24 +73,22 @@ INSERT INTO `manager` (`id`, `id_user`, `cooperation_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Structure de la table `order`
 --
 
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE IF NOT EXISTS `order` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `place` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `order` (
+  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `place` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL,
-  `updated_at` timestamp NOT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `order`
+-- Déchargement des données de la table `order`
 --
 
 INSERT INTO `order` (`id`, `name`, `mail`, `phone`, `status`, `place`, `created_at`, `updated_at`) VALUES
@@ -202,60 +196,53 @@ INSERT INTO `order` (`id`, `name`, `mail`, `phone`, `status`, `place`, `created_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `producer`
+-- Structure de la table `producer`
 --
 
-DROP TABLE IF EXISTS `producer`;
-CREATE TABLE IF NOT EXISTS `producer` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_user` int(11) NOT NULL,
-  `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `siret` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `producer_user_FK` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `producer` (
+  `id` int NOT NULL,
+  `id_user` int NOT NULL,
+  `location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `siret` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `producer`
+-- Déchargement des données de la table `producer`
 --
 
 INSERT INTO `producer` (`id`, `id_user`, `location`, `siret`) VALUES
-(1, 1, '8204 Clyde River Apt. 266\nNorth Corysid_usere, CT 08333', '7966088'),
-(2, 2, '9153 Schmitt Parkway\nEast Eleonore, HI 39609', '832775'),
-(3, 3, '134 Miller Junction\nGilberthaven, PA 48720', '147633000'),
-(4, 4, '60569 Orn Burg Apt. 570\nWest Ovasid_usere, MO 82094', '29423333'),
-(5, 5, '8861 Pouros Brid_userge Suite 515\nNew Walkerbury, SD 35858-9284', '50'),
-(6, 6, '32021 Schamberger Place Suite 575\nEast Kassandrasid_usere, MD 34667-3499', '221816'),
-(7, 7, '1958 Mitchell Mission Apt. 289\nSouth Prince, OH 21107', '7'),
-(8, 8, '25040 McLaughlin Plain\nEast Shaun, KS 79061', '384945'),
-(9, 9, '690 Mueller Brook\nToyport, WV 86043-6237', ''),
-(10, 10, '938 Ashtyn Pass\nWest Jillian, NV 90893-4820', '46810'),
-(11, 11, '3528 Brenda Extension\nCathrinemouth, AR 58960-3311', '63504606'),
-(12, 12, '705 Estel Parkways\nDamarismouth, SD 08505-0852', '1');
+(1, 1, 'Nancy', '7966088'),
+(2, 2, 'Nancy', '832775'),
+(3, 3, 'Nancy', '147633000'),
+(4, 4, 'Nancy', '29423333'),
+(5, 5, 'Nancy', '50'),
+(6, 6, 'Nancy', '221816'),
+(7, 7, 'Nancy', '7'),
+(8, 8, 'Nancy', '384945'),
+(9, 9, 'Nancy', ''),
+(10, 10, 'Nancy', '46810'),
+(11, 11, 'Nancy', '63504606'),
+(12, 12, 'Nancy', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Structure de la table `product`
 --
 
-DROP TABLE IF EXISTS `product`;
-CREATE TABLE IF NOT EXISTS `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `img_url` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `unit_price` int(11) NOT NULL,
+CREATE TABLE `product` (
+  `id` int NOT NULL,
+  `img_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unit_price` int NOT NULL,
   `availability` tinyint(1) NOT NULL,
-  `id_category` int(11) NOT NULL,
-  `id_producer` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `product_category_FK` (`id_category`),
-  KEY `product_producer_FK` (`id_producer`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id_category` int NOT NULL,
+  `id_producer` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `product`
+-- Déchargement des données de la table `product`
 --
 
 INSERT INTO `product` (`id`, `img_url`, `name`, `description`, `unit_price`, `availability`, `id_category`, `id_producer`) VALUES
@@ -363,20 +350,17 @@ INSERT INTO `product` (`id`, `img_url`, `name`, `description`, `unit_price`, `av
 -- --------------------------------------------------------
 
 --
--- Table structure for table `quantity`
+-- Structure de la table `quantity`
 --
 
-DROP TABLE IF EXISTS `quantity`;
-CREATE TABLE IF NOT EXISTS `quantity` (
-  `id_product` int(11) NOT NULL,
-  `id_order` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `quantity` int(11) NOT NULL,
-  PRIMARY KEY (`id_product`,`id_order`),
-  KEY `quantite_order0_FK` (`id_order`)
+CREATE TABLE `quantity` (
+  `id_product` int NOT NULL,
+  `id_order` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `quantity`
+-- Déchargement des données de la table `quantity`
 --
 
 INSERT INTO `quantity` (`id_product`, `id_order`, `quantity`) VALUES
@@ -484,22 +468,20 @@ INSERT INTO `quantity` (`id_product`, `id_order`, `quantity`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Structure de la table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `user` (
+  `id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `user`
+-- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `phone`, `mail`, `username`, `password`) VALUES
@@ -517,30 +499,115 @@ INSERT INTO `user` (`id`, `name`, `phone`, `mail`, `username`, `password`) VALUE
 (12, 'nobis', '329.207.3946x8355', 'billy.glover@example.org', 'homenick.emiliano', '$2y$10$S.OpIxImOr.YqBWnwVYE9OGZFmqGU2PxYK/SrfT3hH1ZmUhtOmkp2');
 
 --
--- Constraints for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Constraints for table `manager`
+-- Index pour la table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `manager`
+--
+ALTER TABLE `manager`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `manager_user_FK` (`id_user`);
+
+--
+-- Index pour la table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `producer`
+--
+ALTER TABLE `producer`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `producer_user_FK` (`id_user`);
+
+--
+-- Index pour la table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_category_FK` (`id_category`),
+  ADD KEY `product_producer_FK` (`id_producer`);
+
+--
+-- Index pour la table `quantity`
+--
+ALTER TABLE `quantity`
+  ADD PRIMARY KEY (`id_product`,`id_order`),
+  ADD KEY `quantite_order0_FK` (`id_order`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT pour la table `manager`
+--
+ALTER TABLE `manager`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `producer`
+--
+ALTER TABLE `producer`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT pour la table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `manager`
 --
 ALTER TABLE `manager`
   ADD CONSTRAINT `manager_user_FK` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `producer`
+-- Contraintes pour la table `producer`
 --
 ALTER TABLE `producer`
   ADD CONSTRAINT `producer_user_FK` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `product`
+-- Contraintes pour la table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_category_FK` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `product_producer_FK` FOREIGN KEY (`id_producer`) REFERENCES `producer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `quantity`
+-- Contraintes pour la table `quantity`
 --
 ALTER TABLE `quantity`
   ADD CONSTRAINT `quantite_order0_FK` FOREIGN KEY (`id_order`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
