@@ -2,8 +2,8 @@
 
 namespace app\view;
 
-use mf\router\Router as Router;
-use app\auth\AppAuthentification as AppAuthentification;
+use mf\router\Router;
+use app\auth\AppAuthentification;
 
 
 use mf\utils\HttpRequest as HttpRequest;
@@ -50,6 +50,9 @@ class ClientView extends \mf\view\AbstractView {
 
     private function renderTopCategoriesMain($categories) 
     {
+        $route = new Router();
+
+
         $nav_categories = '';
 
         foreach($categories as $category) {
@@ -61,15 +64,18 @@ class ClientView extends \mf\view\AbstractView {
 
     private function renderAllProducts()
     {
-
+        $route = new Router();
+        
         $categories = $this->data[0];
         $products = $this->data[1];
-
+        
         $categories_list = $this->renderTopCategoriesMain($categories);
         $products_list = '';
-
+        
         foreach ($products as $product) {
-            $products_list .= "<div>$product->name </div> 
+            $product_link = $route->urlFor('product',[['id',$product->id]]);
+
+            $products_list .= "<div><a href='$product_link'>$product->name </a></div> 
                               price : $product->unit_price </div>";
         }
 
@@ -82,6 +88,15 @@ class ClientView extends \mf\view\AbstractView {
 </article>
 EOT;
         return $products_html;
+    }
+
+    private function renderProduct()
+    {
+        $product_html = <<<EOT
+<article>
+</article>
+EOT;
+        return $product_html;
     }
 
     private function renderCategories()

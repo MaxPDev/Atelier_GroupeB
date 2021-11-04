@@ -3,13 +3,13 @@
 namespace app\control;
 
 
-use mf\utils\HttpRequest as HttpRequest;
-use mf\router\Router as Router;
-use app\view\ClientView as ClientView;
-use app\model\Product as Product;
-use app\model\Category as Category;
-use app\model\User as User;
-use app\model\Order as Order;
+use mf\utils\HttpRequest;
+use mf\router\Router;
+use app\view\ClientView;
+use app\model\Product;
+use app\model\Category;
+use app\model\User;
+use app\model\Order;
 
 
 class ClientController extends \mf\control\AbstractController {
@@ -45,6 +45,13 @@ class ClientController extends \mf\control\AbstractController {
 
         $view_all_products = new ClientView([$categories, $products]);
         $view_all_products->render('renderAllProducts');
+    }
+
+    public function viewProduct() 
+    {
+        $id_product = $this->request->get['id'];
+        
+        return "<div> produit </div>";
     }
 
     public function viewCategories($categories)
