@@ -243,6 +243,9 @@ body{
     main#adminDashboard{
         //in the body's grid : main is a element of 1,2 (100% width) on row 2
         @include element(1,2,2,2);
+        @media screen and (min-width : 62em) {
+            @include element(2,6,1,1);
+        }
 
         h1{
             text-align: center;
@@ -276,22 +279,38 @@ body{
             &>article:nth-child(1){
                 //article is a element of 3col width, in the 1st row
                 @include element(1,4,1,1);
+                @media screen and (min-width : 62em) {
+                    @include element(1,5,1,1);
+                }
             }
             &>article:nth-child(2){
                 //article is a element of 2col width, in the 1st row
                 @include element(4,6,1,1);
+                @media screen and (min-width : 62em) {
+                    @include element(5,7,1,1);
+                }
+
             }
             &>article:nth-child(3){
                 //article is a element of 1col width, in the 1st row
                 @include element(6,7,1,1);
+                @media screen and (min-width : 62em) {
+                    @include element(5,7,2,2);
+                }
             }
             &>article:nth-child(4){
                 //article is a element of 3col width, in the 2nd row
                 @include element(1,4,2,2);
+                @media screen and (min-width : 62em) {
+                    @include element(1,3,2,2);
+                }
             }
             &>article:nth-child(5){
                 //article is a element of 3col width, in the 2nd row
                 @include element(4,7,2,2);
+                @media screen and (min-width : 62em) {
+                    @include element(3,5,2,2);
+                }
             }
         }
     }

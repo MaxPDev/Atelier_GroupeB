@@ -372,6 +372,14 @@ body main#adminDashboard {
   grid-row-start: 2;
   grid-row-end: 2;
 }
+@media screen and (min-width: 62em) {
+  body main#adminDashboard {
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+}
 body main#adminDashboard h1 {
   text-align: center;
 }
@@ -405,11 +413,27 @@ body main#adminDashboard section > article:nth-child(1) {
   grid-row-start: 1;
   grid-row-end: 1;
 }
+@media screen and (min-width: 62em) {
+  body main#adminDashboard section > article:nth-child(1) {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+}
 body main#adminDashboard section > article:nth-child(2) {
   grid-column-start: 4;
   grid-column-end: 6;
   grid-row-start: 1;
   grid-row-end: 1;
+}
+@media screen and (min-width: 62em) {
+  body main#adminDashboard section > article:nth-child(2) {
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
 }
 body main#adminDashboard section > article:nth-child(3) {
   grid-column-start: 6;
@@ -417,17 +441,41 @@ body main#adminDashboard section > article:nth-child(3) {
   grid-row-start: 1;
   grid-row-end: 1;
 }
+@media screen and (min-width: 62em) {
+  body main#adminDashboard section > article:nth-child(3) {
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+}
 body main#adminDashboard section > article:nth-child(4) {
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 2;
 }
+@media screen and (min-width: 62em) {
+  body main#adminDashboard section > article:nth-child(4) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+}
 body main#adminDashboard section > article:nth-child(5) {
   grid-column-start: 4;
   grid-column-end: 7;
   grid-row-start: 2;
   grid-row-end: 2;
+}
+@media screen and (min-width: 62em) {
+  body main#adminDashboard section > article:nth-child(5) {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
 }
 body .tableList {
   text-align: center;
