@@ -8,13 +8,14 @@ use app\auth\AppAuthentification as AppAuthentification;
 
 use mf\utils\HttpRequest as HttpRequest;
 
-class AppView extends \mf\view\AbstractView {
-  
+class ProducerView extends \mf\view\AbstractView
+{
+
     /* Constructeur 
     *
     * Appelle le constructeur de la classe parent
     */
-    public function __construct( $data )
+    public function __construct($data)
     {
         parent::__construct($data);
     }
@@ -22,12 +23,12 @@ class AppView extends \mf\view\AbstractView {
     /* Méthode renderHeader
      *
      *  Retourne le fragment HTML de l'entête (unique pour toutes les vues)
-     */ 
+     */
     private function renderHeader()
     {
-        return '<header> App </header>';
+        return '<header> Producer View </header>';
     }
-    
+
     /* Méthode renderFooter
      *
      */
@@ -39,23 +40,22 @@ class AppView extends \mf\view\AbstractView {
     /* Méthode renderHome
 
      */
-    
+
     private function renderHome()
     {
 
 
-        return "<article><h2>Let's Code !</h2></article>";
-
+        return "<article><h2>Informations</h2></article>";
     }
-  
 
-    public function renderLogin() 
+
+    private function renderLogin()
     {
 
         // $route = new Router();
         // $check_login_route = $route->urlFor('check_login');
 
-$login_form = <<<EOT
+        $login_form = <<<EOT
 <article>
     <form id="login" method="post" class="form" action="">    
 
@@ -72,7 +72,6 @@ $login_form = <<<EOT
 EOT;
 
         return $login_form;
-
     }
 
 
@@ -82,7 +81,7 @@ EOT;
      * par la méthode héritée render.
      *
      */
-    
+
     public function renderBody($selector)
     {
 
@@ -93,46 +92,57 @@ EOT;
          * 
          */
         $header = $this->renderHeader();
+        $center = $this->$selector();
         $footer = $this->renderFooter();
-        
-        switch ($selector) {
-            case 'renderHome':
-                $center = $this->renderHome();
-                break;
-
-            case 'viewLogin':
-                $center = $this->renderLogin();
-                break;
 
 
-            case 'viewSignup':
-                $center = $this->renderSignup();
-                break;
-
-            default:
-                echo "Pas de fonction view correspondante";
-                break;
-        }
-        
-$body = <<<EOT
+        $body = <<<EOT
 ${header}
 ${center}
 ${footer}
 EOT;
 
         return $body;
-        
     }
 
+    public function renderProduct()
+    {
+        return $this->data;
+    }
 
+    public function renderProfile()
+    {
+        return $this->data;
+    }
 
+    public function renderMyProducts()
+    {
+        $productsHtml = "";
+        foreach ($this->data as $product) {
+            $productsHtml .= <<<EOT
+                <tr>
+                    <td>{$product->name}</td>
+                    <td>{$product->category}</td>
+                    <td><a href="">View</a></td>
+                </tr>
+            EOT;
+        }
 
-
-
-
-
-
-
-
-    
+        $html = <<<EOT
+            <table class="tableList">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    $productsHtml
+                </tbody>
+            </table>
+        EOT;
+        
+        return $html;
+    }
 }
