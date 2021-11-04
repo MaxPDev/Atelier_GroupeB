@@ -117,6 +117,32 @@ EOT;
 
     public function renderMyProducts()
     {
-        return json_encode($this->data);
+        $productsHtml = "";
+        foreach ($this->data as $product) {
+            $productsHtml .= <<<EOT
+                <tr>
+                    <td>{$product->name}</td>
+                    <td>{$product->category}</td>
+                    <td><a href="">View</a></td>
+                </tr>
+            EOT;
+        }
+
+        $html = <<<EOT
+            <table class="tableList">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    $productsHtml
+                </tbody>
+            </table>
+        EOT;
+        
+        return $html;
     }
 }
