@@ -107,23 +107,84 @@ EOT;
 
     public function renderProduct()
     {
-        return $this->data;
+        $product = $this->data;
+
+        $qteProduct = 0;
+        foreach ($product->orders as $p) {
+            $qteProduct = $p->pivot->quantity;
+        }
+
+        $total = $qteProduct * $product->unit_price;
+
+        $html = <<<EOT
+        <h1>{$product->name}</h1>
+        <section>
+            <div>
+                <h6>Unit Price</h6>
+                <h1>{$product->unit_price}</h1>   
+            </div>
+            <div>
+                <h6>Total earning</h6>
+                <h1>{$total}</h1>   
+            </div>
+            <div>
+                <h6>Total orders</h6>
+                <h1>{$qteProduct}</h1>   
+            </div>
+        </section>
+
+        <section>
+            <div>category {$product->category->name}</div>
+            <div>{$product->description}</div>
+            <div>
+                <img srcset="{$product->img_url}" alt="Product Image">
+            </div>
+        </section>
+        EOT;
+
+        return $html;
     }
 
     public function renderProfile()
     {
-        return $this->data;
+        $producer = $this->data;
+
+        $html = <<<EOT
+        <h1>{$producer->user->name}</h1>
+        <section>
+            <div>
+                <h6>Phone</h6>
+                <h1>{$producer->user->phone}</h1>   
+            </div>
+            <div>
+                <h6>mail</h6>
+                <h1>{$producer->user->mail}</h1>   
+            </div>
+            <div>
+                <h6>Location</h6>
+                <h1>{$producer->location}</h1>   
+            </div>
+            <div>
+                <h6>siret</h6>
+                <h1>{$producer->siret}</h1>   
+            </div>
+        </section>
+        EOT;
+
+        return $html;
     }
 
     public function renderMyProducts()
     {
+        $router = new Router();
+
         $productsHtml = "";
         foreach ($this->data as $product) {
             $productsHtml .= <<<EOT
                 <tr>
                     <td>{$product->name}</td>
                     <td>{$product->category}</td>
-                    <td><a href="">View</a></td>
+                    <td><a href="{$router->urlFor('producerProduct', [['id',$product->id]])}">View</a></td>
                 </tr>
             EOT;
         }
@@ -142,7 +203,7 @@ EOT;
                 </tbody>
             </table>
         EOT;
-        
+
         return $html;
     }
 }
