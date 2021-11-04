@@ -10,11 +10,11 @@ class User extends \Illuminate\Database\Eloquent\Model
 
     public function manager()
     {
-        return $this->hasOne(Manager::class, 'user_id');
+        return $this->hasOne(Manager::class, 'id_user');
     }
 
     public function producer()
     {
-        return $this->hasOne(Producer::class, 'user_id');
+        return $this->hasOne(Producer::class, 'id_user');
     }
 }

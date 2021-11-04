@@ -10,6 +10,6 @@ class Order extends \Illuminate\Database\Eloquent\Model
     public $timestamps = true;
 
     public function products(){
-        $this->belongsToMany(Product::class,'quantity','order_id','product_id')->withPivot( ['quantity'] );
+        return $this->belongsToMany('app\model\Product','quantity','id_order','id_product')->withPivot('quantity');
     }
 }

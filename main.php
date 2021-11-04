@@ -16,7 +16,10 @@ require __DIR__ . '/vendor/autoload.php';
 use mf\router\Router as Router;
 
 // Models
-use app\model\User as User;
+use app\model\User;
+use app\model\Manager;
+use app\model\Producer;
+use app\model\Product;
 
 // Controllers
 use app\control\AppController as AppController;
@@ -43,7 +46,7 @@ $db->setAsGlobal();            /* rendre la connexion visible dans tout le proje
 $db->bootEloquent();           /* établir la connexion */
 
 
-AppView::addStyleSheet('html/css/style.css');
+//AppView::addStyleSheet('html/css/style.css');
 
 //////////////////////////////
 
@@ -60,5 +63,12 @@ $router->addRoute('login',
                   'login',
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
+
+//List all products by categories
+$router->addRoute('dashboard', 
+                  '/dashboard/',   
+                  '\app\control\ManagerController',   
+                  'viewDashboard',                 
+                  AppAuthentification::ACCESS_LEVEL_NONE); 
 $router->setDefaultRoute('/home/');
 $router->run(); 

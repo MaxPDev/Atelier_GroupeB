@@ -19,6 +19,6 @@ class Product extends \Illuminate\Database\Eloquent\Model
     }
 
     public function orders(){
-        $this->belongsToMany(Order::class,'quantity','product_id','order_id')->withPivot( ['quantity'] );
+        return $this->belongsToMany('app\model\Order','quantity','id_product','id_order')->withPivot('quantity');
     }
 }
