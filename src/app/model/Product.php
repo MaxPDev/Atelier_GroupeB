@@ -13,9 +13,9 @@ class Product extends \Illuminate\Database\Eloquent\Model
         return $this->belongsTo(Producer::class, 'id_producer');
     }
 
-    public function categorie()
+    public function category()
     {
-        return $this->belongsTo(Categorie::class, 'id_categorie');
+        return $this->belongsTo(Category::class, 'id_category');
     }
 
     public function orders(){

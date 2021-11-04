@@ -1,9 +1,11 @@
 <?php
 
 namespace app\control;
+
+
 use mf\utils\HttpRequest;
 use mf\router\Router;
-use app\view\AppView;
+use app\view\ManagerView;
 use app\model\Product;
 use app\model\Producer;
 use app\model\Order;
@@ -45,9 +47,76 @@ class ManagerController extends \mf\control\AbstractController {
         $stats['nb_producers']=Producer::count();        
         $stats['nb_orders']=count($orders);     
         $stats['nb_clients']=Order::distinct('mail')->count();        
-        $stats['totalEarning']=$totalEarning;     
-       
-        var_dump($stats);
+        $stats['totalEarning']=$totalEarning; 
+
+        $view_orders = new ManagerView($stats);
+        $view_orders->render("renderDashboard");
+    }
+
+    /**
+     * Return all orders
+     */
+    public function viewOrders()
+    {
+        $orders=Order::all();
+        $view_orders = new ManagerView($orders);
+        $view_orders->render("renderManagerOrders");
+    }
+
+    /**
+     * Return order by id
+     */
+    public function viewOrder()
+    {
+        if(isset($_GET['id'])){
+            $order=Order::find($_GET['id']);
+            if($order){
+                $view_orders = new ManagerView($order);
+                $view_orders->render("renderManageOrder");
+            }else{
+                echo "ops! order not found"; //Replace echo by return
+            }
+        }else{
+            echo "Bad request"; //Replace echo by return
+        }
+    }
+
+    /**
+     * Change order status to paid
+     */
+    public function changeStatusPaid(){
+        if(isset($_GET['id'])){
+            $order=Order::find($_GET['id']);
+            if($order){
+                $order->status="Paid";
+                $order->save();
+                $view_orders = new ManagerView($order);
+                $view_orders->render("renderManageOrder");
+            }else{
+                echo "ops! order not found"; //Replace echo by return
+            }
+        }else{
+            echo "Bad request"; //Replace echo by return
+        }
+    }
+
+    /**
+     * Change order status to delivered
+     */
+    public function changeStatusDelivered(){
+        if(isset($_GET['id'])){
+            $order=Order::find($_GET['id']);
+            if($order){
+                $order->status="Delivered";
+                $order->save();
+                $view_orders = new ManagerView($order);
+                $view_orders->render("renderManageOrder");
+            }else{
+                echo "ops! order not found"; //Replace echo by return
+            }
+        }else{
+            echo "Bad request"; //Replace echo by return
+        }
     }
 
 }
