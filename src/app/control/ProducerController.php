@@ -2,13 +2,14 @@
 
 namespace app\control;
 
-
+use app\model\Product;
 use mf\utils\HttpRequest as HttpRequest;
 use mf\router\Router as Router;
 use app\view\AppView as AppView;
+use app\view\ProducerView;
 
-
-class ProducerController extends \mf\control\AbstractController {
+class ProducerController extends \mf\control\AbstractController
+{
 
 
     /* Constructeur :
@@ -18,20 +19,20 @@ class ProducerController extends \mf\control\AbstractController {
      * c.f. la classe \mf\control\AbstractController
      * 
      */
-    
+
     public function __construct()
     {
         parent::__construct();
     }
 
-
-    /* Méthode viewHome : 
-     */
-    
-    public function viewHome()
+    public function viewProduct()
     {
-        $view = new AppView(null);
-        $view->render('renderHome');
-    }
+        $product_id = $_GET["id"];
 
+        $product = Product::find($product_id);
+
+        $view = new ProducerView($product);
+
+        $view->render('renderProduct');
+    }
 }
