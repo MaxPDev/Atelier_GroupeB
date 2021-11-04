@@ -52,10 +52,13 @@ class ProducerController extends \mf\control\AbstractController
     {
         $producer_id = 1; //
 
-        $products = Product::where('id_producer', $producer_id);
+        $producer = Producer::find($producer_id);
+
+        $products =  $producer->products()->get();
 
         $view = new ProducerView($products);
 
         $view->render('renderMyProducts');
     }
+
 }

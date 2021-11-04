@@ -43,7 +43,7 @@ $paramsServer = parse_ini_file("conf/conf.ini");
 /* une instance de connexion  */
 $db = new Illuminate\Database\Capsule\Manager();
 
-$db->addConnection( $paramsServer ); /* configuration avec nos paramètres */
+$db->addConnection($paramsServer); /* configuration avec nos paramètres */
 $db->setAsGlobal();            /* rendre la connexion visible dans tout le projet */
 $db->bootEloquent();           /* établir la connexion */
 
@@ -53,37 +53,81 @@ $db->bootEloquent();           /* établir la connexion */
 
 $router = new Router(); //52
 
-$router->addRoute('home', //alias
-                  '/home/',   //route
-                  '\app\control\ClientController',   // controller
-                  'viewHome',                 // methode
-                  AppAuthentification::ACCESS_LEVEL_NONE);      // niveau accès
+$router->addRoute(
+    'home', //alias
+    '/home/',   //route
+    '\app\control\ClientController',   // controller
+    'viewHome',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);      // niveau accès
 
 
-$router->addRoute('login_producer',
-                  '/login_producer/',
-                  '\app\control\ProducerAdminController',
-                  'login',
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'login_producer',
+    '/login_producer/',
+    '\app\control\ProducerAdminController',
+    'login',
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
 
 //List all products by categories
-$router->addRoute('dashboard', 
-                  '/dashboard/',   
-                  '\app\control\ManagerController',   
-                  'viewDashboard',                 
-                  AppAuthentification::ACCESS_LEVEL_NONE); 
-$router->addRoute('login_manager',
-                  '/login_manager/',
-                  '\app\control\ManagerAdminController',
-                  'login',
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'dashboard',
+    '/dashboard/',
+    '\app\control\ManagerController',
+    'viewDashboard',
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
+$router->addRoute(
+    'login_manager',
+    '/login_manager/',
+    '\app\control\ManagerAdminController',
+    'login',
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
-$router->addRoute('products', //alias
-                  '/products/',   //route
-                  '\app\control\ClientController',   // controller
-                  'viewAllProducts',                 // methode
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'products', //alias
+    '/products/',   //route
+    '\app\control\ClientController',   // controller
+    'viewAllProducts',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
+
+//Producer routes
+
+$router->addRoute(
+    'producerProfile',
+    '/myProfile/',   //route
+    '\app\control\ProducerController',   // controller
+    'viewMyProfile',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
+
+$router->addRoute(
+    'producerProducts',
+    '/myProducts/',   //route
+    '\app\control\ProducerController',   // controller
+    'viewMyProducts',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
+
+$router->addRoute(
+    'producerProfile',
+    '/myProfile/',   //route
+    '\app\control\ProducerController',   // controller
+    'viewMyProfile',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
+
+$router->addRoute(
+    'product',
+    '/product/',   //route
+    '\app\control\ProducerController',   // controller
+    'viewProduct',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
 $router->setDefaultRoute('/home/');
-$router->run(); 
+$router->run();
