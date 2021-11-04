@@ -67,23 +67,15 @@ $router->addRoute('check_login', '/check_login/', '\app\control\AppController', 
 $router->addRoute('logout', '/logout/', '\app\control\AppController', 'logout', AppAuthentification::ACCESS_LEVEL_NONE);
 
 $router->addRoute(
-<<<<<<< HEAD
     'clientProducts', //alias
     '/clientproducts/',   //route
     '\app\control\ClientController',   // controller
     'viewAllProducts',                 // methode
-=======
-    'products', //alias
-    '/products/', //route
-    '\app\control\ClientController', // controller
-    'viewAllProducts', // methode
->>>>>>> malek
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
 //Producer routes
 
-<<<<<<< HEAD
 $router->addRoute(
     'producerProfile',
     '/producerProfile/',
@@ -97,41 +89,18 @@ $router->addRoute(
     '/producerProducts/',
     '\app\control\ProducerController',
     'viewMyProducts',
-=======
-$router->addRoute('producerProfile', '/myProfile/', '\app\control\ProducerController', 'viewMyProfile', AppAuthentification::ACCESS_LEVEL_NONE);
-
-$router->addRoute('producerProducts', '/myProducts/', '\app\control\ProducerController', 'viewMyProducts', AppAuthentification::ACCESS_LEVEL_NONE);
-
-$router->addRoute('producerOrderedProducts', '/myOrderedProducts/', '\app\control\ProducerController', 'viewMyOrderedProducts', AppAuthentification::ACCESS_LEVEL_NONE);
-
-$router->addRoute('product', '/product/', '\app\control\ProducerController', 'viewProduct', AppAuthentification::ACCESS_LEVEL_NONE);
-
-$router->addRoute(
-    'product', //alias
-    '/product/', //route
-    '\app\control\ClientController', // controller
-    'viewProduct', // methode
->>>>>>> malek
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
 $router->addRoute(
-<<<<<<< HEAD
     'producerOrderedProducts',
     '/producerOrderedProducts/',
     '\app\control\ProducerController',
     'viewMyOrderedProducts',
-=======
-    'producers', //alias
-    '/producers/', //route
-    '\app\control\ClientController', // controller
-    'viewProducers', // methode
->>>>>>> malek
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
 $router->addRoute(
-<<<<<<< HEAD
     'producerProduct',
     '/producerProduct/',
     '\app\control\ProducerController',
@@ -157,15 +126,6 @@ $router->addRoute('clientProducer', //alias
                   'viewProducer',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
-=======
-    'producer', //alias
-    '/producer/', //route
-    '\app\control\ClientController', // controller
-    'viewProducer', // methode
-    AppAuthentification::ACCESS_LEVEL_NONE
-);
-
->>>>>>> malek
 //Manager dashboard
 $router->addRoute('dashboard', '/dashboard/', '\app\control\ManagerController', 'viewDashboard', AppAuthentification::ACCESS_LEVEL_MANAGER); //Change me to manager access level after auth
 
