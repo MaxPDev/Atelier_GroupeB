@@ -114,4 +114,9 @@ EOT;
     {
         return $this->data;
     }
+
+    public function renderMyProducts()
+    {
+        return $this->data;
+    }
 }

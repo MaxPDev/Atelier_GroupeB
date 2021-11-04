@@ -47,4 +47,15 @@ class ProducerController extends \mf\control\AbstractController
 
         $view->render('renderProfile');
     }
+
+    public function viewMyProducts()
+    {
+        $producer_id = 1; //
+
+        $products = Product::where('id_producer', $producer_id);
+
+        $view = new ProducerView($products);
+
+        $view->render('renderMyProducts');
+    }
 }
