@@ -19,7 +19,6 @@ class Authentification extends AbstractAuthentification {
      */
     public function __construct() 
     {
-
         if(isset($_SESSION['user_login'])) {
             $this->user_login = $_SESSION['user_login'];
             $this->access_level = $_SESSION['access_level'];
