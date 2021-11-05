@@ -621,7 +621,7 @@ body main section#producerProfile {
 }
 body main section#producerProfile > div > h4 {
   border-bottom: 5px solid #255d2e;
-  width: fit-content;
+  width: max-content;
 }
 body main section#producerProfile > div > h1 {
   font-weight: 100;
