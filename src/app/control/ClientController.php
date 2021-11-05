@@ -92,6 +92,10 @@ class ClientController extends \mf\control\AbstractController {
 
     public function viewCheckout()
     {
+        $_SESSION['orders']
+        foreach ($_SESSION['orders'] as $key => $value) {
+            # code...
+        }
         $view_order = new ClientView('');
         $view_order->render('renderCheckout');
     }

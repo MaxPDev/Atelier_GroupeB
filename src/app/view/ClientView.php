@@ -216,7 +216,15 @@ EOL;
         $producers = $this->data;
 
         $producers_article = '';
-        
+        foreach ($producer_products as $product) {
+            $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
+            
+            $producer_product_html .= <<<PRODUCT
+    <img src="$product->img_url" style="width:200px">
+    <p>Price : $product->unit_price</p>
+    <button> nb ajouté TO DO link panier TO DO </button><br>
+    PRODUCT;
+        }
         foreach ($producers as $producer) {
             
             $producer_user = $producer->user;
@@ -250,8 +258,29 @@ ORDER;
     private function renderCheckout()
     {
         $checkout_html = <<<CHECKOUT
-    <h1>Checkout to do</h1>
-CHECKOUT;
+            <h1>Checkout to do</h1>
+            <table>
+            <tr>
+              <th>Product</th>
+              <th>Unit Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th></th>
+            </tr>
+        CHECKOUT;
+
+        foreach ($_SESSION["orders"] as $product) {
+            $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
+            $html .= <<<PRODUCT
+            <tr>
+              <td>Product</td>
+              <td>Unit Price</td>
+              <td>Quantity</td>
+              <td>Total</td>
+              <td></td>
+            </tr>
+            PRODUCT;
+                }
 
         return $checkout_html;
     }
