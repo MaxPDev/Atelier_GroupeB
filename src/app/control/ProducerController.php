@@ -72,6 +72,6 @@ class ProducerController extends \mf\control\AbstractController
 
         $view = new ProducerView($products);
 
-        $view->render('renderMyProducts');
+        $view->render('renderMyOrderedProducts');
     }
 }

@@ -30,7 +30,7 @@ class ProducerView extends \mf\view\AbstractView
         $producer = User::find($_SESSION['user_login']);
 
         $html = <<<EOT
-            <header>
+            <header id="headerManager">
                 <img id="header_logo" src="./img/logo.png" alt="Le Hangar Local">
                 <h3>{$producer->name}</h3>
                 <nav>
@@ -108,7 +108,9 @@ EOT;
 
         $body = <<<EOT
 ${header}
+<main>
 ${center}
+</main>
 EOT;
 
         return $body;
@@ -183,11 +185,54 @@ EOT;
         return $html;
     }
 
+    public function renderMyOrderedProducts()
+    {
+        $router = new Router();
+
+        $productsHtml = "<h1>Ordered Products</h1>";
+        foreach ($this->data as $product) {
+            foreach ($product->orders as $order) {
+                $total = $product->unit_price * $order->pivot->quantity;
+
+                $productsHtml .= <<<EOT
+                    <tr>
+                        <td>{$product->name}</td>
+                        <td>{$order->pivot->quantity}</td>
+                        <td>{$product->unit_price} €</td>
+                        <td>{$total} €</td>
+                        <td>{$order->created_at}</td>
+                        <td><a href="{$router->urlFor('producerProduct', [['id',$product->id]])}">View</a></td>
+                    </tr>
+                EOT;
+            }
+        }
+
+        $html = <<<EOT
+            <table class="tableList">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    $productsHtml
+                </tbody>
+            </table>
+        EOT;
+
+        return $html;
+    }
+
     public function renderMyProducts()
     {
         $router = new Router();
 
-        $productsHtml = "";
+        $productsHtml = "<h1>My Products</h1>";
         foreach ($this->data as $product) {
             $productsHtml .= <<<EOT
                 <tr>
