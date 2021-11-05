@@ -59,11 +59,17 @@ body header#headerManager h3 {
   color: #dedede;
   margin: auto 0;
   text-align: center;
+  display: none;
 }
 @media screen and (min-width: 62em) {
   body header#headerManager h3 {
     grid-column: 1/4;
     grid-row: 2/2;
+  }
+}
+@media screen and (min-width: 62em) {
+  body header#headerManager h3 {
+    display: block;
   }
 }
 body header#headerManager nav {
@@ -154,11 +160,17 @@ body main {
   }
 }
 body main h1 {
-  grid-column: 1/3;
+  grid-column: 1/7;
   grid-row: 1/1;
   font-size: 3em;
   text-align: center;
   color: #3d3d3d;
+}
+@media screen and (min-width: 62em) {
+  body main h1 {
+    grid-column: 1/3;
+    grid-row: 1/1;
+  }
 }
 body main table {
   grid-column: 1/7;
@@ -390,6 +402,128 @@ body main section#dashboardInfos > article:nth-child(5) {
     grid-row: 2/2;
   }
 }
+body header#headerProducer {
+  grid-column: 1/2;
+  grid-row: 1/1;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(1, auto);
+  grid-auto-flow: row;
+  grid-gap: 0;
+  background-color: #618d4d;
+  padding: 0.6em;
+}
+@media screen and (min-width: 62em) {
+  body header#headerProducer {
+    grid-column: 1/2;
+    grid-row: 1/3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, auto);
+    grid-auto-flow: row;
+    grid-gap: 0;
+    height: 100vh;
+  }
+}
+body header#headerProducer #header_logo {
+  grid-column: 1/2;
+  grid-row: 1/1;
+  max-width: 100%;
+  margin: 0 auto;
+}
+@media screen and (min-width: 62em) {
+  body header#headerProducer #header_logo {
+    grid-column: 1/4;
+    grid-row: 1/1;
+    max-width: 60%;
+  }
+}
+body header#headerProducer h3 {
+  grid-column: 3/4;
+  grid-row: 1/1;
+  color: #dedede;
+  margin: auto 0;
+  text-align: center;
+  display: none;
+}
+@media screen and (min-width: 62em) {
+  body header#headerProducer h3 {
+    grid-column: 1/4;
+    grid-row: 2/2;
+  }
+}
+@media screen and (min-width: 62em) {
+  body header#headerProducer h3 {
+    display: block;
+  }
+}
+body header#headerProducer nav {
+  grid-column: 6/11;
+  grid-row: 1/1;
+  margin: auto 0;
+}
+@media screen and (min-width: 62em) {
+  body header#headerProducer nav {
+    grid-column: 1/4;
+    grid-row: 3/4;
+    margin: 0;
+  }
+}
+body header#headerProducer nav > ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, auto);
+  grid-auto-flow: row;
+  grid-gap: 0 0.5em;
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  color: #dedede;
+}
+@media screen and (min-width: 62em) {
+  body header#headerProducer nav > ul {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: row;
+    grid-gap: 0;
+  }
+}
+@media screen and (min-width: 62em) {
+  body header#headerProducer nav > ul > li {
+    padding: 0.8em;
+  }
+}
+body header#headerProducer nav > ul > li:first-child {
+  grid-column: 1/1;
+  grid-row: 1/1;
+}
+@media screen and (min-width: 62em) {
+  body header#headerProducer nav > ul > li:first-child {
+    grid-column: 1/1;
+    grid-row: 1/1;
+  }
+}
+body header#headerProducer nav > ul > li:nth-child(2) {
+  grid-column: 2/2;
+  grid-row: 1/1;
+}
+@media screen and (min-width: 62em) {
+  body header#headerProducer nav > ul > li:nth-child(2) {
+    grid-column: 1/1;
+    grid-row: 2/2;
+  }
+}
+body header#headerProducer nav > ul > li:nth-child(3) {
+  grid-column: 3/3;
+  grid-row: 1/1;
+}
+@media screen and (min-width: 62em) {
+  body header#headerProducer nav > ul > li:nth-child(3) {
+    grid-column: 1/1;
+    grid-row: 3/3;
+  }
+}
 body .tableList {
   text-align: center;
   border-collapse: collapse;
@@ -410,7 +544,7 @@ body .tableList > tbody > tr > td {
 body .tableList > tbody > tr > td > a:last-child {
   color: #618d4d;
 }
-body #loginManager {
+body .login {
   grid-column: 1/6;
   grid-row: 2/2;
   display: grid;
@@ -421,7 +555,7 @@ body #loginManager {
   height: 100vh;
   background-image: url("../Elements/header-bg-complete.png");
 }
-body #loginManager > form {
+body .login > form {
   grid-column: 2/3;
   grid-row: 2/2;
   display: grid;
@@ -431,7 +565,7 @@ body #loginManager > form {
   grid-gap: 1em 0;
 }
 @media screen and (min-width: 62em) {
-  body #loginManager > form {
+  body .login > form {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(6, auto);
@@ -441,42 +575,42 @@ body #loginManager > form {
     grid-row: 3/3;
   }
 }
-body #loginManager > form > input {
+body .login > form > input {
   outline: none;
   background-color: transparent;
   border: 2px solid #fff;
   border-radius: 7px;
   color: #fff;
 }
-body #loginManager > form ::placeholder {
+body .login > form ::placeholder {
   color: #939393;
 }
-body #loginManager > form > input:first-child {
+body .login > form > input:first-child {
   grid-column: 1/4;
   grid-row: 4/4;
 }
 @media screen and (min-width: 62em) {
-  body #loginManager > form > input:first-child {
+  body .login > form > input:first-child {
     grid-column: 2/8;
     grid-row: 1/1;
   }
 }
-body #loginManager > form > input:nth-child(2) {
+body .login > form > input:nth-child(2) {
   grid-column: 1/4;
   grid-row: 5/5;
 }
 @media screen and (min-width: 62em) {
-  body #loginManager > form > input:nth-child(2) {
+  body .login > form > input:nth-child(2) {
     grid-column: 2/8;
     grid-row: 3/3;
   }
 }
-body #loginManager > form > input:nth-child(3) {
+body .login > form > input:nth-child(3) {
   grid-column: 2/3;
   grid-row: 6/6;
 }
 @media screen and (min-width: 62em) {
-  body #loginManager > form > input:nth-child(3) {
+  body .login > form > input:nth-child(3) {
     grid-column: 3/7;
     grid-row: 5/5;
   }
