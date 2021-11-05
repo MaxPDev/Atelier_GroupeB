@@ -73,7 +73,7 @@ class ClientView extends \mf\view\AbstractView {
         $products_list = '';
         
         foreach ($products as $product) {
-            $product_link = $route->urlFor('product',[['id',$product->id]]);
+            $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
 
             $products_list .= "<div><a href='$product_link'>$product->name </a></div> 
                               price : $product->unit_price </div>";
@@ -138,7 +138,7 @@ PROD;
     $producer_product_html = '';
 
     foreach ($producer_products as $product) {
-        $product_link = $route->urlFor('product',[['id',$product->id]]);
+        $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
         
         $producer_product_html .= <<<PRODUCT
 <img src="$product->img_url" style="width:200px">
