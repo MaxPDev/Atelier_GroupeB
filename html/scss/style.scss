@@ -223,9 +223,6 @@ body{
 
 
 
-
-
-
         //***********************************************************************
         //main for MANAGER - ALL ORDERS & PRODUCER - ORDERED PRODUCTS & PRODUCER - MY PRODUCTS
         //h1 (All Orders)
@@ -429,7 +426,11 @@ body{
         //main for PRODUCER - PRODUCT PAGE
         section#producerProductPage{
             @include element(1,7,2,5);
-            @include grid(6, 1fr, 3, auto, 1em 0.5em);
+            @include grid(8, 1fr, 6, auto, 10px);
+            @media screen and (min-width : 62em) {
+                @include grid(6, 1fr, 5, auto, 1em 0.5em);
+            }
+            
             
             .producerInfoProduct{
                 background-color: $darkGreen;
@@ -446,28 +447,49 @@ body{
                 }
 
                 &>h1{
-                    // margin: 0 0 auto 0;
                     font-size: 2em;
+                    margin: 0.5em;
+                    @media screen and (min-width : 62em) {
+                       margin : auto;
+                    }
                 }
             }
             &>article:nth-child(1){
                 @include element(1,2,1,1);
+                @media screen and (min-width : 62em) {
+                    @include element(1,2,1,1);
+                }
             }
             &>article:nth-child(2){
-                @include element(2,3,1,1);
+                @include element(1,2,2,2);
+                @media screen and (min-width : 62em) {
+                    @include element(1,2,2,2);
+                }
             }
             &>article:nth-child(3){
-                @include element(3,4,1,1);
+                @include element(1,2,3,3);
+                @media screen and (min-width : 62em) {
+                    @include element(1,2,3,3);
+                }
             }
             &>article:nth-child(4){
-                @include element(1,5,2,4);
+                @include element(2,7,1,5);
+                @media screen and (min-width : 62em) {
+                    @include element(2,7,1,2);
+                }
             }
             &>article:nth-child(5){
-                @include element(5,7,1,3);
-
-                &>img{
-                    max-width: 80%;
+                @include element(7,9,1,5);
+                @media screen and (min-width : 62em) {
+                    @include element(7,9,1,3);
                 }
+                &>img{
+                    max-width: 90%;
+                    border-radius: 8px;
+                    box-shadow: 0px 2px 10px 1px #787878;
+                }
+
+
             }
         }
     }
