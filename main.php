@@ -84,7 +84,7 @@ $router->addRoute(
     '/producerProfile/',
     '\app\control\ProducerController',
     'viewMyProfile',
-    AppAuthentification::ACCESS_LEVEL_NONE
+    AppAuthentification::ACCESS_LEVEL_PRODUCER
 );
 
 $router->addRoute(
@@ -92,7 +92,7 @@ $router->addRoute(
     '/producerProducts/',
     '\app\control\ProducerController',
     'viewMyProducts',
-    AppAuthentification::ACCESS_LEVEL_NONE
+    AppAuthentification::ACCESS_LEVEL_PRODUCER
 );
 
 $router->addRoute(
@@ -100,7 +100,7 @@ $router->addRoute(
     '/producerOrderedProducts/',
     '\app\control\ProducerController',
     'viewMyOrderedProducts',
-    AppAuthentification::ACCESS_LEVEL_NONE
+    AppAuthentification::ACCESS_LEVEL_PRODUCER
 );
 
 $router->addRoute(
@@ -108,7 +108,7 @@ $router->addRoute(
     '/producerProduct/',
     '\app\control\ProducerController',
     'viewProduct',
-    AppAuthentification::ACCESS_LEVEL_NONE
+    AppAuthentification::ACCESS_LEVEL_PRODUCER
 );
 
 $router->addRoute(
