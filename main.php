@@ -147,10 +147,28 @@ $router->addRoute('clientcheckout', //alias
                   'viewCheckout',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
-$router->addRoute('clientAddOrder', //alias
-                  '/clientaddorder/',   //route
-                  '\app\control\ClientController',   // controller
-                  'addToOrder',                 // methode
+$router->addRoute('removeProduct',
+                  '/removeProduct/',  
+                  '\app\control\ClientController',  
+                  'deleteProductCheckout',                
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
+$router->addRoute('updateQuantity',
+                  '/updateQuantity/',  
+                  '\app\control\ClientController',  
+                  'updateQuantity',                
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
+$router->addRoute('updateQuantity',
+                  '/updateQuantity/',  
+                  '\app\control\ClientController',  
+                  'updateQuantity',                
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
+$router->addRoute('confirmOrder', 
+                  '/confirmOrder/',   
+                  '\app\control\ClientController',   
+                  'confirmOrder',                 
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
 //Manager dashboard
