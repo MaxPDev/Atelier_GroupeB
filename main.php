@@ -31,6 +31,7 @@ use app\view\ManagerView as ManagerView;
 
 // Auth
 use app\auth\AppAuthentification as AppAuthentification;
+use mf\view\AbstractView;
 
 // Session starting
 session_start();
@@ -108,23 +109,29 @@ $router->addRoute(
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
-$router->addRoute('clientProduct', //alias
-                  '/clientproduct/',   //route
-                  '\app\control\ClientController',   // controller
-                  'viewProduct',                 // methode
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'clientProduct', //alias
+    '/clientproduct/',   //route
+    '\app\control\ClientController',   // controller
+    'viewProduct',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
-$router->addRoute('clientProducers', //alias
-                  '/clientproducers/',   //route
-                  '\app\control\ClientController',   // controller
-                  'viewProducers',                 // methode
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'clientProducers', //alias
+    '/clientproducers/',   //route
+    '\app\control\ClientController',   // controller
+    'viewProducers',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
-$router->addRoute('clientProducer', //alias
-                  '/clientproducer/',   //route
-                  '\app\control\ClientController',   // controller
-                  'viewProducer',                 // methode
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'clientProducer', //alias
+    '/clientproducer/',   //route
+    '\app\control\ClientController',   // controller
+    'viewProducer',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
 //Manager dashboard
 $router->addRoute('dashboard', '/dashboard/', '\app\control\ManagerController', 'viewDashboard', AppAuthentification::ACCESS_LEVEL_MANAGER); //Change me to manager access level after auth
