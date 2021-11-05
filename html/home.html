@@ -8,9 +8,9 @@
     <title>HTML Tree</title>
 </head>
 <body>
-    <header>
+    <header id="headerManager">
         <img id="header_logo" src="./img/logo.png" alt="Le Hangar Local">
-        <h3>Producteur|Gérant</h3>
+        <h3>Gérant Name</h3>
         <nav>
             <ul>
                 <li>Dashboard</li>
@@ -23,10 +23,11 @@
 
 
 
-    <!-- PAGE ADMIN - ALL ORDERS -->
+    
     <!--Dans la balise tbody, le nmbre de tr correpsond au nombres de lignes, donc géré par PHP & BD-->
-    <!-- <main id="adminAllOrders">
-        <h1>All Orders</h1>
+    <main>
+        <!-- PAGE ADMIN - ALL ORDERS -->
+        <!-- <h1>All Orders</h1>
         <table class="tableList">
             <thead>
                 <tr>
@@ -53,13 +54,11 @@
                     <td><a href="">View</a></td>
                 </tr>
             </tbody>
-        </table>
-    </main> -->
+        </table> -->
 
-    <!-- PAGE ADMIN - ORDER KA65E -->
 
-    <!-- <main id="adminOrderPage">
-        <h1>Order KA65E</h1>
+        <!-- PAGE ADMIN - ORDER KA65E -->
+        <!-- <h1 id="orderNumber">Order KA65E</h1>
         <div id="orderActions">
             <p>Order confirmed</p>
             <a href="https://www.google.fr">Mark as paied</a>
@@ -111,14 +110,12 @@
                     <td><a href="https://www.google.fr">View in store</a></td>
                 </tr>
             </tbody>
-        </table>
-    </main> -->
+        </table> -->
 
 
-    <!-- PAGE ADMIN - DASHBOARD -->
-    <main id="adminDashboard">
-        <h1>My Dashboard</h1>
-        <section>
+        <!-- PAGE ADMIN - DASHBOARD -->
+        <h1 id="myDashboard">My Dashboard</h1>
+        <section id="dashboardInfos">
             <article id="nbrProducers"><p><span>50</span> Producers</p></article>
             <article id="nbrProducts"><p><span>50</span> Products</p></article>
             <article id="earning"><p><span>1150E</span> Earning</p></article>
