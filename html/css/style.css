@@ -329,6 +329,7 @@ body main > div#orderActions > p {
   grid-column: 1/1;
   grid-row: 1/1;
   margin: 0;
+  padding: 2%;
   background-color: #a1a1a1;
   color: #fff;
 }
@@ -341,7 +342,6 @@ body main > div#orderActions > p {
 body main > div#orderActions > a {
   font-size: 1em;
   text-decoration: none;
-  padding: 2%;
   background: none;
   color: #255d2e;
   outline: none;

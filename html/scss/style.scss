@@ -269,6 +269,7 @@ body{
                     @include element(3,5,1,1);
                 }
                 margin: 0;
+                padding: 2%;
                 background-color: rgb(161, 161, 161);
                 color: #fff;
             }
@@ -276,7 +277,6 @@ body{
             &>a{
                 font-size: 1em;
                 text-decoration: none;
-                padding: 2%;
                 background: none;
                 color: $darkGreen;
                 outline: none;
