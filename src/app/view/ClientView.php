@@ -179,56 +179,75 @@ EOL;
         }
         
         $producers_html = <<<PRODS
+        <h2>PRODUCERS </h2>
 $producers_article
 PRODS;
 
         return $producers_html;
     }
 
-
-    private function renderCategories()
+    private function renderOrder()
     {
+        $order_html = <<<ORDER
+<h1>Order to do</h1>
+ORDER;
+
+        return $order_html;
+    }
+
+    private function renderCheckout()
+    {
+        $checkout_html = <<<CHECKOUT
+    <h1>Checkout to do</h1>
+CHECKOUT;
+
+        return $checkout_html;
+    }
+
+
+    // private function renderCategories()
+    // {
         
-    }
+    // }
 
 
-    private function renderProductsByCategory()
-    {
-        $products_by_category_html = <<<EOT
-<article>
- Prod by cat
-</article>
-EOT;
-        return $products_by_category_html;
-    }
+//     private function renderProductsByCategory()
+//     {
+//         $products_by_category_html = <<<EOT
+// <article>
+//  Prod by cat
+// </article>
+// EOT;
+//         return $products_by_category_html;
+//     }
 
   
 
-    private function renderLogin() 
-    {
+//     private function renderLogin() 
+//     {
 
-        // $route = new Router();
-        // $check_login_route = $route->urlFor('check_login');
+//         // $route = new Router();
+//         // $check_login_route = $route->urlFor('check_login');
 
-$login_form = <<<EOT
-<article>
-    <form id="login" method="post" class="form" action="">    
+// $login_form = <<<EOT
+// <article>
+//     <form id="login" method="post" class="form" action="">    
 
-        <label> User Name </label>    
-        <input type="text" name="username" id="username" placeholder="Username">        
+//         <label> User Name </label>    
+//         <input type="text" name="username" id="username" placeholder="Username">        
 
-        <label> Password </label>    
-        <input type="password" name="password" id="password" placeholder="Password">    
+//         <label> Password </label>    
+//         <input type="password" name="password" id="password" placeholder="Password">    
         
-        <input type="submit" name="log" id="log" value="Log In Here" >       
+//         <input type="submit" name="log" id="log" value="Log In Here" >       
 
-    </form>
-</article>
-EOT;
+//     </form>
+// </article>
+// EOT;
 
-        return $login_form;
+//         return $login_form;
 
-    }
+//     }
 
 
     /* Méthode renderBody

@@ -78,6 +78,18 @@ class ClientController extends \mf\control\AbstractController {
 
     }
 
+    public function viewOrder()
+    {
+        $view_order = new ClientView('');
+        $view_order->render('renderOrder');
+    }
+
+    public function viewCheckout()
+    {
+        $view_order = new ClientView('');
+        $view_order->render('renderCheckout');
+    }
+
 
     // public function viewCategories($categories)
     // {

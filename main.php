@@ -126,6 +126,18 @@ $router->addRoute('clientProducer', //alias
                   'viewProducer',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
+$router->addRoute('clientOrder', //alias
+                  '/clientorder/',   //route
+                  '\app\control\ClientController',   // controller
+                  'viewOrder',                 // methode
+                AppAuthentification::ACCESS_LEVEL_NONE);
+                  
+$router->addRoute('clientcheckout', //alias
+                  '/clientcheckout/',   //route
+                  '\app\control\ClientController',   // controller
+                  'viewCheckout',                 // methode
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
 //Manager dashboard
 $router->addRoute('dashboard', '/dashboard/', '\app\control\ManagerController', 'viewDashboard', AppAuthentification::ACCESS_LEVEL_MANAGER); //Change me to manager access level after auth
 
