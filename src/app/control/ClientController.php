@@ -42,13 +42,12 @@ class ClientController extends \mf\control\AbstractController {
     public function viewAllProducts() 
     {
         $categories = Category::get();
-        $category_choosen = $this->request->get['category'];
-        $products;
+        // $category_choosen = $this->request->get['category'];
         
-        if($category_choosen = 'all') {
+        if( !isset($this->request->get['category']) ||  !$this->request->get['category']) {
             $products = Product::orderBy('name','asc')->get();
         } else {
-            $products = $products->category()->where('name','=',$category_choosen)->get();
+            $products = Product::where('id_category','=',$this->request->get['category'])->orderBy('name','asc')->get();
         }
 
         $view_all_products = new ClientView([$categories, $products]);
@@ -93,28 +92,31 @@ class ClientController extends \mf\control\AbstractController {
 
     public function viewCheckout()
     {
+        $_SESSION['orders']
+        foreach ($_SESSION['orders'] as $key => $value) {
+            # code...
+        }
         $view_order = new ClientView('');
         $view_order->render('renderCheckout');
     }
 
     public function addToOrder()
     {
+        //unset($_SESSION['order']);
         $id_product = $this->request->post['product_id'];
-        // session_destroy();
-
-        if(isset($_SESSION['order'])){
-            array_push($_SESSION['order'], $id_product);
-        } else {
-            $_SESSION['order']['product'] = $id_product;
-            $_SESSION['order']['quantity'] = 1; // Remplace 1 by quantity
-        }
+        $quantity = $this->request->post['quantity'];
         
-        var_dump($_SESSION['order']);
+        if(isset($_SESSION['orders'][$id_product])){
+             $_SESSION['orders'][$id_product]+= (int)$quantity;                
+        }else{
+            $_SESSION['orders'][$id_product]= (int)$quantity;    
+        }
+
+        var_dump($_SESSION['orders']);
         
         $route = new Router();
         $_GET['id'] = $id_product; // TO DO ajouter un param optionnel à execute Route
-        $route->executeRoute('clientProduct');
-
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
         // $view_back_to_product = new ClientView('');
         // $view_back_to_product->render('renderProduct');
     }
