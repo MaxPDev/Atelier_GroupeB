@@ -26,16 +26,26 @@ class ProducerView extends \mf\view\AbstractView
      */
     private function renderHeader()
     {
-        return '<header> Producer View </header>';
+        $router = new Router();
+
+        $html = <<<EOT
+            <header>
+                <img id="header_logo" src="./img/logo.png" alt="Le Hangar Local">
+                <h3>{ Producer Name }</h3>
+                <nav>
+                    <ul>
+                        <li><a href="{$router->urlFor('producerOrderedProducts')}">Ordererd products</a></li>
+                        <li id="active"><a href="{$router->urlFor('producerProducts')}">My Products</a></li>
+                        <li><a href="{$router->urlFor('producerProfile')}">Profile</a></li>
+                        <li>Logout</li>
+                    </ul>
+                </nav>
+            </header>
+        EOT;
+
+        return $html;
     }
 
-    /* Méthode renderFooter
-     *
-     */
-    private function renderFooter()
-    {
-        return "<footer>App Project</footer>";
-    }
 
     /* Méthode renderHome
 
@@ -93,13 +103,11 @@ EOT;
          */
         $header = $this->renderHeader();
         $center = $this->$selector();
-        $footer = $this->renderFooter();
 
 
         $body = <<<EOT
 ${header}
 ${center}
-${footer}
 EOT;
 
         return $body;
