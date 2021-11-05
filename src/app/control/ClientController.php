@@ -86,7 +86,19 @@ class ClientController extends \mf\control\AbstractController {
 
     public function viewOrder()
     {
-        $view_order = new ClientView('');
+        $view_order = new ClientView(null);
+        $view_order->render('renderOrder');
+    }
+
+    public function checkOrder()
+    {
+        $order_id = $this->request->post['orderId'];
+        if($order_id){
+            $order = Order::find($order_id);
+            $view_order = new ClientView($order->status);
+        }else{
+            $view_order = new ClientView(null);
+        }
         $view_order->render('renderOrder');
     }
 

@@ -248,9 +248,19 @@ PRODS;
 
     private function renderOrder()
     {
+        $route = new Router();
         $order_html = <<<ORDER
-<h1>Order to do</h1>
-ORDER;
+        <form action="{$route->urlFor("checkOrder")}" method="post">
+                <input type="text" name="orderId" placeholder="Order confirm number" />
+                <input value="Check" type="submit">
+            </form> 
+        ORDER;
+
+        if(isset($this->data)){
+            $order_html .= <<<ORDER
+                <h3>Your order is $this->data</h3>
+            ORDER;
+        }
 
         return $order_html;
     }
