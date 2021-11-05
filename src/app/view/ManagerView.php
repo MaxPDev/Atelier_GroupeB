@@ -2,9 +2,10 @@
 
 namespace app\view;
 
-use mf\router\Router as Router;
-use app\auth\AppAuthentification as AppAuthentification;
-
+use mf\router\Router;
+use app\auth\AppAuthentification;
+use app\model\Manager;
+use app\model\User;
 
 use mf\utils\HttpRequest as HttpRequest;
 
@@ -26,10 +27,11 @@ class ManagerView extends \mf\view\AbstractView {
     private function renderHeader()
     {
         $router = new Router();
+        $user=User::find($_SESSION['user_login']);
         return <<<EOT
             <header>
             <img id="header_logo" src="./img/logo.png" alt="Le Hangar Local">
-            <h3>Producteur|Gérant</h3>
+            <h3>$user->name</h3>
             <nav>
                 <ul>
                     <li>Dashboard</li>
