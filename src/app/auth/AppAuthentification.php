@@ -56,7 +56,7 @@ class AppAuthentification extends \mf\auth\Authentification {
                 $level=100;
             }
 
-            $this->login($user->username, $user->password, $password, $level);
+            $this->login($user->id, $user->password, $password, $level);
         }
 
     }
