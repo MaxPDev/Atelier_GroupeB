@@ -25,9 +25,10 @@ use app\control\AppController as AppController;
 use app\control\AppAdminController as AppAdminController;
 
 // View
-use app\view\ClientView as ClientView;
-use app\view\ProducerView as ProducerView;
-use app\view\ManagerView as ManagerView;
+use app\view\ClientView;
+use app\view\ProducerView;
+use app\view\ManagerView;
+use app\view\AppView;
 
 // Auth
 use app\auth\AppAuthentification as AppAuthentification;
@@ -46,7 +47,8 @@ $db->addConnection($paramsServer); /* configuration avec nos paramètres */
 $db->setAsGlobal(); /* rendre la connexion visible dans tout le projet */
 $db->bootEloquent(); /* établir la connexion */
 
-//AppView::addStyleSheet('html/css/style.css');
+AppView::addStyleSheet('html/css/style.css');
+ManagerView::addStyleSheet('html/css/style.css');
 
 $router = new Router(); //52
 
