@@ -4,8 +4,7 @@ namespace app\view;
 
 use mf\router\Router as Router;
 use app\auth\AppAuthentification as AppAuthentification;
-
-
+use app\model\User;
 use mf\utils\HttpRequest as HttpRequest;
 
 class ProducerView extends \mf\view\AbstractView
@@ -28,10 +27,12 @@ class ProducerView extends \mf\view\AbstractView
     {
         $router = new Router();
 
+        $producer = User::find($_SESSION['user_login']);
+
         $html = <<<EOT
             <header>
                 <img id="header_logo" src="./img/logo.png" alt="Le Hangar Local">
-                <h3>{ Producer Name }</h3>
+                <h3>{$producer->name}</h3>
                 <nav>
                     <ul>
                         <li><a href="{$router->urlFor('producerOrderedProducts')}">Ordererd products</a></li>
