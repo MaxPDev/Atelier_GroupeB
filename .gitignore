@@ -1,1 +1,4 @@
-conf.ini
+conf/conf.ini
+vendor/
+*.lock
+*.json
