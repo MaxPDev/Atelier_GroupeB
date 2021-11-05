@@ -29,13 +29,13 @@ class ManagerView extends \mf\view\AbstractView {
         $router = new Router();
         $user=User::find($_SESSION['user_login']);
         return <<<EOT
-            <header>
+            <header id="headerManager">
             <img id="header_logo" src="./img/logo.png" alt="Le Hangar Local">
             <h3>$user->name</h3>
             <nav>
                 <ul>
-                    <li>Dashboard</li>
-                    <li>Orders</li>
+                    <li><a href="{$router->urlFor("dashboard")}">Dashboard</a></li>
+                    <li><a href="{$router->urlFor("managerOrders")}">Orders</a></li>
                     <li><a href="{$router->urlFor("logout")}">Logout</a></li>
                 </ul>
             </nav>
@@ -65,16 +65,14 @@ class ManagerView extends \mf\view\AbstractView {
         $totalEarning=$this->data['totalEarning'];
 
         $html = <<<EOT
-        <main id="adminDashboard">
-            <h1>My Dashboard</h1>
-            <section>
+            <h1 id="myDashboard">My Dashboard</h1>
+            <section id="dashboardInfos">
                 <article id="nbrProducers"><p><span>$nb_products</span> Producers</p></article>
                 <article id="nbrProducts"><p><span>$nb_producers</span> Products</p></article>
                 <article id="earning"><p><span>$totalEarning €</span> Earning</p></article>
                 <article id="nbrOrders"><a href="{$router->urlFor("managerOrders")}"><p><span>$nb_orders</span> Orders</p></a></article>
                 <article id="nbrClients"><p><span>$nb_clients</span> Clients</p></article>
             </section>
-        </main>
         EOT;
 
         return $html;
@@ -88,7 +86,6 @@ class ManagerView extends \mf\view\AbstractView {
     {
         $router = new Router();
         $html = <<<EOT
-        <main id="adminAllOrders">
         <h1>All Orders</h1>
         <table class="tableList">
             <thead>
@@ -122,7 +119,7 @@ class ManagerView extends \mf\view\AbstractView {
                 </tr>
                 EOT;
         }
-        $html.="</tbody></table></main>";
+        $html.="</tbody></table>";
         return $html;
     }
 
@@ -140,9 +137,9 @@ class ManagerView extends \mf\view\AbstractView {
             $orderTotal+= $p->pivot->quantity*$p->unit_price;
         }
 
-        $html='<main id="adminOrderPage">';
+        $html='';
         $html .= <<<EOT
-        <h1>Order $order->id</h1>
+        <h1 id="orderNumber">Order $order->id</h1>
         <div id="orderActions">
             <p>Order $order->status</p>
         EOT;
@@ -219,7 +216,7 @@ class ManagerView extends \mf\view\AbstractView {
                 </tr>
                 EOT;
         }
-        $html.="</tbody></table></main>";
+        $html.="</tbody></table>";
         return $html;
     }
 
@@ -245,9 +242,12 @@ class ManagerView extends \mf\view\AbstractView {
         $footer = $this->renderFooter();
         
         $body = <<<EOT
+        <body>
         ${header}
-        ${center}
-        ${footer}
+            <main>
+                ${center}
+            </main>
+        </body>
         EOT;
         return $body;
         

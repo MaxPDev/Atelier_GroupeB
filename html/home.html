@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,11 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>HTML Tree</title>
 </head>
+
 <body>
-    <header>
+    <!-- <header id="headerManager">
         <img id="header_logo" src="./img/logo.png" alt="Le Hangar Local">
-        <h3>Producteur|Gérant</h3>
+        <h3>Gérant Name</h3>
         <nav>
             <ul>
                 <li>Dashboard</li>
@@ -18,15 +20,24 @@
                 <li>Logout</li>
             </ul>
         </nav>
-    </header>
+    </header> -->
 
 
+    <!-- PAGE ADMIN - LOGIN -->
+    <div id="loginManager">
+        <form action="">
+            <input type="email" name="managerEmail" id="managerEmail" placeholder="loremipsum@mail.com">
+            <input type="password" name="managerPassword" id="managerPassword" placeholder="Type your password">
+            <input type="submit" value="Login">
+        </form>
+    </div>
 
+
+    <!--Dans la balise tbody, le nmbre de tr correpsond au nombres de lignes, donc géré par PHP & BD-->
+    <!-- <main> -->
 
     <!-- PAGE ADMIN - ALL ORDERS -->
-    <!--Dans la balise tbody, le nmbre de tr correpsond au nombres de lignes, donc géré par PHP & BD-->
-    <!-- <main id="adminAllOrders">
-        <h1>All Orders</h1>
+    <!-- <h1>All Orders</h1>
         <table class="tableList">
             <thead>
                 <tr>
@@ -53,13 +64,11 @@
                     <td><a href="">View</a></td>
                 </tr>
             </tbody>
-        </table>
-    </main> -->
+        </table> -->
+
 
     <!-- PAGE ADMIN - ORDER KA65E -->
-
-    <main id="adminOrderPage">
-        <h1>Order KA65E</h1>
+    <!-- <h1 id="orderNumber">Order KA65E</h1>
         <div id="orderActions">
             <p>Order confirmed</p>
             <a href="https://www.google.fr">Mark as paied</a>
@@ -68,10 +77,6 @@
         <section id="orderInformations">
             <article>
                 <p>Client</p>
-                <p>Lorem Ipsum</p>
-            </article>
-            <article>
-                <p>Producer</p>
                 <p>Lorem Ipsum</p>
             </article>
             <article>
@@ -88,6 +93,7 @@
                 <tr>
                     <th>Product</th>
                     <th>Producers</th>
+                    <th>Category</th>
                     <th>Quantity</th>
                     <th>Unit price</th>
                     <th>Total</th>
@@ -98,6 +104,7 @@
                 <tr>
                     <td>Potatoes</td>
                     <td>Le producteur de Nancy</td>
+                    <td>Fruit</td>
                     <td>6</td>
                     <td>2€</td>
                     <td>12€</td>
@@ -106,28 +113,29 @@
                 <tr>
                     <td>Potatoes</td>
                     <td>Le producteur de Nancy</td>
+                    <td>Fruit</td>
                     <td>6</td>
                     <td>2€</td>
                     <td>12€</td>
                     <td><a href="https://www.google.fr">View in store</a></td>
                 </tr>
             </tbody>
-        </table>
-    </main>
+        </table> -->
 
 
     <!-- PAGE ADMIN - DASHBOARD -->
-    <!-- <main id="adminDashboard">
-        <h1>My Dashboard</h1>
-        <section>
+    <!-- <h1 id="myDashboard">My Dashboard</h1>
+        <section id="dashboardInfos">
             <article id="nbrProducers"><p><span>50</span> Producers</p></article>
             <article id="nbrProducts"><p><span>50</span> Products</p></article>
             <article id="earning"><p><span>1150E</span> Earning</p></article>
             <article id="nbrOrders"><p><span>100</span> Orders</p></article>
             <article id="nbrClients"><p><span>50</span> Clients</p></article>
         </section>
-    </main> -->
+    -->
+    <!-- </main> -->
 
-    
+
 </body>
+
 </html>
