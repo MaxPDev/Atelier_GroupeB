@@ -138,6 +138,12 @@ $router->addRoute('clientcheckout', //alias
                   'viewCheckout',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
+$router->addRoute('clientAddOrder', //alias
+                  '/clientaddorder/',   //route
+                  '\app\control\ClientController',   // controller
+                  'addToOrder',                 // methode
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
 //Manager dashboard
 $router->addRoute('dashboard', '/dashboard/', '\app\control\ManagerController', 'viewDashboard', AppAuthentification::ACCESS_LEVEL_MANAGER); //Change me to manager access level after auth
 

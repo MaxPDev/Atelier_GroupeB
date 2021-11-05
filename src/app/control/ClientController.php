@@ -90,6 +90,27 @@ class ClientController extends \mf\control\AbstractController {
         $view_order->render('renderCheckout');
     }
 
+    public function addToOrder()
+    {
+        $id_product = $this->request->post['product_id'];
+        // session_destroy();
+
+        if(isset($_SESSION['order'])){
+            array_push($_SESSION['order'], $id_product);
+        } else {
+            $_SESSION['order']['product'] = $id_product;
+            $_SESSION['order']['quantity'] = 1; // Remplace 1 by quantity
+        }
+        
+        var_dump($_SESSION['order']);
+        
+        $route = new Router();
+        $_GET['id'] = $id_product; // TO DO ajouter un param optionnel à execute Route
+        $route->executeRoute('clientProduct');
+
+        // $view_back_to_product = new ClientView('');
+        // $view_back_to_product->render('renderProduct');
+    }
 
     // public function viewCategories($categories)
     // {
