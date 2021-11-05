@@ -25,16 +25,17 @@ class ClientView extends \mf\view\AbstractView {
      */ 
     private function renderHeader()
     {
-        return '<header> App MENU TO DO </header>';
+        $nav = $this->renderHeaderNav();
+
+        $header_html = <<<HEADER
+<h1>HANGAR LOCAL</h1>
+    $nav
+HEADER;
+
+
+        return $header_html;
     }
     
-    /* Méthode renderFooter
-     *
-     */
-    private function renderFooter()
-    {
-        return "<footer>App Project</footer>";
-    }
 
     /* Méthode renderHome
 
@@ -46,6 +47,25 @@ class ClientView extends \mf\view\AbstractView {
 
         return "<article><h2>Informations</h2></article>";
 
+    }
+
+    private function renderHeaderNav()
+    {
+        $route = new Router();
+
+        $home_link = $route->urlFor('home');
+        $products_link = $route->urlFor('clientProducts');
+        $producers_link = $route->urlFor('clientProducers');
+        $order_link = $route->urlFor('clientOrder');
+
+        $header_nav_html = <<<NAV
+<a href='$home_link'>HOME</a>
+<a href='$products_link'>Products</a>
+<a href='$producers_link'>Producers</a>
+<a href='$order_link'>Order</a>
+NAV;
+
+        return $header_nav_html;
     }
 
     private function renderTopCategoriesMain($categories) 
@@ -65,7 +85,7 @@ class ClientView extends \mf\view\AbstractView {
     private function renderAllProducts()
     {
         $route = new Router();
-        
+   
         $categories = $this->data[0];
         $products = $this->data[1];
         
@@ -98,13 +118,20 @@ EOT;
         $producer = $this->data[1]; //passer producer en param ou select seulent id + name
         $producer_user = $producer->user;
         // to do : add to panier
+        $add_to_order = $route->urlFor('clientAddOrder');
 
         $product_article = <<<IMG
-<img src="$product->img_url">
-<p>Price :$product->unit_price</p>
-<button> nb ajouté TO DO link panier TO DO </button>
-<p>Producer : $producer_user->name TO DO </p>
-<p> $product->description </p>
+        
+        <p>Product name : $product->name</p>
+        <img src="$product->img_url">
+        <p>Price :$product->unit_price</p>
+
+        <form method="post" action="$add_to_order">
+            
+            <button type="submit" name="product_id" value="$product->id" > Add to order </button>
+        </form>
+        <p>Producer : $producer_user->name TO DO </p>
+        <p> $product->description </p>
 IMG;
 
         $product_html = <<<EOT
@@ -161,18 +188,20 @@ EOL;
     // render html for Fproducers
     private function renderProducers()
     {
+        $route = new Router();
         
-        // header 1 , header 2 ?
         $producers = $this->data;
 
         $producers_article = '';
         
         foreach ($producers as $producer) {
+            
             $producer_user = $producer->user;
+            $link_producer = $route->urlFor('clientProducer',[['id',$producer->id]]);
             $products_count = $producer->products()->get()->count();
             
 
-            $producers_article .= "<div>Nom : $producer_user->name</div>
+            $producers_article .= "<div>Nom : <a href='$link_producer'>$producer_user->name</a> </div>
                                    <div>location $producer->location</div>
                                    <div>Produit nombre $products_count</div>
                                    <div>Nombre order by Producer TO DO </div>";
@@ -204,6 +233,13 @@ CHECKOUT;
         return $checkout_html;
     }
 
+        /* Méthode renderFooter
+     *
+     */
+    private function renderFooter()
+    {
+        return "<footer>App Project</footer>";
+    }
 
     // private function renderCategories()
     // {
