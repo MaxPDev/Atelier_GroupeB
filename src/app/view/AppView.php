@@ -54,13 +54,13 @@ class AppView extends \mf\view\AbstractView {
         $router = new Router();
 
         $login_form = <<<EOT
-        <article>
+        <div class="login">
             <form action="{$router->urlFor("check_login")}" method="post">
-                <input class="forms-text" type="text" name="username" placeholder="username" />
-                <input class="forms-text" type="password" name="password" placeholder="password" />
-                <button class="forms-button" name="login_button" type="submit">Login</button>
+                <input type="email" name="username" id="managerEmail" placeholder="loremipsum@mail.com" />
+                <input type="password" name="password" id="managerPassword" placeholder="Type your password" />
+                <input value="Login" type="submit">
             </form>   
-        </article>
+        </div>
         EOT;
 
         return $login_form;
@@ -83,9 +83,7 @@ class AppView extends \mf\view\AbstractView {
         $center= $this->$selector();
         
         $body = <<<EOT
-            ${header}
             ${center}
-            ${footer}
         EOT;
 
         return $body;
