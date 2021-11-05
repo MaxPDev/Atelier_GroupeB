@@ -42,7 +42,14 @@ class ClientController extends \mf\control\AbstractController {
     public function viewAllProducts() 
     {
         $categories = Category::get();
-        $products = Product::orderBy('name','asc')->get();
+        $category_choosen = $this->request->get['category'];
+        $products;
+        
+        if($category_choosen = 'all') {
+            $products = Product::orderBy('name','asc')->get();
+        } else {
+            $products = $products->category()->where('name','=',$category_choosen)->get();
+        }
 
         $view_all_products = new ClientView([$categories, $products]);
         $view_all_products->render('renderAllProducts');

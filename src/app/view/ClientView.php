@@ -71,12 +71,14 @@ NAV;
     private function renderTopCategoriesMain($categories) 
     {
         $route = new Router();
-
-
-        $nav_categories = '';
-
+        
+        $all_categories_link = $route->urlFor('clientProducts',[['category','all']]);
+        
+        $nav_categories = "<a href='$all_categories_link'> All </a>";
+        
         foreach($categories as $category) {
-            $nav_categories .= "<a href=''> $category->name </a>";
+            $category_link = $route->urlFor('clientProducts',[['category',$category->name]]);
+            $nav_categories .= "<a href='$category_link'> $category->name </a>";
         }
 
         return $nav_categories;
