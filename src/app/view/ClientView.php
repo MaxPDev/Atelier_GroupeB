@@ -87,6 +87,8 @@ NAV;
     private function renderAllProducts()
     {
         $route = new Router();
+
+        $add_to_order = $route->urlFor('clientAddOrder');
    
         $categories = $this->data[0];
         $products = $this->data[1];
@@ -97,18 +99,31 @@ NAV;
         foreach ($products as $product) {
             $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
 
-            $products_list .= "<div><a href='$product_link'>$product->name </a></div> 
-                              price : $product->unit_price </div>";
+            if(isset($_SESSION['orders'][$product->id])){
+                $value=$_SESSION['orders'][$product->id];                
+           }else{
+                $value=1;                
+          }
+
+            $products_list .= <<<EOT
+                            <div>
+                            <a href="$product_link">$product->name </a></div> 
+                              price : $product->unit_price 
+                              <form method="post" action="$add_to_order">
+                                <input type="number" step="1" min="1" value="$value" name="quantity" required>
+                                <button type="submit" name="product_id" value="$product->id" > Add to order </button>
+                            </form>
+                        EOT;
         }
 
         $products_html = <<<EOT
-<nav>
- $categories_list
-</nav>
-<article>
- $products_list
-</article>
-EOT;
+                    <nav>
+                    $categories_list
+                    </nav>
+                    <article>
+                    $products_list
+                    </article>
+                    EOT;
         return $products_html;
     }
 
@@ -122,6 +137,12 @@ EOT;
         // to do : add to panier
         $add_to_order = $route->urlFor('clientAddOrder');
 
+        if(isset($_SESSION['orders'][$product->id])){
+            $value=$_SESSION['orders'][$product->id];                
+       }else{
+            $value=1;                
+      }
+
         $product_article = <<<IMG
         
         <p>Product name : $product->name</p>
@@ -129,7 +150,7 @@ EOT;
         <p>Price :$product->unit_price</p>
 
         <form method="post" action="$add_to_order">
-            <input type="number" step="1" min="1" value="1" name="quantity" required>
+            <input type="number" step="1" min="1" value="$value" name="quantity" required>
             <button type="submit" name="product_id" value="$product->id" > Add to order </button>
         </form>
         <p>Producer : $producer_user->name TO DO </p>

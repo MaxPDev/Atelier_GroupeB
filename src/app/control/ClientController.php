@@ -112,8 +112,7 @@ class ClientController extends \mf\control\AbstractController {
         
         $route = new Router();
         $_GET['id'] = $id_product; // TO DO ajouter un param optionnel à execute Route
-        $route->executeRoute('clientProduct');
-
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
         // $view_back_to_product = new ClientView('');
         // $view_back_to_product->render('renderProduct');
     }
