@@ -124,19 +124,13 @@ body{
 
 
 
-        //***********************************************************************
-        //main for ADMIN - LOGIN
-
-
-
-
 
 
 
         //***********************************************************************
-        //main for ADMIN - ALL ORDERS
+        //main for MANAGER - ALL ORDERS & PRODUCER - ORDERED PRODUCTS & PRODUCER - MY PRODUCTS
         //h1 (All Orders)
-        h1{
+        &>h1{
             //h1 is a element of 1col width, in the 1st row
             @include element(1,7,1,1);
             @media screen and (min-width : 62em) {
@@ -154,7 +148,7 @@ body{
         }
 
         //***********************************************************************
-        //main for ADMIN - ORDER NNNNN
+        //main for MANAGER - ORDER NNNNN
         //in the body's grid : main is a element of 1,2 (100% width) on row 2
         //but also a grid, of 10col 1fr, 5 rows auto and gap of 10px (only top&bottom)
         @include grid(6, 1fr, 5, auto, 10px 0);
@@ -267,7 +261,7 @@ body{
 
 
         //***********************************************************************
-        //main for ADMIN - DASHBOARD
+        //main for MANAGER - DASHBOARD
         //in the body's grid : main is a element of 1,2 (100% width) on row 2
 
         h1#myDashboard{
@@ -335,6 +329,39 @@ body{
                 @include element(4,7,2,2);
                 @media screen and (min-width : 62em) {
                     @include element(3,5,2,2);
+                }
+            }
+        }
+
+
+        //***********************************************************************
+        //main for PRODUCER - PRODUCT PAGE
+        section#producerProductPage{
+            @include element(1,7,2,2);
+            @include grid(6, 1fr, 3, auto, 1em 0.5em);
+            
+            .producerInfoProduct{
+                background-color: $darkGreen;
+                border-radius: 6px;
+                text-align: center;
+            }
+            &>article:nth-child(1){
+                @include element(1,2,1,1);
+            }
+            &>article:nth-child(2){
+                @include element(2,3,1,1);
+            }
+            &>article:nth-child(3){
+                @include element(3,4,1,1);
+            }
+            &>article:nth-child(4){
+                @include element(1,5,2,4);
+            }
+            &>article:nth-child(5){
+                @include element(5,7,1,3);
+
+                &>img{
+                    max-width: 100%;
                 }
             }
         }
@@ -434,7 +461,7 @@ body{
     }
 
     //Class that we're gonna use for both (Manager | Producer)
-    //tableList fro the table of orders/order
+    //tableList for the table of orders/order
     .tableList{
         text-align: center;
         border-collapse: collapse;
@@ -457,6 +484,7 @@ body{
         }
     }
 
+    //login class for Manager & Producer's login page
     .login{
         @include element(1,6,2,2);
         @include grid(3, 1fr, 6, auto, 1em 0);
