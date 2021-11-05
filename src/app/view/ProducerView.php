@@ -136,7 +136,7 @@ EOT;
             </article>
             <article class="producerInfoProduct">
                 <h2>Unit Price</h2>
-                <h1>{$product->unit_price}</h1>
+                <h1>{$product->unit_price} €</h1>
             </article>
             <article class="producerInfoProduct">
                 <h2>Total earning</h2>
