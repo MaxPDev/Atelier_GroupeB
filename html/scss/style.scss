@@ -11,7 +11,7 @@ $darkGreen : #255d2e;
 body{
     //we build a grid in the body with 1col of 1fraction, 
     //and 2 rows (header & main) in auto, and a gap of 1em (top&bottom)
-    @include grid(1, 1fr, 1, auto, 0);
+    @include grid(1, 1fr, 1, auto, 1em 0);
     //media-queries for desktop version
     @media screen and (min-width : 62em) {
         @include grid(5, 1fr, 2, auto, 0 1em);
@@ -500,6 +500,23 @@ body{
                 }
 
 
+            }
+        }
+
+
+        //***********************************************************************
+        //main for PRODUCER - PROFILE PAGE
+        section#producerProfile{
+            @include element(2,7,2,5);
+            // @include grid(8, 1fr, 4, auto, 10px);
+
+            &>div>h4{
+                border-bottom : 5px solid $darkGreen;
+                width: fit-content;
+            }
+
+            &>div>h1{
+                font-weight: 100;
             }
         }
     }

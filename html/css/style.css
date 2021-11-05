@@ -3,7 +3,7 @@ body {
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(1, auto);
   grid-auto-flow: row;
-  grid-gap: 0;
+  grid-gap: 1em 0;
   font-family: sans-serif;
   margin: 0;
 }
@@ -614,6 +614,17 @@ body main section#producerProductPage > article:nth-child(5) > img {
   max-width: 90%;
   border-radius: 8px;
   box-shadow: 0px 2px 10px 1px #787878;
+}
+body main section#producerProfile {
+  grid-column: 2/7;
+  grid-row: 2/5;
+}
+body main section#producerProfile > div > h4 {
+  border-bottom: 5px solid #255d2e;
+  width: fit-content;
+}
+body main section#producerProfile > div > h1 {
+  font-weight: 100;
 }
 body .tableList {
   text-align: center;
