@@ -129,27 +129,26 @@ EOT;
 
         $html = <<<EOT
         <h1>{$product->name}</h1>
-        <section>
-            <div>
-                <h6>Unit Price</h6>
-                <h1>{$product->unit_price}</h1>   
-            </div>
-            <div>
-                <h6>Total earning</h6>
-                <h1>{$total}</h1>   
-            </div>
-            <div>
-                <h6>Total orders</h6>
-                <h1>{$qteProduct}</h1>   
-            </div>
-        </section>
-
-        <section>
-            <div>category {$product->category->name}</div>
-            <div>{$product->description}</div>
-            <div>
-                <img srcset="{$product->img_url}" alt="Product Image">
-            </div>
+        <section id="producerProductPage">
+            <article class="producerInfoProduct">
+                <h2>Total orders</h2>
+                <h1>{$qteProduct}</h1>
+            </article>
+            <article class="producerInfoProduct">
+                <h2>Unit Price</h2>
+                <h1>{$product->unit_price}</h1>
+            </article>
+            <article class="producerInfoProduct">
+                <h2>Total earning</h2>
+                <h1>{$total}€</h1>
+            </article>
+            <article>
+                <h2>{$product->category->name}</h2>
+                {$product->description}
+            </article>
+            <article>
+                <img src="{$product->img_url}" alt="Product Image">
+            </article>
         </section>
         EOT;
 
@@ -161,22 +160,23 @@ EOT;
         $producer = $this->data;
 
         $html = <<<EOT
+        <img src="./Elements/producer-avatar.png" alt="pictureProfileProducer">
         <h1>{$producer->user->name}</h1>
-        <section>
+        <section id="producerProfile">
             <div>
-                <h6>Phone</h6>
+                <h4>Phone</h4>
                 <h1>{$producer->user->phone}</h1>   
             </div>
             <div>
-                <h6>mail</h6>
+                <h4>mail</h4>
                 <h1>{$producer->user->mail}</h1>   
             </div>
             <div>
-                <h6>Location</h6>
+                <h4>Location</h4>
                 <h1>{$producer->location}</h1>   
             </div>
             <div>
-                <h6>siret</h6>
+                <h4>siret</h4>
                 <h1>{$producer->siret}</h1>   
             </div>
         </section>
