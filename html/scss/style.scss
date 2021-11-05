@@ -161,7 +161,7 @@ body{
         }
         nav{
             //nav is a element of 3col width, in the 1st row
-            @include element(6,11,1,1);
+            @include element(5,10,1,1);
             @media screen and (min-width : 62em) {
                 @include element(1,4,3,4);
                 margin: 0;
@@ -180,6 +180,7 @@ body{
                 padding: 0;
 
                 &>li{
+                    font-size: 0.8em;
                     @media screen and (min-width : 62em) {
                         padding: 0.8em;
                     }
@@ -228,11 +229,11 @@ body{
         //h1 (All Orders)
         &>h1{
             //h1 is a element of 1col width, in the 1st row
-            @include element(1,7,1,1);
+            @include element(1,5,1,1);
             @media screen and (min-width : 62em) {
                 @include element(1,4,1,1);
             }
-            font-size: 3em;
+            font-size: 2.2em;
             text-align: center;
             color : $lightBlack;
         }
