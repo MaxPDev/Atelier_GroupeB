@@ -38,16 +38,16 @@ class Authentification extends AbstractAuthentification {
      * ATTENTION : cette méthode est appelée uniquement quand la connexion 
      *             réussie par la méthode login (cf. plus bas)
      *
-     * @param String : $username, le login de l'utilisateur  
+     * @param String : $userId, le login de l'utilisateur  
      * @param String : $level, le niveau d'accès
      */
-    public function updateSession($username, $level) 
+    public function updateSession($userId, $level) 
     {
-        $this->user_login = $username;
+        $this->user_login = $userId;
         $this->access_level = $level;
         $this->logged_in = true;
 
-        $_SESSION['user_login'] = $username;
+        $_SESSION['user_login'] = $userId;
         $_SESSION['access_level'] = $level;
 
     }
@@ -97,14 +97,14 @@ class Authentification extends AbstractAuthentification {
      * @param integer: $level, le niveau d'accès de lutilisateur stocké en BD
      *
      */
-    public function login($username, $db_pass, $given_pass, $level) 
+    public function login($userId, $db_pass, $given_pass, $level) 
     {
 
         if(!$this->verifyPassword($given_pass, $db_pass)) {
             $msg_pwd_error = "Wrong password";
             throw new AuthentificationException($msg_pwd_error);
         } else {
-            $this->updateSession($username, $level);
+            $this->updateSession($userId, $level);
         };
 
     }
