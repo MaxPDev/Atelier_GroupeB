@@ -25,17 +25,20 @@ class ManagerView extends \mf\view\AbstractView {
      */ 
     private function renderHeader()
     {
-        return '<header>
-        <img id="header_logo" src="./img/logo.png" alt="Le Hangar Local">
-        <h3>Producteur|Gérant</h3>
-        <nav>
-            <ul>
-                <li>Dashboard</li>
-                <li>Orders</li>
-                <li>Logout</li>
-            </ul>
-        </nav>
-    </header>';
+        $router = new Router();
+        return <<<EOT
+            <header>
+            <img id="header_logo" src="./img/logo.png" alt="Le Hangar Local">
+            <h3>Producteur|Gérant</h3>
+            <nav>
+                <ul>
+                    <li>Dashboard</li>
+                    <li>Orders</li>
+                    <li><a href="{$router->urlFor("logout")}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        EOT;
     }
     
     /* Méthode renderFooter

@@ -62,7 +62,11 @@ class AppController extends \mf\control\AbstractController {
                 $user = $auth->loginUser($_POST['username'], $_POST['password']);
                 $vue = new AppView($user);
                 unset($_SESSION['loginError']); //Unset error messages
-                $router->executeRoute('home'); //Redirect to followees page
+                if($_SESSION['access_level']==200){
+                    $router->executeRoute('dashboard'); //Redirect to manager dashboard
+                }else{
+                    $router->executeRoute('producerOrderedProducts'); //Redirect to producer interface
+                }
             } catch (AuthentificationException $e) {
                 $_SESSION['loginError'] = $e->getMessage();
                 $router->executeRoute('login');
