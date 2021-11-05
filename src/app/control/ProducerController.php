@@ -4,6 +4,7 @@ namespace app\control;
 
 use app\model\Producer;
 use app\model\Product;
+use app\model\User;
 use mf\utils\HttpRequest as HttpRequest;
 use mf\router\Router as Router;
 use app\view\AppView as AppView;
@@ -39,9 +40,7 @@ class ProducerController extends \mf\control\AbstractController
 
     public function viewMyProfile()
     {
-        $producer_id = 1; //
-
-        $producer = Producer::find($producer_id);
+        $producer = User::find($_SESSION['user_login'])->producer;
 
         $view = new ProducerView($producer);
 
@@ -50,9 +49,7 @@ class ProducerController extends \mf\control\AbstractController
 
     public function viewMyProducts()
     {
-        $producer_id = 1; //
-
-        $producer = Producer::find($producer_id);
+        $producer = User::find($_SESSION['user_login'])->producer;
 
         $products =  $producer->products()->get();
 
@@ -63,9 +60,7 @@ class ProducerController extends \mf\control\AbstractController
 
     public function viewMyOrderedProducts()
     {
-        $producer_id = 1; //
-
-        $producer = Producer::find($producer_id);
+        $producer = User::find($_SESSION['user_login'])->producer;
 
         $products =  $producer->products()->get();
 

@@ -37,7 +37,7 @@ class ProducerView extends \mf\view\AbstractView
                         <li><a href="{$router->urlFor('producerOrderedProducts')}">Ordererd products</a></li>
                         <li id="active"><a href="{$router->urlFor('producerProducts')}">My Products</a></li>
                         <li><a href="{$router->urlFor('producerProfile')}">Profile</a></li>
-                        <li>Logout</li>
+                        <li><a href="{$router->urlFor("logout")}">Logout</a></li>
                     </ul>
                 </nav>
             </header>
@@ -191,7 +191,7 @@ EOT;
             $productsHtml .= <<<EOT
                 <tr>
                     <td>{$product->name}</td>
-                    <td>{$product->category}</td>
+                    <td>{$product->category->name}</td>
                     <td><a href="{$router->urlFor('producerProduct', [['id',$product->id]])}">View</a></td>
                 </tr>
             EOT;
