@@ -455,18 +455,18 @@ body main section#dashboardInfos > article {
   justify-content: center;
   align-items: center;
 }
-body main section#dashboardInfos > article > a {
+body main section#dashboardInfos > article > a, body main section#dashboardInfos > article > p {
   text-decoration: none;
   font-size: 2em;
   text-align: center;
   color: #c6c6c6;
 }
-body main section#dashboardInfos > article > a p {
+body main section#dashboardInfos > article > a p, body main section#dashboardInfos > article > p p {
   font-size: 2em;
   text-align: center;
   color: #c6c6c6;
 }
-body main section#dashboardInfos > article > a span {
+body main section#dashboardInfos > article > a span, body main section#dashboardInfos > article > p span {
   font-size: 1.5em;
 }
 body main section#dashboardInfos > article:nth-child(1) {
