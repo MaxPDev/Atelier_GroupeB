@@ -335,13 +335,6 @@ body main > div#orderActions > p {
   padding: 2%;
   background-color: #a1a1a1;
   color: #fff;
-  padding: 2%;
-}
-@media screen and (min-width: 62em) {
-  body main > div#orderActions > p {
-    grid-column: 3/5;
-    grid-row: 1/1;
-  }
 }
 @media screen and (min-width: 62em) {
   body main > div#orderActions > p {
@@ -357,12 +350,6 @@ body main > div#orderActions > a {
   outline: none;
   border: 5px solid #91b083;
   box-sizing: border-box;
-  padding: 2%;
-  text-decoration: none;
-}
-body main > div#orderActions > a:nth-of-type(1) {
-  grid-column: 2/2;
-  grid-row: 1/1;
 }
 body main > div#orderActions > a:nth-of-type(1) {
   grid-column: 2/2;
