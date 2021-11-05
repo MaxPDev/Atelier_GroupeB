@@ -72,12 +72,12 @@ NAV;
     {
         $route = new Router();
         
-        $all_categories_link = $route->urlFor('clientProducts',[['category','all']]);
+        $all_categories_link = $route->urlFor('clientProducts',[['category', null]]);
         
         $nav_categories = "<a href='$all_categories_link'> All </a>";
         
         foreach($categories as $category) {
-            $category_link = $route->urlFor('clientProducts',[['category',$category->name]]);
+            $category_link = $route->urlFor('clientProducts',[['category',$category->id]]);
             $nav_categories .= "<a href='$category_link'> $category->name </a>";
         }
 
@@ -129,7 +129,7 @@ EOT;
         <p>Price :$product->unit_price</p>
 
         <form method="post" action="$add_to_order">
-            
+            <input type="number" step="1" min="1" value="1" name="quantity" required>
             <button type="submit" name="product_id" value="$product->id" > Add to order </button>
         </form>
         <p>Producer : $producer_user->name TO DO </p>
