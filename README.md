@@ -24,3 +24,12 @@ php v7.4.3
 ### Runing
 
 ## Others
+
+Producer login :
+producer@producer.com
+
+Manager Login :
+manager@manager.com
+
+Password for both: 
+password
