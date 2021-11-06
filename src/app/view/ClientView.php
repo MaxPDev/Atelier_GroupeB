@@ -27,7 +27,7 @@ class ClientView extends \mf\view\AbstractView
     {
         $nav = $this->renderHeaderNav();
         $header_html = <<<HEADER
-        <header>
+        <header id="navHeader">
             <nav>
                 <div>
                     <img src="../../html/img/logo.png" alt="logo">
