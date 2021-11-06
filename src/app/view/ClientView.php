@@ -8,13 +8,14 @@ use app\auth\AppAuthentification;
 
 use mf\utils\HttpRequest as HttpRequest;
 
-class ClientView extends \mf\view\AbstractView {
-  
+class ClientView extends \mf\view\AbstractView
+{
+
     /* Constructeur 
     *
     * Appelle le constructeur de la classe parent
     */
-    public function __construct( $data )
+    public function __construct($data)
     {
         parent::__construct($data);
     }
@@ -26,22 +27,60 @@ class ClientView extends \mf\view\AbstractView {
     {
         $nav = $this->renderHeaderNav();
         $header_html = <<<HEADER
-        <h1>HANGAR LOCAL</h1>
-            $nav
+        <header>
+            <nav>
+                <div>
+                    <img src="https://webetu.iutnc.univ-lorraine.fr/www/piscagli5u/Atelier_GroupeB/html/img/logo.png" alt="logo">
+                </div>
+
+                <div class="main_pages">
+                    $nav
+                </div>
+            </nav>
+        </header>
         HEADER;
         return $header_html;
     }
-    
+
 
     /**
      * Render Home
      */
     private function renderHome()
     {
+        $html = <<<EOT
+        <section id="titre">
+            <h1>Le Hangar Local</h1>
+        </section>
+        <main>
+            <section>
+                <div>
+                    <img src="html/img/icon-1.png" alt="">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
+                        porro ullam obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus
+                        dicta quia ducimus!</p>
+                </div>
 
+                <div>
+                    <img src="html/img/icon-2.png" alt="">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
+                        porro ullam
+                        obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
+                        ducimus!</p>
+                </div>
 
-        return "<article><h2>Informations</h2></article>";
+                <div>
+                    <img src="html/img/icon-3.png" alt="">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
+                        porro ullam
+                        obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
+                        ducimus!</p>
+                </div>
+            </section>
+        </main>
+        EOT;
 
+        return $html;
     }
 
     /**
@@ -56,6 +95,7 @@ class ClientView extends \mf\view\AbstractView {
         $producers_link = $route->urlFor('clientProducers');
         $order_link = $route->urlFor('clientOrder');
         $checkout_link = $route->urlFor('clientcheckout');
+        $login_link = $route->urlFor('login');
 
         $header_nav_html = <<<NAV
             <a href='$home_link'>HOME</a>
@@ -63,6 +103,7 @@ class ClientView extends \mf\view\AbstractView {
             <a href='$producers_link'>Producers</a>
             <a href='$order_link'>Order</a>
             <a href='$checkout_link'>Checkout</a>
+            <a href='$login_link'>Login</a>
         NAV;
 
         return $header_nav_html;
@@ -71,18 +112,20 @@ class ClientView extends \mf\view\AbstractView {
     /**
      * Render Categories menu
      */
-    private function renderTopCategoriesMain($categories) 
+    private function renderTopCategoriesMain($categories)
     {
         $route = new Router();
-        
-        $all_categories_link = $route->urlFor('clientProducts',[['category', null]]);
-        
-        $nav_categories = "<a href='$all_categories_link'> All </a>";
-        
-        foreach($categories as $category) {
-            $category_link = $route->urlFor('clientProducts',[['category',$category->id]]);
-            $nav_categories .= "<a href='$category_link'> $category->name </a>";
+
+        $all_categories_link = $route->urlFor('clientProducts', [['category', null]]);
+
+        $nav_categories = "<section id='menu'><ul><li><a href='$all_categories_link'> All </a></li>";
+
+        foreach ($categories as $category) {
+            $category_link = $route->urlFor('clientProducts', [['category', $category->id]]);
+            $nav_categories .= "<li><a href='$category_link'> $category->name </a></li>";
         }
+
+        $nav_categories .= "</ul></section>";
 
         return $nav_categories;
     }
@@ -95,30 +138,36 @@ class ClientView extends \mf\view\AbstractView {
         $route = new Router();
 
         $add_to_order = $route->urlFor('clientAddOrder');
-   
+
         $categories = $this->data[0];
         $products = $this->data[1];
-        
+
         $categories_list = $this->renderTopCategoriesMain($categories);
         $products_list = '';
-        
-        foreach ($products as $product) {
-            $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
 
-            if(isset($_SESSION['orders'][$product->id])){
-                $value=$_SESSION['orders'][$product->id];                
-           }else{
-                $value=1;                
-          }
+        foreach ($products as $product) {
+            $product_link = $route->urlFor('clientProduct', [['id', $product->id]]);
+
+            if (isset($_SESSION['orders'][$product->id])) {
+                $value = $_SESSION['orders'][$product->id];
+            } else {
+                $value = 1;
+            }
 
             $products_list .= <<<EOT
                             <div>
-                            <a href="$product_link">$product->name </a></div> 
-                              price : $product->unit_price 
-                              <form method="post" action="$add_to_order">
-                                <input type="number" step="1" min="1" value="$value" name="quantity" required>
-                                <button type="submit" name="product_id" value="$product->id" > Add to order </button>
-                            </form>
+                                <img src="$product->img_url" alt="">
+                                <ul>
+                                    <li><b><a href="$product_link">$product->name </a></b></li>
+                                    <li>$product->unit_price €</li>
+                                    <li>
+                                        <form method="post" action="$add_to_order">
+                                            <input type="number" step="1" min="1" value="$value" name="quantity" required>
+                                            <button type="submit" name="product_id" value="$product->id" > Add to order </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
                         EOT;
         }
 
@@ -126,9 +175,9 @@ class ClientView extends \mf\view\AbstractView {
                     <nav>
                     $categories_list
                     </nav>
-                    <article>
+                    <section id="products">
                     $products_list
-                    </article>
+                    </section>
                     EOT;
         return $products_html;
     }
@@ -146,29 +195,38 @@ class ClientView extends \mf\view\AbstractView {
         // to do : add to panier
         $add_to_order = $route->urlFor('clientAddOrder');
 
-        if(isset($_SESSION['orders'][$product->id])){
-            $value=$_SESSION['orders'][$product->id];                
-       }else{
-            $value=1;                
-      }
+        if (isset($_SESSION['orders'][$product->id])) {
+            $value = $_SESSION['orders'][$product->id];
+        } else {
+            $value = 1;
+        }
 
         $product_article = <<<IMG
-        
-        <p>Product name : $product->name</p>
-        <img src="$product->img_url">
-        <p>Price :$product->unit_price</p>
-        <form method="post" action="$add_to_order">
-            <input type="number" step="1" min="1" value="$value" name="quantity" required>
-            <button type="submit" name="product_id" value="$product->id" > Add to order </button>
-        </form>
-        <p>Producer : $producer_user->name TO DO </p>
-        <p> $product->description </p>
+            <div><img src="$product->img_url"></div>
+            <div>
+                <ul>
+                    <li>
+                        <h2>$product->name</h2>
+                    </li>
+                    <li>
+                        <h2>$product->unit_price €</h2>
+                    </li>
+                    <li>
+                        <form method="post" action="$add_to_order">
+                            <input type="number" step="1" min="1" value="$value" name="quantity" required>
+                            <button type="submit" name="product_id" value="$product->id" > Add to order </button>
+                        </form>
+                    </li>
+                </ul>
+
+                <p> $product->description </p>
+            </div>
         IMG;
 
         $product_html = <<<EOT
-            <article>
+            <section id="productsDetails">
                 $product_article
-            </article>
+            </section>
         EOT;
         return $product_html;
     }
@@ -183,28 +241,39 @@ class ClientView extends \mf\view\AbstractView {
         $producer = $this->data;
         $producer_user = $producer->user;
         $producer_products = $producer->products()->get();
-        
+
         // html for producer top view
         $producer_html = <<<PROD
-        <div>
-            <h2>Producer</h2>
-            <p>$producer_user->name</p>
-            <p>$producer_user->mail | $producer_user->phone</p>
-        </div>
+        <section id="producerDetails">
+            <div><img src="img/producer-avatar.png" alt="photo producteur"></div>
+            <div>
+                <h4>$producer_user->name</h4>
+                <ul>
+                    <li>$producer_user->mail</li>
+                    <li>$producer_user->phone</li>
+                </ul>
+            </div>
+        </section>
         PROD;
 
-    // html for producer's products
-    $producer_product_html = '';
+        // html for producer's products
+        $producer_product_html = '<section id="prodDetails">';
 
-    foreach ($producer_products as $product) {
-        $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
-        
-        $producer_product_html .= <<<PRODUCT
-            <img src="$product->img_url" style="width:200px">
-            <p>Price : $product->unit_price</p>
-            <button> nb ajouté TO DO link panier TO DO </button><br>
+        foreach ($producer_products as $product) {
+            $product_link = $route->urlFor('clientProduct', [['id', $product->id]]);
+
+            $producer_product_html .= <<<PRODUCT
+            <div>
+                <img src="$product->img_url" alt="">
+                <ul>
+                    <li><b><a href="$product_link">$product->name</a></b></li>
+                    <li>$product->unit_price €</li>
+                </ul>
+            </div>
             PRODUCT;
-    }
+        }
+
+        $producer_product_html .= "</section>";
 
         $producer_all_html = <<<EOL
         $producer_html
@@ -222,22 +291,42 @@ class ClientView extends \mf\view\AbstractView {
     {
         $route = new Router();
         $producers = $this->data;
-        $producers_article = '';
-        foreach ($producers as $producer) {
-            
-            $producer_user = $producer->user;
-            $link_producer = $route->urlFor('clientProducer',[['id',$producer->id]]);
-            $products_count = $producer->products()->get()->count();
-            
-
-            $producers_article .= "<div>Nom : <a href='$link_producer'>$producer_user->name</a> </div>
-                                   <div>location $producer->location</div>
-                                   <div>Produit nombre $products_count</div>
-                                   <div>Nombre order by Producer TO DO </div>";
+        $producers_article = '<section id="producer">';
+        /*
+        foreach ($producer_products as $product) {
+            $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);  
+            $producer_product_html .= <<<PRODUCT
+            <img src="$product->img_url" style="width:200px">
+            <p>Price : $product->unit_price</p>
+            <button> nb ajouté TO DO link panier TO DO </button><br>
+            PRODUCT;
         }
-        
+        */
+        foreach ($producers as $producer) {
+
+            $producer_user = $producer->user;
+            $link_producer = $route->urlFor('clientProducer', [['id', $producer->id]]);
+            $products_count = $producer->products()->get()->count();
+
+            $producers_article .= <<<EOT
+            <div>
+                <ul>
+                    <li>$producer_user->name</li>
+                    <li><img src="img/producer-avatar.png" alt=""></li>
+                    <li>$producer->location</li>
+                    <li>Products : {$producer->products->count()}</li>
+                    <li>Orders : 15 orders</li>
+                    <li><a href='$link_producer'>See more</a></li>
+                </ul>
+            </div>
+            EOT;
+        }
+
+        $producers_article .= "</section>";
         $producers_html = <<<PRODS
-            <h2>PRODUCERS </h2>
+            <section id="titre">
+                <h2>PRODUCERS</h2>
+            </section>
             $producers_article
         PRODS;
         return $producers_html;
@@ -250,13 +339,22 @@ class ClientView extends \mf\view\AbstractView {
     {
         $route = new Router();
         $order_html = <<<ORDER
-        <form action="{$route->urlFor("checkClientOrder")}" method="post">
-                <input type="text" name="orderId" placeholder="Order confirm number" />
-                <input value="Check" type="submit">
-            </form> 
+        <section id="titre">
+            <h2>CHECK ORDER</h2>
+        </section>
+        <section id="checkOrder">
+            <div>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                    nonummy nibh euismod tincidunt ut laoreet dolore mag</p>
+                <form action="{$route->urlFor("checkClientOrder")}" method="post">
+                    <input type="text" name="orderId" placeholder="Order confirm number" />
+                    <input value="Check" type="submit">
+                </form> 
+            </div>
+        </section>
         ORDER;
 
-        if(isset($this->data)){
+        if (isset($this->data)) {
             $order_html .= <<<ORDER
                 <h3>Your order is $this->data</h3>
             ORDER;
@@ -270,45 +368,47 @@ class ClientView extends \mf\view\AbstractView {
      */
     private function renderCheckout()
     {
+        $orderTotal = 0;
         $route = new Router();
-        $html="";
-        if(isset($_SESSION['orderID'])){
-            $id=$_SESSION['orderID'];
+        $html = "";
+        if (isset($_SESSION['orderID'])) {
+            $id = $_SESSION['orderID'];
             $html .= <<<CHECKOUT
             <h3 class="alert-success">Order confirmed: $id</h3>
         CHECKOUT;
-        unset($_SESSION['orderID']);
-        }else{
-            if(isset($_SESSION['errorMsg'])){
-                $html.='<h3 class="alert-danger">'.$_SESSION['errorMsg'].'</h3>';
-                unset($_SESSION['errorMsg']);
-            }
-        }   
-             
+            unset($_SESSION['orderID']);
+        }
 
-        if(isset($_SESSION['orders'])){
+        if (isset($_SESSION['orders'])) {
 
-        $html .= <<<CHECKOUT
-            <h1>Checkout to do</h1>
+            $html .= <<<CHECKOUT
+        <section id="titre">
+            <h2>CHECKOUT</h2>
+        </section>
+        <section id="checkout">
             <table>
-            <tr>
-              <th>Product</th>
-              <th>Unit Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-              <th></th>
-            </tr>
+                <tbody>
+                    <tr>
+                        <th>Product</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+        
+            
         CHECKOUT;
 
-        foreach ($this->data as $product) {
-            $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
-            $qte=$_SESSION['orders'][$product->id];
-            $total=$qte*$product->unit_price;
-            $delete_link = $route->urlFor('removeProduct',[['id',$product->id]]);
-            $remQte = $route->urlFor('updateQuantity',[['id',$product->id],['action',"remove"]]);
-            $addQte = $route->urlFor('updateQuantity',[['id',$product->id],['action',"add"]]);
+            foreach ($this->data as $product) {
+                $product_link = $route->urlFor('clientProduct', [['id', $product->id]]);
+                $qte = $_SESSION['orders'][$product->id];
+                $total = $qte * $product->unit_price;
+                $orderTotal += $total;
+                $delete_link = $route->urlFor('removeProduct', [['id', $product->id]]);
+                $remQte = $route->urlFor('updateQuantity', [['id', $product->id], ['action', "remove"]]);
+                $addQte = $route->urlFor('updateQuantity', [['id', $product->id], ['action', "add"]]);
 
-            $html .= <<<PRODUCT
+                $html .= <<<PRODUCT
             <tr>
               <td>$product->name</td>
               <td>$product->unit_price €</td>
@@ -317,18 +417,36 @@ class ClientView extends \mf\view\AbstractView {
               <td><a href='$delete_link'>Del</a></td>
             </tr>
             PRODUCT;
-        }
-        
+            }
+
+
+
             $html .= <<<PRODUCT
-                <form action="{$route->urlFor("confirmOrder")}" method="post">
-                    <input type="text" name="fullname" placeholder="Lorem ipsum" />
-                    <input type="email" name="email" placeholder="lorem@ipsum.com" />
-                    <input type="text" name="mobile" placeholder="00 00 00 00 " />
-                    <input value="Submit order" type="submit">
-                </form> 
-                PRODUCT;
-        }else{
-            $html .="Empty checkout :(";
+            </tbody>
+            </table>
+            <hr>
+            <h2>Total: $orderTotal</h2>
+            <section id="modal">
+            <div>
+                <div>
+                    <a href="#open-modal">Checkout</a>
+                </div>
+            </div>
+
+            <div id="open-modal" class="modal-window">
+                <div>
+                    <a href="#" title="Close" class="modal-close">X</a>
+                    <h1>Confirm Order</h1>
+                    <form action="{$route->urlFor("confirmOrder")}" method="post">
+                        <input type="text" name="fullname" placeholder="Lorem ipsum" />
+                        <input type="email" name="email" placeholder="lorem@ipsum.com" />
+                        <input type="text" name="mobile" placeholder="00 00 00 00 " />
+                        <input value="Submit order" type="submit">
+                    </form> 
+                </div>
+                </div>
+            </section>
+            PRODUCT;
         }
         return $html;
     }
@@ -341,6 +459,51 @@ class ClientView extends \mf\view\AbstractView {
         return "<footer>App Project</footer>";
     }
 
+    // private function renderCategories()
+    // {
+
+    // }
+
+
+    //     private function renderProductsByCategory()
+    //     {
+    //         $products_by_category_html = <<<EOT
+    // <article>
+    //  Prod by cat
+    // </article>
+    // EOT;
+    //         return $products_by_category_html;
+    //     }
+
+
+
+    //     private function renderLogin() 
+    //     {
+
+    //         // $route = new Router();
+    //         // $check_login_route = $route->urlFor('check_login');
+
+    // $login_form = <<<EOT
+    // <article>
+    //     <form id="login" method="post" class="form" action="">    
+
+    //         <label> User Name </label>    
+    //         <input type="text" name="username" id="username" placeholder="Username">        
+
+    //         <label> Password </label>    
+    //         <input type="password" name="password" id="password" placeholder="Password">    
+
+    //         <input type="submit" name="log" id="log" value="Log In Here" >       
+
+    //     </form>
+    // </article>
+    // EOT;
+
+    //         return $login_form;
+
+    //     }
+
+
     /**
      * Render Body
      */
@@ -350,13 +513,32 @@ class ClientView extends \mf\view\AbstractView {
         $auth = new AppAuthentification;
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
-        $center= $this->$selector();        
+        $center = $this->$selector();
+        // switch ($selector) {
+        //     case 'renderHome':
+        //         $center = $this->renderHome();
+        //         break;
+
+        //     case 'viewLogin':
+        //         $center = $this->renderLogin();
+        //         break;
+
+
+        //     case 'viewSignup':
+        //         $center = $this->renderSignup();
+        //         break;
+
+        //     default:
+        //         echo "Pas de fonction view correspondante";
+        //         break;
+        // }
+
         $body = <<<EOT
+        <section id="clientbody">
         ${header}
         ${center}
+        </section>
         EOT;
         return $body;
-        
     }
-
 }

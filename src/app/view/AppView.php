@@ -8,13 +8,14 @@ use app\auth\AppAuthentification;
 
 use mf\utils\HttpRequest as HttpRequest;
 
-class AppView extends \mf\view\AbstractView {
-  
+class AppView extends \mf\view\AbstractView
+{
+
     /* Constructeur 
     *
     * Appelle le constructeur de la classe parent
     */
-    public function __construct( $data )
+    public function __construct($data)
     {
         parent::__construct($data);
     }
@@ -22,12 +23,12 @@ class AppView extends \mf\view\AbstractView {
     /* Méthode renderHeader
      *
      *  Retourne le fragment HTML de l'entête (unique pour toutes les vues)
-     */ 
+     */
     private function renderHeader()
     {
         return '<header></header>';
     }
-    
+
     /* Méthode renderFooter
      *
      */
@@ -39,14 +40,14 @@ class AppView extends \mf\view\AbstractView {
     /* Méthode renderHome
 
      */
-    
+
     private function renderHome()
     {
         return "<article><h2>Informations</h2></article>";
     }
 
 
-    private function renderLogin() 
+    private function renderLogin()
     {
 
         // $route = new Router();
@@ -73,20 +74,21 @@ class AppView extends \mf\view\AbstractView {
      * par la méthode héritée render.
      *
      */
-    
+
     public function renderBody($selector)
     {
 
         $auth = new AppAuthentification;
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
-        $center= $this->$selector();
-        
+        $center = $this->$selector();
+
         $body = <<<EOT
+        <section id="managerBody">
             ${center}
+        </section>
         EOT;
 
         return $body;
     }
-
 }
