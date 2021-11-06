@@ -466,8 +466,18 @@
   text-align: center;
   color: #c6c6c6;
 }
+@media screen and (min-width: 62em) {
+  #managerBody main section#dashboardInfos > article > a p, #managerBody main section#dashboardInfos > article > p p {
+    font-size: 1.2em;
+  }
+}
 #managerBody main section#dashboardInfos > article > a span, #managerBody main section#dashboardInfos > article > p span {
   font-size: 1.5em;
+}
+@media screen and (min-width: 62em) {
+  #managerBody main section#dashboardInfos > article > a span, #managerBody main section#dashboardInfos > article > p span {
+    font-size: 1.2em;
+  }
 }
 #managerBody main section#dashboardInfos > article:nth-child(1) {
   grid-column: 1/4;

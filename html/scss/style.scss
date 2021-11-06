@@ -380,11 +380,17 @@ $darkGreen : #255d2e;
                             font-size: 2em;
                             text-align: center;
                             color: rgb(198, 198, 198);
+                            @media screen and (min-width : 62em) {
+                                font-size: 1.2em;
+                            }
                         }
     
                         //span for the number of information
                         span{
                             font-size: 1.5em;
+                            @media screen and (min-width : 62em) {
+                                font-size: 1.2em;
+                            }
                         }
                     }
     
