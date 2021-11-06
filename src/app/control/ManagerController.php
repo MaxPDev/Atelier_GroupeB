@@ -21,8 +21,7 @@ class ManagerController extends \mf\control\AbstractController {
      * 
      */
     
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
     }
 
@@ -30,8 +29,7 @@ class ManagerController extends \mf\control\AbstractController {
     /**
      * Return manager dashboard interface with statistics
      */
-    public function viewDashboard()
-    {
+    public function viewDashboard(){
         $stats=[];
         $orders=Order::all();
         $totalEarning=0;
@@ -66,57 +64,60 @@ class ManagerController extends \mf\control\AbstractController {
     /**
      * Return order by id
      */
-    public function viewOrder()
-    {
+    public function viewOrder(){
+        $order=null;
         if(isset($_GET['id'])){
             $order=Order::find($_GET['id']);
-            if($order){
-                $view_orders = new ManagerView($order);
-                $view_orders->render("renderManageOrder");
-            }else{
-                echo "ops! order not found"; //Replace echo by return
+            if(!$order){
+                $_SESSION['errorMsg']="ops! order not found";
             }
         }else{
-            echo "Bad request"; //Replace echo by return
+            $_SESSION['errorMsg']="Bad request";
         }
+        $view_orders = new ManagerView($order);
+        $view_orders->render("renderManageOrder");
     }
 
     /**
      * Change order status to paid
      */
     public function changeStatusPaid(){
+        $order=null;
         if(isset($_GET['id'])){
             $order=Order::find($_GET['id']);
             if($order){
                 $order->status="Paid";
                 $order->save();
-                $view_orders = new ManagerView($order);
-                $view_orders->render("renderManageOrder");
+                $_SESSION['successMsg']="Order marked as paid";
             }else{
-                echo "ops! order not found"; //Replace echo by return
+                $_SESSION['errorMsg']="ops! order not found";
             }
         }else{
-            echo "Bad request"; //Replace echo by return
+            $_SESSION['errorMsg']="Bad request";
         }
+        $view_orders = new ManagerView($order);
+        $view_orders->render("renderManageOrder");
     }
 
     /**
      * Change order status to delivered
      */
     public function changeStatusDelivered(){
+        $order=null;
         if(isset($_GET['id'])){
             $order=Order::find($_GET['id']);
             if($order){
                 $order->status="Delivered";
                 $order->save();
-                $view_orders = new ManagerView($order);
-                $view_orders->render("renderManageOrder");
+                $_SESSION['successMsg']="Order marked as delivered";
             }else{
-                echo "ops! order not found"; //Replace echo by return
+                $_SESSION['errorMsg']="ops! order not found";
             }
         }else{
-            echo "Bad request"; //Replace echo by return
+            $_SESSION['errorMsg']="Bad request";
         }
+        $view_orders = new ManagerView($order);
+        $view_orders->render("renderManageOrder");
     }
 
 }
