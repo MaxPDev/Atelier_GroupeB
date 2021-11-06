@@ -123,7 +123,7 @@ class ClientController extends \mf\control\AbstractController {
         if(isset($_SESSION['orders'][$id_product])){
             unset($_SESSION['orders'][$id_product]);
         }else{
-            var_dump("ops no products");
+            $_SESSION['errorMsg']="ops! product not found";
         }
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
@@ -155,28 +155,31 @@ class ClientController extends \mf\control\AbstractController {
      */
     public function confirmOrder()
     {
-        $order=new Order;
-        $id=uniqid();
-        $order->id=$id;
-        $order->name=filter_var($_POST['fullname'], FILTER_SANITIZE_SPECIAL_CHARS);
-        $order->mail=filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-        $order->phone=filter_var($_POST['mobile'], FILTER_SANITIZE_SPECIAL_CHARS);
-        $order->status="Orderd";
-        $order->place="Nancy";
-        $order->save();
-        $order=Order::find($id);
-        foreach ($_SESSION['orders'] as $key => $qte) {
-            $product=Product::find($key);
-            $order->products()->attach($key,['quantity' => 3]);
+        if($_POST['fullname']&&$_POST['email']&&$_POST['mobile']&&isset($_SESSION['orders'])){
+            $order=new Order;
+            $id=uniqid();
+            $order->id=$id;
+            $order->name=filter_var($_POST['fullname'], FILTER_SANITIZE_SPECIAL_CHARS);
+            $order->mail=filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+            $order->phone=filter_var($_POST['mobile'], FILTER_SANITIZE_SPECIAL_CHARS);
+            $order->status="Orderd";
+            $order->place="Nancy";
+            $order->save();
+            $order=Order::find($id);
+            foreach ($_SESSION['orders'] as $key => $qte) {
+                $product=Product::find($key);
+                $order->products()->attach($key,['quantity' => 3]);
+            }
+            unset($_SESSION['orders']);
+            $_SESSION['orderID']=$id;
+        }else{
+            $_SESSION['errorMsg']="Ops please make sure to inser your information";
         }
-        unset($_SESSION['orders']);
-        $_SESSION['orderID']=$id;
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
     public function addToOrder()
     {
-        //unset($_SESSION['order']);
         $id_product = $this->request->post['product_id'];
         $quantity = $this->request->post['quantity'];
         
@@ -189,22 +192,4 @@ class ClientController extends \mf\control\AbstractController {
         $_GET['id'] = $id_product; // TO DO ajouter un param optionnel à execute Route
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
-
-    // public function viewCategories($categories)
-    // {
-    //     $categories = null; // categories
-
-    //     $view_categories = new ClientView($categorie);
-    //     $view_categories->render('renderCategories'); // ?
-    // }
-
-    // public function viewProductsByCategory()
-    // {
-    //     $products_by_category = null; // products by cat
-
-    //     $view_product_by_category = new ClientView($products_by_category);
-    //     $view_product_by_category->render('renderProductsByCategory');
-
-    // }
-
 }

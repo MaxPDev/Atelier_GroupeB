@@ -98,24 +98,28 @@ EOT;
 
         $auth = new AppAuthentification;
 
-        /*
-         * voire la classe AbstractView
-         * 
+        /**
+         * Check abstractView
          */
         $header = $this->renderHeader();
         $center = $this->$selector();
 
 
         $body = <<<EOT
-${header}
-<main>
-${center}
-</main>
-EOT;
+            <section id="managerBody">
+                ${header}
+                <main>
+                    ${center}
+                </main>
+            </section>
+        EOT;
 
         return $body;
     }
 
+    /**
+     * Render one product (by id)
+     */
     public function renderProduct()
     {
         $product = $this->data;
@@ -155,6 +159,9 @@ EOT;
         return $html;
     }
 
+    /**
+     * Render producer profile
+     */
     public function renderProfile()
     {
         $producer = $this->data;
@@ -185,6 +192,9 @@ EOT;
         return $html;
     }
 
+    /**
+     * Render producer ordered products 
+     */
     public function renderMyOrderedProducts()
     {
         $router = new Router();
@@ -228,6 +238,9 @@ EOT;
         return $html;
     }
 
+    /**
+     * Render producer products
+     */
     public function renderMyProducts()
     {
         $router = new Router();

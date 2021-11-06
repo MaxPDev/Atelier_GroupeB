@@ -250,22 +250,12 @@ class ManagerView extends \mf\view\AbstractView {
     }
 
 
-    /* Méthode renderBody
-     *
-     * Retourne la framgment HTML de la balise <body> elle est appelée
-     * par la méthode héritée render.
-     *
+    /**
+     * Render body
      */
-    
     public function renderBody($selector)
     {
-
         $auth = new AppAuthentification;
-
-        /*
-         * voire la classe AbstractView
-         * 
-         */
         $header = $this->renderHeader();
         $center= $this->$selector();
         $footer = $this->renderFooter();

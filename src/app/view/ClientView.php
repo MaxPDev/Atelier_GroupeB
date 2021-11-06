@@ -223,16 +223,6 @@ class ClientView extends \mf\view\AbstractView {
         $route = new Router();
         $producers = $this->data;
         $producers_article = '';
-        /*
-        foreach ($producer_products as $product) {
-            $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);  
-            $producer_product_html .= <<<PRODUCT
-            <img src="$product->img_url" style="width:200px">
-            <p>Price : $product->unit_price</p>
-            <button> nb ajouté TO DO link panier TO DO </button><br>
-            PRODUCT;
-        }
-        */
         foreach ($producers as $producer) {
             
             $producer_user = $producer->user;
@@ -285,11 +275,18 @@ class ClientView extends \mf\view\AbstractView {
         if(isset($_SESSION['orderID'])){
             $id=$_SESSION['orderID'];
             $html .= <<<CHECKOUT
-            <h1>Order confirmed: $id</h1>
+            <h3 class="alert-success">Order confirmed: $id</h3>
         CHECKOUT;
         unset($_SESSION['orderID']);
-        }        
+        }else{
+            if(isset($_SESSION['errorMsg'])){
+                $html.='<h3 class="alert-danger">'.$_SESSION['errorMsg'].'</h3>';
+                unset($_SESSION['errorMsg']);
+            }
+        }   
+             
 
+        if(isset($_SESSION['orders'])){
 
         $html .= <<<CHECKOUT
             <h1>Checkout to do</h1>
@@ -322,14 +319,17 @@ class ClientView extends \mf\view\AbstractView {
             PRODUCT;
         }
         
-        $html .= <<<PRODUCT
-            <form action="{$route->urlFor("confirmOrder")}" method="post">
-                <input type="text" name="fullname" placeholder="Lorem ipsum" />
-                <input type="email" name="email" placeholder="lorem@ipsum.com" />
-                <input type="text" name="mobile" placeholder="00 00 00 00 " />
-                <input value="Submit order" type="submit">
-            </form> 
-            PRODUCT;
+            $html .= <<<PRODUCT
+                <form action="{$route->urlFor("confirmOrder")}" method="post">
+                    <input type="text" name="fullname" placeholder="Lorem ipsum" />
+                    <input type="email" name="email" placeholder="lorem@ipsum.com" />
+                    <input type="text" name="mobile" placeholder="00 00 00 00 " />
+                    <input value="Submit order" type="submit">
+                </form> 
+                PRODUCT;
+        }else{
+            $html .="Empty checkout :(";
+        }
         return $html;
     }
 
@@ -341,51 +341,6 @@ class ClientView extends \mf\view\AbstractView {
         return "<footer>App Project</footer>";
     }
 
-    // private function renderCategories()
-    // {
-        
-    // }
-
-
-//     private function renderProductsByCategory()
-//     {
-//         $products_by_category_html = <<<EOT
-// <article>
-//  Prod by cat
-// </article>
-// EOT;
-//         return $products_by_category_html;
-//     }
-
-  
-
-//     private function renderLogin() 
-//     {
-
-//         // $route = new Router();
-//         // $check_login_route = $route->urlFor('check_login');
-
-// $login_form = <<<EOT
-// <article>
-//     <form id="login" method="post" class="form" action="">    
-
-//         <label> User Name </label>    
-//         <input type="text" name="username" id="username" placeholder="Username">        
-
-//         <label> Password </label>    
-//         <input type="password" name="password" id="password" placeholder="Password">    
-        
-//         <input type="submit" name="log" id="log" value="Log In Here" >       
-
-//     </form>
-// </article>
-// EOT;
-
-//         return $login_form;
-
-//     }
-
-
     /**
      * Render Body
      */
@@ -393,33 +348,9 @@ class ClientView extends \mf\view\AbstractView {
     {
 
         $auth = new AppAuthentification;
-
-        /*
-         * voire la classe AbstractView
-         * 
-         */
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
-        $center= $this->$selector();
-        // switch ($selector) {
-        //     case 'renderHome':
-        //         $center = $this->renderHome();
-        //         break;
-
-        //     case 'viewLogin':
-        //         $center = $this->renderLogin();
-        //         break;
-
-
-        //     case 'viewSignup':
-        //         $center = $this->renderSignup();
-        //         break;
-
-        //     default:
-        //         echo "Pas de fonction view correspondante";
-        //         break;
-        // }
-        
+        $center= $this->$selector();        
         $body = <<<EOT
         ${header}
         ${center}
