@@ -20,22 +20,39 @@ class ManagerView extends \mf\view\AbstractView {
         parent::__construct($data);
     }
 
-    /* Méthode renderHeader
-     *
-     *  Retourne le fragment HTML de l'entête (unique pour toutes les vues)
-     */ 
+    /**
+     * Render header
+     */
     private function renderHeader()
     {
         $router = new Router();
         $user=User::find($_SESSION['user_login']);
+
+        $currentPath=$_SERVER["REQUEST_URI"];
+        $currentPath=substr($currentPath,0,-1);
+        $pathAliase=substr($currentPath,strrpos($currentPath,"/")+1);
+        $route1="";
+        $route2="";
+        
+        switch ($pathAliase) {
+            case 'dashboard':
+                $route1='class="active"';
+                break;
+            case 'managerOrders':
+                $route2='class="active"';
+                break;
+            default:
+                $route2='class="active"';
+                break;
+        }
         return <<<EOT
             <header id="headerManager">
             <img id="header_logo" src="/IUT/Prog_Serveur/Dev/html/img/logo.png" alt="Le Hangar Local">
             <h3>$user->name</h3>
             <nav>
                 <ul>
-                    <li><a href="{$router->urlFor("dashboard")}">Dashboard</a></li>
-                    <li><a href="{$router->urlFor("managerOrders")}">Orders</a></li>
+                    <li $route1><a href="{$router->urlFor("dashboard")}">Dashboard</a></li>
+                    <li $route2><a href="{$router->urlFor("managerOrders")}">Orders</a></li>
                     <li><a href="{$router->urlFor("logout")}">Logout</a></li>
                 </ul>
             </nav>
@@ -43,18 +60,18 @@ class ManagerView extends \mf\view\AbstractView {
         EOT;
     }
     
-    /* Méthode renderFooter
-     *
+    /**
+     * Render footer
      */
     private function renderFooter()
     {
         return "<footer>App Project</footer>";
     }
 
-    /* Méthode renderHome
-
-     */
     
+    /**
+     * Render dashboard
+     */    
     private function renderDashboard()
     {
         $router = new Router();
@@ -254,12 +271,12 @@ class ManagerView extends \mf\view\AbstractView {
         $footer = $this->renderFooter();
         
         $body = <<<EOT
-        <body>
+        <section id="managerBody">
         ${header}
             <main>
                 ${center}
             </main>
-        </body>
+        </section>
         EOT;
         return $body;
         
