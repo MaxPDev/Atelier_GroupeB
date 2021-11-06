@@ -25,11 +25,20 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderHeader()
     {
+        $req = new HttpRequest();
+        var_dump( $_SERVER['HTTP_HOST'] );
+        var_dump( $req->script_name );
+        var_dump( $req->path_info );
+        var_dump( $_SERVER['SERVER_NAME'] );
+        var_dump( $_SERVER['HTTPS'] );
+        var_dump( $_SERVER['DOCUMENT_ROOT'] );
         $nav = $this->renderHeaderNav();
         $header_html = <<<HEADER
         <header>
             <nav>
                 <div>
+                    <img src="https://webetu.iutnc.univ-lorraine.fr/www/piscagli5u/Atelier_GroupeB/html/img/logo.png" alt="logo">
+                    <img src="./img/logo.png" alt="logo">
                     <img src="https://webetu.iutnc.univ-lorraine.fr/www/piscagli5u/Atelier_GroupeB/html/img/logo.png" alt="logo">
                 </div>
 
