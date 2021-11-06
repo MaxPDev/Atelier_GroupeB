@@ -29,16 +29,19 @@ class ClientController extends \mf\control\AbstractController {
         parent::__construct();
     }
 
-
-    /* Méthode viewHome : 
+    /**
+     * Call the homepage view
      */
-    
     public function viewHome()
     {
         $view = new ClientView(null);
         $view->render('renderHome');
     }
 
+    /**
+     * Gets all products, or by category according to http parameters
+     * Prepare datas and call products view
+     */
     public function viewAllProducts() 
     {
         $categories = Category::get();
@@ -54,6 +57,10 @@ class ClientController extends \mf\control\AbstractController {
         $view_all_products->render('renderAllProducts');
     }
 
+    /**
+     * Get one product with id from url parameters
+     * Prepare data and call one product view
+     */
     public function viewProduct() 
     {
         $id_product = $this->request->get['id'];
@@ -66,6 +73,10 @@ class ClientController extends \mf\control\AbstractController {
 
     }
 
+    /**
+     * Get id producer from url parameters
+     * Prepare data and call one producer view
+     */
     public function viewProducer()
     {
         $id_producer = $this->request->get['id'];
@@ -75,6 +86,9 @@ class ClientController extends \mf\control\AbstractController {
         $view_producer->render('renderProducer');
     }
     
+    /**
+     * Call all producers view
+     */
     public function viewProducers()
     {
         $producers = Producer::get();
@@ -84,12 +98,18 @@ class ClientController extends \mf\control\AbstractController {
 
     }
 
+    /**
+     * Call order view
+     */
     public function viewOrder()
     {
         $view_order = new ClientView(null);
         $view_order->render('renderOrder');
     }
 
+    /**
+     * Prepare view for order and call it
+     */
     public function checkOrder()
     {
         $order_id = $this->request->post['orderId'];
@@ -102,6 +122,9 @@ class ClientController extends \mf\control\AbstractController {
         $view_order->render('renderOrder');
     }
 
+    /**
+     * Prepare view for checkout and cal it
+     */
     public function viewCheckout()
     {
         $products=[];
@@ -178,6 +201,9 @@ class ClientController extends \mf\control\AbstractController {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
+    /**
+     * Add to order a selected product
+     */
     public function addToOrder()
     {
         $id_product = $this->request->post['product_id'];
