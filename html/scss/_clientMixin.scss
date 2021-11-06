@@ -1,0 +1,14 @@
+@mixin grid($nb_col, $col_width,$nb_rows, $row_width, $gap){
+    display: grid;
+    grid-template-columns: repeat($nb_col, $col_width);
+    grid-template-rows: repeat($nb_rows, $row_width);
+    grid-auto-flow: row;
+    grid-gap: $gap; //préciser pour row & column
+}
+
+@mixin element($column_start, $column_end, $row_start, $row_end){
+    grid-column-start: $column_start;
+    grid-column-end: $column_end;
+    grid-row-start: $row_start;
+    grid-row-end: $row_end;
+}

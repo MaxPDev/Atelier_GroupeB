@@ -559,7 +559,7 @@ $darkGreen : #255d2e;
             @include element(1,6,2,2);
             @include grid(3, 1fr, 6, auto, 1em 0);
             height: 100vh;
-            background-image: url('../Elements/header-bg-complete.png');
+            background-image: url('../elements/header-bg-complete.png');
     
             &>form{
                 @include element(2,3,2,2);

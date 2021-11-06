@@ -16,7 +16,7 @@ Maxime Piscalgia (maxime.piscaglia1@etu.univ-lorraine.fr)
 
 ## Link to Webetu
 
-https://webetu.iutnc.univ-lorraine.fr/www/piscagli5u/Atelier_GroupeB/main.php/
+https://webetu.iutnc.univ-lorraine.fr/www/piscagli5u/Atelier_GroupeB/main.php/home/
 
 ## Trello Dashboard
 

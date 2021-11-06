@@ -27,10 +27,10 @@ class ClientView extends \mf\view\AbstractView
     {
         $nav = $this->renderHeaderNav();
         $header_html = <<<HEADER
-        <header>
+        <header id="navHeader">
             <nav>
                 <div>
-                    <img src="https://webetu.iutnc.univ-lorraine.fr/www/piscagli5u/Atelier_GroupeB/html/img/logo.png" alt="logo">
+                    <img src="../../html/img/logo.png" alt="logo">
                 </div>
 
                 <div class="main_pages">
@@ -55,14 +55,14 @@ class ClientView extends \mf\view\AbstractView
         <main>
             <section>
                 <div>
-                    <img src="html/img/icon-1.png" alt="">
+                    <img src="../../html/elements/icon-1.png" alt="">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                         porro ullam obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus
                         dicta quia ducimus!</p>
                 </div>
 
                 <div>
-                    <img src="html/img/icon-2.png" alt="">
+                    <img src="../../html/elements/icon-2.png" alt="">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                         porro ullam
                         obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
@@ -70,7 +70,7 @@ class ClientView extends \mf\view\AbstractView
                 </div>
 
                 <div>
-                    <img src="html/img/icon-3.png" alt="">
+                    <img src="../../html/elements/icon-3.png" alt="">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                         porro ullam
                         obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
@@ -312,7 +312,7 @@ class ClientView extends \mf\view\AbstractView
             <div>
                 <ul>
                     <li>$producer_user->name</li>
-                    <li><img src="img/producer-avatar.png" alt=""></li>
+                    <li><img src="../../html/elements/producer-avatar.png" alt=""></li>
                     <li>$producer->location</li>
                     <li>Products : {$producer->products->count()}</li>
                     <li>Orders : 15 orders</li>
@@ -459,50 +459,6 @@ class ClientView extends \mf\view\AbstractView
         return "<footer>App Project</footer>";
     }
 
-    // private function renderCategories()
-    // {
-
-    // }
-
-
-    //     private function renderProductsByCategory()
-    //     {
-    //         $products_by_category_html = <<<EOT
-    // <article>
-    //  Prod by cat
-    // </article>
-    // EOT;
-    //         return $products_by_category_html;
-    //     }
-
-
-
-    //     private function renderLogin() 
-    //     {
-
-    //         // $route = new Router();
-    //         // $check_login_route = $route->urlFor('check_login');
-
-    // $login_form = <<<EOT
-    // <article>
-    //     <form id="login" method="post" class="form" action="">    
-
-    //         <label> User Name </label>    
-    //         <input type="text" name="username" id="username" placeholder="Username">        
-
-    //         <label> Password </label>    
-    //         <input type="password" name="password" id="password" placeholder="Password">    
-
-    //         <input type="submit" name="log" id="log" value="Log In Here" >       
-
-    //     </form>
-    // </article>
-    // EOT;
-
-    //         return $login_form;
-
-    //     }
-
 
     /**
      * Render Body
@@ -514,24 +470,6 @@ class ClientView extends \mf\view\AbstractView
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
         $center = $this->$selector();
-        // switch ($selector) {
-        //     case 'renderHome':
-        //         $center = $this->renderHome();
-        //         break;
-
-        //     case 'viewLogin':
-        //         $center = $this->renderLogin();
-        //         break;
-
-
-        //     case 'viewSignup':
-        //         $center = $this->renderSignup();
-        //         break;
-
-        //     default:
-        //         echo "Pas de fonction view correspondante";
-        //         break;
-        // }
 
         $body = <<<EOT
         <section id="clientbody">

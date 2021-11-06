@@ -47,7 +47,7 @@ class ManagerView extends \mf\view\AbstractView {
         }
         return <<<EOT
             <header id="headerManager">
-            <img id="header_logo" src="/IUT/Prog_Serveur/Dev/html/img/logo.png" alt="Le Hangar Local">
+            <img id="header_logo" src="../../html/img/logo.png" alt="Le Hangar Local">
             <h3>$user->name</h3>
             <nav>
                 <ul>
