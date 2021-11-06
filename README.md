@@ -24,9 +24,9 @@ https://trello.com/b/rPx721Ub
 
 ## Languages
 
-php v7.4.3
-HTML 5
-CSS 3 / SCSS
+- php v7.4.3
+- HTML 5
+- CSS 3 / SCSS
 
 ## Set up
 
@@ -37,18 +37,20 @@ CSS 3 / SCSS
 - Install Eloquent
 `./composer.phar require illuminate/database`
 - Add this autoload configuration in composer.json file :
-`    "autoload": {
+```js
+    "autoload": {
         "psr-4": {
             "app\\": "./src/app/",
             "mf\\": "./src/mf/"
         }
     }
-`
+```
 - Re-generate autoload
 `./composer.phar dump-autoload`
 - Import the sql file in conf/ in your database
 - Add a conf.ini file in conf/ with your database's settings like
-`;conf.ini
+```
+;conf.ini
 
 driver = mysql
 host = localhost
@@ -57,7 +59,8 @@ username = your_username
 password = your_password
 charset = utf8
 collation = utf8_unicode_ci
-prefix =`
+prefix =
+```
 - Open main.php/home/ on your web browser
 
 ## Others
