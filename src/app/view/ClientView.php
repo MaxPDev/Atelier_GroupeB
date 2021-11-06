@@ -202,22 +202,31 @@ class ClientView extends \mf\view\AbstractView
         }
 
         $product_article = <<<IMG
-        
-        <p>Product name : $product->name</p>
-        <img src="$product->img_url">
-        <p>Price :$product->unit_price</p>
-        <form method="post" action="$add_to_order">
-            <input type="number" step="1" min="1" value="$value" name="quantity" required>
-            <button type="submit" name="product_id" value="$product->id" > Add to order </button>
-        </form>
-        <p>Producer : $producer_user->name TO DO </p>
-        <p> $product->description </p>
+            <div><img src="$product->img_url"></div>
+            <div>
+                <ul>
+                    <li>
+                        <h2>$product->name</h2>
+                    </li>
+                    <li>
+                        <h2>$product->unit_price €</h2>
+                    </li>
+                    <li>
+                        <form method="post" action="$add_to_order">
+                            <input type="number" step="1" min="1" value="$value" name="quantity" required>
+                            <button type="submit" name="product_id" value="$product->id" > Add to order </button>
+                        </form>
+                    </li>
+                </ul>
+
+                <p> $product->description </p>
+            </div>
         IMG;
 
         $product_html = <<<EOT
-            <article>
+            <section id="productsDetails">
                 $product_article
-            </article>
+            </section>
         EOT;
         return $product_html;
     }
@@ -235,25 +244,36 @@ class ClientView extends \mf\view\AbstractView
 
         // html for producer top view
         $producer_html = <<<PROD
-        <div>
-            <h2>Producer</h2>
-            <p>$producer_user->name</p>
-            <p>$producer_user->mail | $producer_user->phone</p>
-        </div>
+        <section id="producerDetails">
+            <div><img src="img/producer-avatar.png" alt="photo producteur"></div>
+            <div>
+                <h4>$producer_user->name</h4>
+                <ul>
+                    <li>$producer_user->mail</li>
+                    <li>$producer_user->phone</li>
+                </ul>
+            </div>
+        </section>
         PROD;
 
         // html for producer's products
-        $producer_product_html = '';
+        $producer_product_html = '<section id="prodDetails">';
 
         foreach ($producer_products as $product) {
             $product_link = $route->urlFor('clientProduct', [['id', $product->id]]);
 
             $producer_product_html .= <<<PRODUCT
-            <img src="$product->img_url" style="width:200px">
-            <p>Price : $product->unit_price</p>
-            <button> nb ajouté TO DO link panier TO DO </button><br>
+            <div>
+                <img src="$product->img_url" alt="">
+                <ul>
+                    <li><b><a href="$product_link">$product->name</a></b></li>
+                    <li>$product->unit_price €</li>
+                </ul>
+            </div>
             PRODUCT;
         }
+
+        $producer_product_html .= "</section>";
 
         $producer_all_html = <<<EOL
         $producer_html
