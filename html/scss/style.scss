@@ -7,8 +7,8 @@ $headerTextColor : #dedede;
 $headerBackgroundColor : #618d4d;
 $darkGreen : #255d2e;
 
-#managerBody{
-    body{
+
+    #managerBody{
         //we build a grid in the body with 1col of 1fraction, 
         //and 2 rows (header & main) in auto, and a gap of 1em (top&bottom)
         @include grid(1, 1fr, 1, auto, 1em 0);
@@ -614,5 +614,3 @@ $darkGreen : #255d2e;
             text-align: center;
         } 
     }
-
-}
