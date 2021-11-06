@@ -439,50 +439,6 @@ class ClientView extends \mf\view\AbstractView
         return "<footer>App Project</footer>";
     }
 
-    // private function renderCategories()
-    // {
-
-    // }
-
-
-    //     private function renderProductsByCategory()
-    //     {
-    //         $products_by_category_html = <<<EOT
-    // <article>
-    //  Prod by cat
-    // </article>
-    // EOT;
-    //         return $products_by_category_html;
-    //     }
-
-
-
-    //     private function renderLogin() 
-    //     {
-
-    //         // $route = new Router();
-    //         // $check_login_route = $route->urlFor('check_login');
-
-    // $login_form = <<<EOT
-    // <article>
-    //     <form id="login" method="post" class="form" action="">    
-
-    //         <label> User Name </label>    
-    //         <input type="text" name="username" id="username" placeholder="Username">        
-
-    //         <label> Password </label>    
-    //         <input type="password" name="password" id="password" placeholder="Password">    
-
-    //         <input type="submit" name="log" id="log" value="Log In Here" >       
-
-    //     </form>
-    // </article>
-    // EOT;
-
-    //         return $login_form;
-
-    //     }
-
 
     /**
      * Render Body
@@ -494,24 +450,6 @@ class ClientView extends \mf\view\AbstractView
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
         $center = $this->$selector();
-        // switch ($selector) {
-        //     case 'renderHome':
-        //         $center = $this->renderHome();
-        //         break;
-
-        //     case 'viewLogin':
-        //         $center = $this->renderLogin();
-        //         break;
-
-
-        //     case 'viewSignup':
-        //         $center = $this->renderSignup();
-        //         break;
-
-        //     default:
-        //         echo "Pas de fonction view correspondante";
-        //         break;
-        // }
 
         $body = <<<EOT
         <section id="clientbody">
