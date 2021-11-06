@@ -128,95 +128,107 @@ class ManagerView extends \mf\view\AbstractView {
      */
     public function renderManageOrder() 
     {
-        /**IMPORTANT CHANGE URLFOR WHEN CLIENT SIDE IS READY */
         $router = new Router();
         $order= $this->data;
         $orderTotal=0;
-
-        foreach($order->products as $p){
-            $orderTotal+= $p->pivot->quantity*$p->unit_price;
-        }
-
         $html='';
-        $html .= <<<EOT
-        <h1 id="orderNumber">Order $order->id</h1>
-        <div id="orderActions">
-            <p>Order $order->status</p>
-        EOT;
 
-        switch ($order->status) {
-            case 'Orderd':
-                $html .= <<<EOT
-                <a href="{$router->urlFor("markPaid", [["id",$order->id]])}">Mark as paid</a>
-                <br>
-                <a href="{$router->urlFor("markDelivered", [["id",$order->id]])}">Mark as paid & delivered</a>
-                EOT;
-                break;
-            case 'Paid':
-                $html .= <<<EOT
-                <a href="{$router->urlFor("markDelivered", [["id",$order->id]])}">Mark as paid & delivered</a>
-                EOT;
-                break;
-        }
-
-        $html .= <<<EOT
-        </div>
-        <section id="orderInformations">
-            <article>
-                <p>Client</p>
-                <p>$order->name ($order->mail)</p>
-            </article>
-            <article>
-                <p>Total</p>
-                <p>$orderTotal €</p>
-            </article>
-            <article>
-                <p>Date</p>
-                <p>$order->created_at</p>
-            </article>
-        </section>
-        EOT;
-        
+        //Get order total (only if order exist)
+        if(!isset($_SESSION['errorMsg'])){
+            foreach($order->products as $p){
+                $orderTotal+= $p->pivot->quantity*$p->unit_price;
+            }
         
 
-        $html .= <<<EOT
-        <table class="tableList">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Producers</th>
-                    <th>Category</th>
-                    <th>Quantity</th>
-                    <th>Unit price</th>
-                    <th>Total</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-        EOT;
-        foreach($order->products as $p){
-                $total=0;
-                $qte=$p->pivot->quantity;
-                $total+= $qte*$p->unit_price;
-                $producer = $p->producer->user->name;
-                $category = $p->category->name;
-                 $html .= <<<EOT
-                <tr>
-                    <td>$p->name</td>
-                    <td>$producer</td>
-                    <td>$category</td>
-                    <td>$qte</td>
-                    <td>$p->unit_price €</td>
-                    <td>$total €</td>
-                    <td>
-                        <a href="{$router->urlFor("clientProduct", [["id",$p->id]])}"> 
-                        View in store
-                        </a>
-                    </td>
-                </tr>
-                EOT;
+            $html .= <<<EOT
+            <h1 id="orderNumber">Order $order->id</h1>
+            <div id="orderActions">
+                <p>Order $order->status</p>
+            EOT;
+
+            switch ($order->status) {
+                case 'Orderd':
+                    $html .= <<<EOT
+                    <a href="{$router->urlFor("markPaid", [["id",$order->id]])}">Mark as paid</a>
+                    <br>
+                    <a href="{$router->urlFor("markDelivered", [["id",$order->id]])}">Mark as paid & delivered</a>
+                    EOT;
+                    break;
+                case 'Paid':
+                    $html .= <<<EOT
+                    <a href="{$router->urlFor("markDelivered", [["id",$order->id]])}">Mark as paid & delivered</a>
+                    EOT;
+                    break;
+            }
         }
-        $html.="</tbody></table>";
+
+        //If there's error=> show error | if not show order details
+        if(isset($_SESSION['errorMsg'])){
+            $html.='<h3 class="alert-danger">'.$_SESSION['errorMsg'].'</h3>';
+            unset($_SESSION['errorMsg']);
+        }else{
+            if(isset($_SESSION['successMsg'])){
+                $html.='<h3 class="alert-success">'.$_SESSION['successMsg'].'</h3>';
+                unset($_SESSION['successMsg']);
+            }
+            $html .= <<<EOT
+            </div>
+            <section id="orderInformations">
+                <article>
+                    <p>Client</p>
+                    <p>$order->name ($order->mail)</p>
+                </article>
+                <article>
+                    <p>Total</p>
+                    <p>$orderTotal €</p>
+                </article>
+                <article>
+                    <p>Date</p>
+                    <p>$order->created_at</p>
+                </article>
+            </section>
+            EOT;
+    
+            $html .= <<<EOT
+            <table class="tableList">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Producers</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Unit price</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+            EOT;
+            foreach($order->products as $p){
+                    $total=0;
+                    $qte=$p->pivot->quantity;
+                    $total+= $qte*$p->unit_price;
+                    $producer = $p->producer->user->name;
+                    $category = $p->category->name;
+                     $html .= <<<EOT
+                    <tr>
+                        <td>$p->name</td>
+                        <td>$producer</td>
+                        <td>$category</td>
+                        <td>$qte</td>
+                        <td>$p->unit_price €</td>
+                        <td>$total €</td>
+                        <td>
+                            <a href="{$router->urlFor("clientProduct", [["id",$p->id]])}"> 
+                            View in store
+                            </a>
+                        </td>
+                    </tr>
+                    EOT;
+            }
+            $html.="</tbody></table>";
+        }
+
         return $html;
     }
 
