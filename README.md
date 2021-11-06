@@ -1,4 +1,5 @@
-# Atlier 
+# Atelier 
+
 Groupe B
 
 ## Participants
@@ -13,15 +14,17 @@ Asley Rakotoarison (asley.rakotoarison6@etu.univ-lorraine.fr)
 
 Maxime Piscalgia (maxime.piscaglia1@etu.univ-lorraine.fr)
 
-## Topic
+## Link to Webetu
 
-## Spec technique
+https://webetu.iutnc.univ-lorraine.fr/www/piscagli5u/Atelier_GroupeB/main.php/
 
-### Programming language
+## Trello Dashboard
+
+https://trello.com/b/rPx721Ub
+
+## Programming language
 
 php v7.4.3
-
-### Runing
 
 ## Others
 
