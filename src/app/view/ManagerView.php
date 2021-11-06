@@ -67,8 +67,8 @@ class ManagerView extends \mf\view\AbstractView {
         $html = <<<EOT
             <h1 id="myDashboard">My Dashboard</h1>
             <section id="dashboardInfos">
-                <article id="nbrProducers"><p><span>$nb_products</span> Producers</p></article>
-                <article id="nbrProducts"><p><span>$nb_producers</span> Products</p></article>
+                <article id="nbrProducers"><a href="{$router->urlFor("clientProducers")}"><p><span>$nb_products</span> Producers</p></a></article>
+                <article id="nbrProducts"><a href="{$router->urlFor("clientProducts")}"><p><span>$nb_producers</span> Products</p></a></article>
                 <article id="earning"><p><span>$totalEarning €</span> Earning</p></article>
                 <article id="nbrOrders"><a href="{$router->urlFor("managerOrders")}"><p><span>$nb_orders</span> Orders</p></a></article>
                 <article id="nbrClients"><p><span>$nb_clients</span> Clients</p></article>
@@ -209,7 +209,7 @@ class ManagerView extends \mf\view\AbstractView {
                     <td>$p->unit_price €</td>
                     <td>$total €</td>
                     <td>
-                        <a href="{$router->urlFor("home")}"> 
+                        <a href="{$router->urlFor("clientProduct", [["id",$p->id]])}"> 
                         View in store
                         </a>
                     </td>

@@ -19,28 +19,23 @@ class ClientView extends \mf\view\AbstractView {
         parent::__construct($data);
     }
 
-    /* Méthode renderHeader
-     *
-     *  Retourne le fragment HTML de l'entête (unique pour toutes les vues)
-     */ 
+    /**
+     * Render header
+     */
     private function renderHeader()
     {
         $nav = $this->renderHeaderNav();
-
         $header_html = <<<HEADER
-<h1>HANGAR LOCAL</h1>
-    $nav
-HEADER;
-
-
+        <h1>HANGAR LOCAL</h1>
+            $nav
+        HEADER;
         return $header_html;
     }
     
 
-    /* Méthode renderHome
-
+    /**
+     * Render Home
      */
-    
     private function renderHome()
     {
 
@@ -49,6 +44,9 @@ HEADER;
 
     }
 
+    /**
+     * Render header Nav
+     */
     private function renderHeaderNav()
     {
         $route = new Router();
@@ -70,6 +68,9 @@ HEADER;
         return $header_nav_html;
     }
 
+    /**
+     * Render Categories menu
+     */
     private function renderTopCategoriesMain($categories) 
     {
         $route = new Router();
@@ -86,6 +87,9 @@ HEADER;
         return $nav_categories;
     }
 
+    /**
+     * Render all products
+     */
     private function renderAllProducts()
     {
         $route = new Router();
@@ -129,6 +133,9 @@ HEADER;
         return $products_html;
     }
 
+    /**
+     * Render one product (by id)
+     */
     private function renderProduct()
     {
         $route = new Router();
@@ -150,24 +157,25 @@ HEADER;
         <p>Product name : $product->name</p>
         <img src="$product->img_url">
         <p>Price :$product->unit_price</p>
-
         <form method="post" action="$add_to_order">
             <input type="number" step="1" min="1" value="$value" name="quantity" required>
             <button type="submit" name="product_id" value="$product->id" > Add to order </button>
         </form>
         <p>Producer : $producer_user->name TO DO </p>
         <p> $product->description </p>
-IMG;
+        IMG;
 
         $product_html = <<<EOT
-<article>
-        $product_article
-</article>
-EOT;
+            <article>
+                $product_article
+            </article>
+        EOT;
         return $product_html;
     }
 
-    // Render One Producer View
+    /**
+     * Render one producer (by ID)
+     */
     private function renderProducer()
     {
         $route = new Router();
@@ -178,13 +186,12 @@ EOT;
         
         // html for producer top view
         $producer_html = <<<PROD
-<div>
-<h2>Producer</h2>
-<p>$producer_user->name</p>
-<p>$producer_user->mail | $producer_user->phone</p>
-
-</div>
-PROD;
+        <div>
+            <h2>Producer</h2>
+            <p>$producer_user->name</p>
+            <p>$producer_user->mail | $producer_user->phone</p>
+        </div>
+        PROD;
 
     // html for producer's products
     $producer_product_html = '';
@@ -193,40 +200,39 @@ PROD;
         $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
         
         $producer_product_html .= <<<PRODUCT
-<img src="$product->img_url" style="width:200px">
-<p>Price : $product->unit_price</p>
-<button> nb ajouté TO DO link panier TO DO </button><br>
-PRODUCT;
+            <img src="$product->img_url" style="width:200px">
+            <p>Price : $product->unit_price</p>
+            <button> nb ajouté TO DO link panier TO DO </button><br>
+            PRODUCT;
     }
 
-    $producer_all_html = <<<EOL
-$producer_html
-$producer_product_html
-EOL;
-
-
+        $producer_all_html = <<<EOL
+        $producer_html
+        $producer_product_html
+        EOL;
         return $producer_all_html;
     }
 
 
 
-    // render html for Fproducers
+    /**
+     * Render all producers
+     */
     private function renderProducers()
     {
         $route = new Router();
-        
         $producers = $this->data;
-
         $producers_article = '';
+        /*
         foreach ($producer_products as $product) {
-            $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
-            
+            $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);  
             $producer_product_html .= <<<PRODUCT
-    <img src="$product->img_url" style="width:200px">
-    <p>Price : $product->unit_price</p>
-    <button> nb ajouté TO DO link panier TO DO </button><br>
-    PRODUCT;
+            <img src="$product->img_url" style="width:200px">
+            <p>Price : $product->unit_price</p>
+            <button> nb ajouté TO DO link panier TO DO </button><br>
+            PRODUCT;
         }
+        */
         foreach ($producers as $producer) {
             
             $producer_user = $producer->user;
@@ -241,13 +247,15 @@ EOL;
         }
         
         $producers_html = <<<PRODS
-        <h2>PRODUCERS </h2>
-$producers_article
-PRODS;
-
+            <h2>PRODUCERS </h2>
+            $producers_article
+        PRODS;
         return $producers_html;
     }
 
+    /**
+     * Render order checkout
+     */
     private function renderOrder()
     {
         $route = new Router();
@@ -267,6 +275,9 @@ PRODS;
         return $order_html;
     }
 
+    /**
+     * Render checkout
+     */
     private function renderCheckout()
     {
         $route = new Router();
@@ -322,8 +333,8 @@ PRODS;
         return $html;
     }
 
-        /* Méthode renderFooter
-     *
+    /**
+     * Render footer
      */
     private function renderFooter()
     {
@@ -375,13 +386,9 @@ PRODS;
 //     }
 
 
-    /* Méthode renderBody
-     *
-     * Retourne la framgment HTML de la balise <body> elle est appelée
-     * par la méthode héritée render.
-     *
+    /**
+     * Render Body
      */
-    
     public function renderBody($selector)
     {
 
@@ -393,9 +400,6 @@ PRODS;
          */
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
-        
-
-
         $center= $this->$selector();
         // switch ($selector) {
         //     case 'renderHome':
@@ -416,11 +420,10 @@ PRODS;
         //         break;
         // }
         
-$body = <<<EOT
-${header}
-${center}
-EOT;
-
+        $body = <<<EOT
+        ${header}
+        ${center}
+        EOT;
         return $body;
         
     }
