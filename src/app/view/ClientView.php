@@ -30,7 +30,7 @@ class ClientView extends \mf\view\AbstractView
         <header>
             <nav>
                 <div>
-                    <img src="html/img/logo.png" alt="logo">
+                    <img src="https://webetu.iutnc.univ-lorraine.fr/www/piscagli5u/Atelier_GroupeB/html/img/logo.png" alt="logo">
                 </div>
 
                 <div class="main_pages">
