@@ -48,7 +48,7 @@ $db->setAsGlobal(); /* rendre la connexion visible dans tout le projet */
 $db->bootEloquent(); /* établir la connexion */
 
 AppView::addStyleSheet('html/css/style.css');
-ManagerView::addStyleSheet('html/css/style.css');
+AppView::addStyleSheet('html/css/clientStyle.css');
 
 $router = new Router(); //52
 
@@ -135,47 +135,61 @@ $router->addRoute(
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
-$router->addRoute('clientOrder',
-                  '/clientorder/',  
-                  '\app\control\ClientController',  
-                  'viewOrder',                
-                AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'clientOrder',
+    '/clientorder/',
+    '\app\control\ClientController',
+    'viewOrder',
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
-$router->addRoute('checkClientOrder',
-                  '/checkClientOrder/',  
-                  '\app\control\ClientController',  
-                  'checkOrder',                
-                AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'checkClientOrder',
+    '/checkClientOrder/',
+    '\app\control\ClientController',
+    'checkOrder',
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
-$router->addRoute('clientcheckout', //alias
-                  '/clientcheckout/',   //route
-                  '\app\control\ClientController',   // controller
-                  'viewCheckout',                 // methode
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'clientcheckout', //alias
+    '/clientcheckout/',   //route
+    '\app\control\ClientController',   // controller
+    'viewCheckout',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
-$router->addRoute('clientAddOrder', //alias
-                  '/clientAddOrder/',   //route
-                  '\app\control\ClientController',   // controller
-                  'addToOrder',                 // methode
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'clientAddOrder', //alias
+    '/clientAddOrder/',   //route
+    '\app\control\ClientController',   // controller
+    'addToOrder',                 // methode
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
-$router->addRoute('removeProduct',
-                  '/removeProduct/',  
-                  '\app\control\ClientController',  
-                  'deleteProductCheckout',                
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'removeProduct',
+    '/removeProduct/',
+    '\app\control\ClientController',
+    'deleteProductCheckout',
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
-$router->addRoute('updateQuantity',
-                  '/updateQuantity/',  
-                  '\app\control\ClientController',  
-                  'updateQuantity',                
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'updateQuantity',
+    '/updateQuantity/',
+    '\app\control\ClientController',
+    'updateQuantity',
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
-$router->addRoute('confirmOrder', 
-                  '/confirmOrder/',   
-                  '\app\control\ClientController',   
-                  'confirmOrder',                 
-                  AppAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute(
+    'confirmOrder',
+    '/confirmOrder/',
+    '\app\control\ClientController',
+    'confirmOrder',
+    AppAuthentification::ACCESS_LEVEL_NONE
+);
 
 //Manager dashboard
 $router->addRoute('dashboard', '/dashboard/', '\app\control\ManagerController', 'viewDashboard', AppAuthentification::ACCESS_LEVEL_MANAGER); //Change me to manager access level after auth
