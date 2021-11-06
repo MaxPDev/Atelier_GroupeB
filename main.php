@@ -135,22 +135,40 @@ $router->addRoute(
     AppAuthentification::ACCESS_LEVEL_NONE
 );
 
-$router->addRoute('clientOrder', //alias
-                  '/clientorder/',   //route
-                  '\app\control\ClientController',   // controller
-                  'viewOrder',                 // methode
+$router->addRoute('clientOrder',
+                  '/clientorder/',  
+                  '\app\control\ClientController',  
+                  'viewOrder',                
                 AppAuthentification::ACCESS_LEVEL_NONE);
-                  
+
+$router->addRoute('checkOrder',
+                  '/checkOrder/',  
+                  '\app\control\ClientController',  
+                  'checkOrder',                
+                AppAuthentification::ACCESS_LEVEL_NONE);
+
 $router->addRoute('clientcheckout', //alias
                   '/clientcheckout/',   //route
                   '\app\control\ClientController',   // controller
                   'viewCheckout',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
-$router->addRoute('clientAddOrder', //alias
-                  '/clientaddorder/',   //route
-                  '\app\control\ClientController',   // controller
-                  'addToOrder',                 // methode
+$router->addRoute('removeProduct',
+                  '/removeProduct/',  
+                  '\app\control\ClientController',  
+                  'deleteProductCheckout',                
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
+$router->addRoute('updateQuantity',
+                  '/updateQuantity/',  
+                  '\app\control\ClientController',  
+                  'updateQuantity',                
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
+$router->addRoute('confirmOrder', 
+                  '/confirmOrder/',   
+                  '\app\control\ClientController',   
+                  'confirmOrder',                 
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
 //Manager dashboard

@@ -248,16 +248,27 @@ PRODS;
 
     private function renderOrder()
     {
+        $route = new Router();
         $order_html = <<<ORDER
-<h1>Order to do</h1>
-ORDER;
+        <form action="{$route->urlFor("checkOrder")}" method="post">
+                <input type="text" name="orderId" placeholder="Order confirm number" />
+                <input value="Check" type="submit">
+            </form> 
+        ORDER;
+
+        if(isset($this->data)){
+            $order_html .= <<<ORDER
+                <h3>Your order is $this->data</h3>
+            ORDER;
+        }
 
         return $order_html;
     }
 
     private function renderCheckout()
     {
-        $checkout_html = <<<CHECKOUT
+        $route = new Router();
+        $html = <<<CHECKOUT
             <h1>Checkout to do</h1>
             <table>
             <tr>
@@ -269,20 +280,34 @@ ORDER;
             </tr>
         CHECKOUT;
 
-        foreach ($_SESSION["orders"] as $product) {
+        foreach ($this->data as $product) {
             $product_link = $route->urlFor('clientProduct',[['id',$product->id]]);
+            $qte=$_SESSION['orders'][$product->id];
+            $total=$qte*$product->unit_price;
+            $delete_link = $route->urlFor('removeProduct',[['id',$product->id]]);
+            $remQte = $route->urlFor('updateQuantity',[['id',$product->id],['action',"remove"]]);
+            $addQte = $route->urlFor('updateQuantity',[['id',$product->id],['action',"add"]]);
+
             $html .= <<<PRODUCT
             <tr>
-              <td>Product</td>
-              <td>Unit Price</td>
-              <td>Quantity</td>
-              <td>Total</td>
-              <td></td>
+              <td>$product->name</td>
+              <td>$product->unit_price €</td>
+              <td><a href='$remQte'>-</a> $qte <a href='$addQte'>+</a></td>
+              <td>$total €</td>
+              <td><a href='$delete_link'>Del</a></td>
             </tr>
             PRODUCT;
-                }
-
-        return $checkout_html;
+        }
+        
+        $html .= <<<PRODUCT
+            <form action="{$route->urlFor("confirmOrder")}" method="post">
+                <input type="text" name="fullname" placeholder="Lorem ipsum" />
+                <input type="email" name="email" placeholder="lorem@ipsum.com" />
+                <input type="text" name="mobile" placeholder="00 00 00 00 " />
+                <input value="Submit order" type="submit">
+            </form> 
+            PRODUCT;
+        return $html;
     }
 
         /* Méthode renderFooter
@@ -382,7 +407,6 @@ ORDER;
 $body = <<<EOT
 ${header}
 ${center}
-${footer}
 EOT;
 
         return $body;
