@@ -25,21 +25,12 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderHeader()
     {
-        $req = new HttpRequest();
-        var_dump( $_SERVER['HTTP_HOST'] );
-        var_dump( $req->script_name );
-        var_dump( $req->path_info );
-        var_dump( $_SERVER['SERVER_NAME'] );
-        var_dump( $_SERVER['HTTPS'] );
-        var_dump( $_SERVER['DOCUMENT_ROOT'] );
         $nav = $this->renderHeaderNav();
         $header_html = <<<HEADER
         <header>
             <nav>
                 <div>
-                    <img src="https://webetu.iutnc.univ-lorraine.fr/www/piscagli5u/Atelier_GroupeB/html/img/logo.png" alt="logo">
                     <img src="../../html/img/logo.png" alt="logo">
-                    <img src="https://webetu.iutnc.univ-lorraine.fr/www/piscagli5u/Atelier_GroupeB/html/img/logo.png" alt="logo">
                 </div>
 
                 <div class="main_pages">
@@ -64,14 +55,14 @@ class ClientView extends \mf\view\AbstractView
         <main>
             <section>
                 <div>
-                    <img src="html/img/icon-1.png" alt="">
+                    <img src="../../html/elements/icon-1.png" alt="">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                         porro ullam obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus
                         dicta quia ducimus!</p>
                 </div>
 
                 <div>
-                    <img src="html/img/icon-2.png" alt="">
+                    <img src="../../html/elements/icon-2.png" alt="">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                         porro ullam
                         obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
@@ -79,7 +70,7 @@ class ClientView extends \mf\view\AbstractView
                 </div>
 
                 <div>
-                    <img src="html/img/icon-3.png" alt="">
+                    <img src="../../html/elements/icon-3.png" alt="">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                         porro ullam
                         obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
@@ -301,7 +292,7 @@ class ClientView extends \mf\view\AbstractView
             <div>
                 <ul>
                     <li>$producer_user->name</li>
-                    <li><img src="img/producer-avatar.png" alt=""></li>
+                    <li><img src="../../html/elements/producer-avatar.png" alt=""></li>
                     <li>$producer->location</li>
                     <li>Products : {$producer->products->count()}</li>
                     <li>Orders : 15 orders</li>
