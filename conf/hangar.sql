@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `hangar`
@@ -30,10 +30,10 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `category`
@@ -56,10 +56,10 @@ DROP TABLE IF EXISTS `manager`;
 CREATE TABLE IF NOT EXISTS `manager` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
-  `cooperation_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cooperation_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `manager_user_FK` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `manager`
@@ -77,24 +77,22 @@ INSERT INTO `manager` (`id`, `id_user`, `cooperation_name`) VALUES
 
 DROP TABLE IF EXISTS `order`;
 CREATE TABLE IF NOT EXISTS `order` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `place` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `mail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `place` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`id`, `name`, `mail`, `phone`, `status`, `place`, `created_at`, `updated_at`) VALUES
-('100', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:21:49', '2021-11-05 18:21:49'),
-('101', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:22:09', '2021-11-05 18:22:09'),
 ('1080901668', 'odit', 'amelia37@example.org', '186-750-3400x67859', 'Delivered', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('1129784005', 'dolores', 'reymundo17@example.net', '563-159-5969x35314', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('1162599804', 'illum', 'annie81@example.org', '(012)414-0368', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
@@ -103,7 +101,6 @@ INSERT INTO `order` (`id`, `name`, `mail`, `phone`, `status`, `place`, `created_
 ('1185351490', 'dolores', 'eleanora.considine@example.net', '04360430467', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('1206435501', 'nobis', 'howe.edgardo@example.net', '(113)726-1454', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('1219327142', 'voluptates', 'ifahey@example.org', '(197)524-9901x725', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
-('1223667841', 'recusandae', 'zula28@example.net', '698-628-1395x571', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('1237429351', 'ipsum', 'zula28@example.net', '+85(3)5745018160', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('1280071483', 'aliquam', 'prosacco.corene@example.net', '(653)198-9312', 'Delivered', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('1404145870', 'est', 'hane.mackenzie@example.com', '739.538.3277', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
@@ -113,43 +110,11 @@ INSERT INTO `order` (`id`, `name`, `mail`, `phone`, `status`, `place`, `created_
 ('155697529', 'molestiae', 'sven35@example.com', '366-642-1198x186', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('1569947801', 'est', 'leslie.deckow@example.net', '519-087-1426', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('1633747987', 'ut', 'khermiston@example.org', '(948)203-8433x0814', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
-('170440443', 'sunt', 'mavis.o\'kon@example.org', '190-009-2869x51627', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('175144220', 'consequatur', 'rohan.alva@example.com', '(151)863-8957x848', 'Delivered', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 12:16:48'),
 ('339711842', 'qui', 'pbauch@example.net', '1-719-587-6910x55189', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('34873020', 'accusantium', 'luettgen.scottie@example.org', '+51(9)4747721190', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('400666845', 'accusamus', 'ggislason@example.com', '1-981-780-3647x35275', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('549067010', 'rem', 'bashirian.alba@example.net', '1-182-446-4037x217', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
-('6185805ae9d89', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:04:58', '2021-11-05 18:04:58'),
-('61858072b9721', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:05:22', '2021-11-05 18:05:22'),
-('6185812d6f267', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:08:29', '2021-11-05 18:08:29'),
-('6185815b76de4', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:09:15', '2021-11-05 18:09:15'),
-('618581a41ce78', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:10:28', '2021-11-05 18:10:28'),
-('618581a620b4e', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:10:30', '2021-11-05 18:10:30'),
-('618581d3de7f4', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:11:15', '2021-11-05 18:11:15'),
-('6185827867c55', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:14:00', '2021-11-05 18:14:00'),
-('618582a41989b', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:14:44', '2021-11-05 18:14:44'),
-('618582bec785c', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:15:10', '2021-11-05 18:15:10'),
-('618582ecd01dc', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:15:56', '2021-11-05 18:15:56'),
-('61858369c9c7e', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:18:01', '2021-11-05 18:18:01'),
-('6185838c2ba79', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:18:36', '2021-11-05 18:18:36'),
-('618583c51b676', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:19:33', '2021-11-05 18:19:33'),
-('618584072259b', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:20:39', '2021-11-05 18:20:39'),
-('6185842485590', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:21:08', '2021-11-05 18:21:08'),
-('6185842ac4810', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:21:14', '2021-11-05 18:21:14'),
-('618584343f4bc', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:21:24', '2021-11-05 18:21:24'),
-('6185843bd9293', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:21:31', '2021-11-05 18:21:31'),
-('618584564b022', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:21:58', '2021-11-05 18:21:58'),
-('618584668b7a4', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:22:14', '2021-11-05 18:22:14'),
-('618584809591e', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:22:40', '2021-11-05 18:22:40'),
-('618584ade1a43', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:23:25', '2021-11-05 18:23:25'),
-('6185852cf17dc', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:25:33', '2021-11-05 18:25:33'),
-('6185853e51200', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:25:50', '2021-11-05 18:25:50'),
-('6185854f75dc2', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:26:07', '2021-11-05 18:26:07'),
-('618586381af94', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:30:00', '2021-11-05 18:30:00'),
-('61858645d50b7', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:30:13', '2021-11-05 18:30:13'),
-('6185868526abb', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:31:17', '2021-11-05 18:31:17'),
-('618586a8437de', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:31:52', '2021-11-05 18:31:52'),
-('618586c7a2a8e', 'Malek Ben Khalifa', 'malekbk98@gmail.com', '0753644118', 'Orderd', 'Nancy', '2021-11-05 18:32:23', '2021-11-05 18:32:23'),
 ('655269312', 'tenetur', 'dfahey@example.org', '+24(1)8887140971', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('793809478', 'id', 'corene04@example.org', '1-163-930-4713', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
 ('80776083', 'quod', 'koch.eliza@example.com', '(434)086-9026x78495', 'Orderd', 'Nancy', '2021-11-05 10:10:44', '2021-11-05 10:10:44'),
@@ -167,11 +132,11 @@ DROP TABLE IF EXISTS `producer`;
 CREATE TABLE IF NOT EXISTS `producer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
-  `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `siret` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `siret` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `producer_user_FK` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `producer`
@@ -198,9 +163,9 @@ INSERT INTO `producer` (`id`, `id_user`, `location`, `siret`) VALUES
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `img_url` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img_url` text COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
   `unit_price` int(11) NOT NULL,
   `availability` tinyint(1) NOT NULL,
   `id_category` int(11) NOT NULL,
@@ -208,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`id`),
   KEY `product_category_FK` (`id_category`),
   KEY `product_producer_FK` (`id_producer`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `product`
@@ -251,26 +216,23 @@ DROP TABLE IF EXISTS `quantity`;
 CREATE TABLE IF NOT EXISTS `quantity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_product` int(11) NOT NULL,
-  `id_order` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_order` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `quantity`
 --
 
 INSERT INTO `quantity` (`id_product`, `id_order`, `quantity`) VALUES
-(3, '1080901668', 2),
 (3, '1129784005', 4),
 (4, '1162599804', 2),
 (4, '1185351490', 3),
 (5, '1163993588', 3),
-(11, '100', 3),
 (12, '1237429351', 4),
 (15, '1280071483', 4),
 (23, '1404145870', 1),
-(24, '100', 3),
 (24, '1080901668', 3),
 (24, '1219327142', 9),
 (24, '1409219578', 2),
@@ -279,7 +241,6 @@ INSERT INTO `quantity` (`id_product`, `id_order`, `quantity`) VALUES
 (34, '155697529', 4),
 (35, '1569947801', 5),
 (42, '1633747987', 2),
-(43, '170440443', 2),
 (45, '175144220', 5),
 (52, '339711842', 2),
 (53, '34873020', 4),
@@ -301,12 +262,12 @@ INSERT INTO `quantity` (`id_product`, `id_order`, `quantity`) VALUES
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `mail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user`
@@ -314,9 +275,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `name`, `phone`, `mail`, `password`) VALUES
 (1, 'Lucas Monty\r\n', '+33334509230\r\n\r\n', 'derek83@example.net', '$2y$10$S.OpIxImOr.YqBWnwVYE9OGZFmqGU2PxYK/SrfT3hH1ZmUhtOmkp2'),
-(2, 'Vivienne Cartier\r\n', '+33258827624\r\n\r\n', 'rturcotte@example.com', '$2y$10$S.OpIxImOr.YqBWnwVYE9OGZFmqGU2PxYK/SrfT3hH1ZmUhtOmkp2'),
+(2, 'Vivienne Cartier\r\n', '+33258827624\r\n\r\n', 'manager@manager.com', '$2y$10$S.OpIxImOr.YqBWnwVYE9OGZFmqGU2PxYK/SrfT3hH1ZmUhtOmkp2'),
 (3, 'Cheney Loiselle', '+33366325915\r\n\r\n', 'madie.nikolaus@example.com', '$2y$10$S.OpIxImOr.YqBWnwVYE9OGZFmqGU2PxYK/SrfT3hH1ZmUhtOmkp2'),
-(4, 'Fitz Marchesseault', '+33344335619\r\n\r\n', 'jordane67@example.net', '$2y$10$S.OpIxImOr.YqBWnwVYE9OGZFmqGU2PxYK/SrfT3hH1ZmUhtOmkp2'),
+(4, 'Fitz Marchesseault', '+33344335619\r\n\r\n', 'producer@producer.com', '$2y$10$S.OpIxImOr.YqBWnwVYE9OGZFmqGU2PxYK/SrfT3hH1ZmUhtOmkp2'),
 (5, 'Florismart Mailly', '+33533721657\r\n\r\n', 'kuhlman.stacey@example.net', '$2y$10$S.OpIxImOr.YqBWnwVYE9OGZFmqGU2PxYK/SrfT3hH1ZmUhtOmkp2'),
 (6, 'Jeanette Despins', '+33362222397\r\n\r\n', 'nola78@example.org', '$2y$10$S.OpIxImOr.YqBWnwVYE9OGZFmqGU2PxYK/SrfT3hH1ZmUhtOmkp2'),
 (7, 'Chandler Ricard', '+33417510746\r\n\r\n', 'leilani.schaden@example.com', '$2y$10$S.OpIxImOr.YqBWnwVYE9OGZFmqGU2PxYK/SrfT3hH1ZmUhtOmkp2'),
