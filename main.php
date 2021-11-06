@@ -141,8 +141,8 @@ $router->addRoute('clientOrder',
                   'viewOrder',                
                 AppAuthentification::ACCESS_LEVEL_NONE);
 
-$router->addRoute('checkOrder',
-                  '/checkOrder/',  
+$router->addRoute('checkClientOrder',
+                  '/checkClientOrder/',  
                   '\app\control\ClientController',  
                   'checkOrder',                
                 AppAuthentification::ACCESS_LEVEL_NONE);
@@ -151,6 +151,12 @@ $router->addRoute('clientcheckout', //alias
                   '/clientcheckout/',   //route
                   '\app\control\ClientController',   // controller
                   'viewCheckout',                 // methode
+                  AppAuthentification::ACCESS_LEVEL_NONE);
+
+$router->addRoute('clientAddOrder', //alias
+                  '/clientAddOrder/',   //route
+                  '\app\control\ClientController',   // controller
+                  'addToOrder',                 // methode
                   AppAuthentification::ACCESS_LEVEL_NONE);
 
 $router->addRoute('removeProduct',

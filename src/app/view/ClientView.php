@@ -57,13 +57,15 @@ HEADER;
         $products_link = $route->urlFor('clientProducts');
         $producers_link = $route->urlFor('clientProducers');
         $order_link = $route->urlFor('clientOrder');
+        $checkout_link = $route->urlFor('clientcheckout');
 
         $header_nav_html = <<<NAV
-<a href='$home_link'>HOME</a>
-<a href='$products_link'>Products</a>
-<a href='$producers_link'>Producers</a>
-<a href='$order_link'>Order</a>
-NAV;
+            <a href='$home_link'>HOME</a>
+            <a href='$products_link'>Products</a>
+            <a href='$producers_link'>Producers</a>
+            <a href='$order_link'>Order</a>
+            <a href='$checkout_link'>Checkout</a>
+        NAV;
 
         return $header_nav_html;
     }
@@ -250,7 +252,7 @@ PRODS;
     {
         $route = new Router();
         $order_html = <<<ORDER
-        <form action="{$route->urlFor("checkOrder")}" method="post">
+        <form action="{$route->urlFor("checkClientOrder")}" method="post">
                 <input type="text" name="orderId" placeholder="Order confirm number" />
                 <input value="Check" type="submit">
             </form> 
@@ -268,7 +270,17 @@ PRODS;
     private function renderCheckout()
     {
         $route = new Router();
-        $html = <<<CHECKOUT
+        $html="";
+        if(isset($_SESSION['orderID'])){
+            $id=$_SESSION['orderID'];
+            $html .= <<<CHECKOUT
+            <h1>Order confirmed: $id</h1>
+        CHECKOUT;
+        unset($_SESSION['orderID']);
+        }        
+
+
+        $html .= <<<CHECKOUT
             <h1>Checkout to do</h1>
             <table>
             <tr>

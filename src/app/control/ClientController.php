@@ -109,8 +109,6 @@ class ClientController extends \mf\control\AbstractController {
             foreach ($_SESSION['orders'] as $key => $value) {
                 array_push($products,Product::find($key));
             }
-        }else{
-            var_dump("ops no products");
         }
         $view_order = new ClientView($products);
         $view_order->render('renderCheckout');
@@ -172,6 +170,7 @@ class ClientController extends \mf\control\AbstractController {
             $order->products()->attach($key,['quantity' => 3]);
         }
         unset($_SESSION['orders']);
+        $_SESSION['orderID']=$id;
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
@@ -189,8 +188,6 @@ class ClientController extends \mf\control\AbstractController {
         $route = new Router();
         $_GET['id'] = $id_product; // TO DO ajouter un param optionnel à execute Route
         header('Location: ' . $_SERVER['HTTP_REFERER']);
-        // $view_back_to_product = new ClientView('');
-        // $view_back_to_product->render('renderProduct');
     }
 
     // public function viewCategories($categories)
