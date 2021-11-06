@@ -107,10 +107,12 @@ EOT;
 
 
         $body = <<<EOT
+<section id="managerBody">
 ${header}
 <main>
 ${center}
 </main>
+<section>
 EOT;
 
         return $body;
