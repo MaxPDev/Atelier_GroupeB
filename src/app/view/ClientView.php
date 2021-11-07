@@ -23,9 +23,8 @@ class ClientView extends \mf\view\AbstractView
     /**
      * Render header
      */
-    private function renderHeader()
+    private function renderHeader($title)
     {
-        $title = $_SESSION["title"];
         $nav = $this->renderHeaderNav();
         $header_html = <<<HEADER
         <header>
@@ -50,7 +49,6 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderHome()
     {
-        $_SESSION["title"] = "Le Hangar Local";
         $html = <<<EOT
         <main id="home">
             <div>
@@ -441,9 +439,30 @@ class ClientView extends \mf\view\AbstractView
      */
     public function renderBody($selector)
     {
+        $title = "Le Hangar Local";
+        switch ($selector) {
+            case 'renderProducer':
+                $title= "Producer";
+                break;
+            case 'renderAllProducts':
+                $title = "Products";
+                break;
+            case 'renderProducers':
+                $title = "Producers";
+                break;
+            case 'renderOrder':
+                $title = "Order";
+                break;
+            case 'renderCheckout':
+                $title = "Checkout";
+                break;
+            case 'renderProduct':
+                $title = "Product";
+                break;
+        }
 
         $auth = new AppAuthentification;
-        $header = $this->renderHeader();
+        $header = $this->renderHeader($title);
         $footer = $this->renderFooter();
         $center = $this->$selector();
 
