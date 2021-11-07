@@ -147,7 +147,7 @@ class ClientView extends \mf\view\AbstractView
             if (isset($_SESSION['orders'][$product->id])) {
                 $value = $_SESSION['orders'][$product->id];
             } else {
-                $value = 0;
+                $value = 1;
             }
 
             $products_list .= <<<EOT
