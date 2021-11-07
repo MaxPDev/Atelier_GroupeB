@@ -1,14 +1,13 @@
-@mixin grid($nb_col, $col_width,$nb_rows, $row_width, $gap){
+@mixin grid($grid_cols, $grid_rows, $lg_gut) {
     display: grid;
-    grid-template-columns: repeat($nb_col, $col_width);
-    grid-template-rows: repeat($nb_rows, $row_width);
-    grid-auto-flow: row;
-    grid-gap: $gap; //préciser pour row & column
+    grid-template-columns: repeat($grid_cols, 1fr);
+    grid-template-rows: repeat($grid_rows, 1fr);
+    gap: $lg_gut;
 }
 
-@mixin element($column_start, $column_end, $row_start, $row_end){
-    grid-column-start: $column_start;
-    grid-column-end: $column_end;
+@mixin placement($row_start, $row_fin, $col_debut, $col_fin) {
     grid-row-start: $row_start;
-    grid-row-end: $row_end;
+    grid-row-end: $row_fin;
+    grid-column-start: $col_debut;
+    grid-column-end: $col_fin;
 }
