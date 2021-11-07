@@ -198,6 +198,10 @@ body {
 #clientbody #productsDetails div:nth-child(2) ul li {
   padding: 10px;
 }
+#clientbody #productsDetails div:nth-child(2) ul li h3 {
+  font-weight: normal;
+  color: darkgreen;
+}
 #clientbody #productsDetails div:nth-child(2) ul form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

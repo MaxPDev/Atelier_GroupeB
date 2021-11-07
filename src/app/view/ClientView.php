@@ -190,7 +190,7 @@ class ClientView extends \mf\view\AbstractView
         $product = $this->data[0];
         $producer = $this->data[1]; //passer producer en param ou select seulent id + name
         $producer_user = $producer->user;
-        // to do : add to panier
+
         $add_to_order = $route->urlFor('clientAddOrder');
 
         if (isset($_SESSION['orders'][$product->id])) {
@@ -199,12 +199,17 @@ class ClientView extends \mf\view\AbstractView
             $value = 1;
         }
 
+        $link_producer = $route->urlFor('clientProducer', [['id', $producer->id]]);
+
         $product_article = <<<IMG
             <div><img src="$product->img_url"></div>
             <div>
                 <ul>
                     <li>
                         <h2>$product->name</h2>
+                    </li>
+                    <li>
+                        <a href="$link_producer"><h3>$producer_user->name</h3></a>
                     </li>
                     <li>
                         <h2>$product->unit_price €</h2>
