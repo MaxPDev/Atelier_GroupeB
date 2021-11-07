@@ -424,4 +424,20 @@ body {
   }
 }
 
+.alert-danger {
+  background-color: darkred;
+  color: #ffffff;
+  border-radius: 5px;
+  grid-column: 1/8;
+  text-align: center;
+}
+
+.alert-success {
+  background-color: darkgreen;
+  color: #ffffff;
+  border-radius: 5px;
+  grid-column: 1/8;
+  text-align: center;
+}
+
 /*# sourceMappingURL=clientStyle.css.map */

@@ -352,33 +352,31 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderCheckout()
     {
-        $orderTotal = 0;
         $route = new Router();
+
+        $orderTotal = 0;
         $html = "";
         if (isset($_SESSION['orderID'])) {
             $id = $_SESSION['orderID'];
             $html .= <<<CHECKOUT
-            <h3 class="alert-success">Order confirmed: $id</h3>
-        CHECKOUT;
+                <main id="checkout">
+                    <h1 class="alert-success"> Order confirmed: $id </h1>
+                </main>
+            CHECKOUT;
             unset($_SESSION['orderID']);
-        }
-
-        if (isset($_SESSION['orders'])) {
-
+        } else if (isset($_SESSION['orders'])) {
             $html .= <<<CHECKOUT
-        <main id="checkout">
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Product</th>
-                        <th>Unit Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                        <th></th>
-                    </tr>
-        
-            
-        CHECKOUT;
+                <main id="checkout">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Product</th>
+                                <th>Unit Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                CHECKOUT;
 
             foreach ($this->data as $product) {
                 $product_link = $route->urlFor('clientProduct', [['id', $product->id]]);
@@ -390,20 +388,18 @@ class ClientView extends \mf\view\AbstractView
                 $addQte = $route->urlFor('updateQuantity', [['id', $product->id], ['action', "add"]]);
 
                 $html .= <<<PRODUCT
-            <tr>
-              <td>$product->name</td>
-              <td>$product->unit_price €</td>
-              <td><a href='$remQte'>-</a> $qte <a href='$addQte'>+</a></td>
-              <td>$total €</td>
-              <td><a href='$delete_link'>Del</a></td>
-            </tr>
-            PRODUCT;
+                    <tr>
+                    <td><a href="$product_link">$product->name</a></td>
+                    <td>$product->unit_price €</td>
+                    <td><a href='$remQte'>-</a> $qte <a href='$addQte'>+</a></td>
+                    <td>$total €</td>
+                    <td><a href='$delete_link'>Del</a></td>
+                    </tr>
+                    PRODUCT;
             }
 
-
-
             $html .= <<<PRODUCT
-            </tbody>
+                </tbody>
             </table>
             <hr>
             <h2>Total: $orderTotal</h2>
@@ -421,6 +417,12 @@ class ClientView extends \mf\view\AbstractView
                 </div>
             </main>
             PRODUCT;
+        } else {
+            $html .= <<<CHECKOUT
+                <main id="checkout">
+                    <h1 class="alert-danger"> Your Cart is empty </h1>
+                </main>
+            CHECKOUT;
         }
         return $html;
     }
@@ -442,7 +444,7 @@ class ClientView extends \mf\view\AbstractView
         $title = "Le Hangar Local";
         switch ($selector) {
             case 'renderProducer':
-                $title= "Producer";
+                $title = "Producer";
                 break;
             case 'renderAllProducts':
                 $title = "Products";

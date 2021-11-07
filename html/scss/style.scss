@@ -600,23 +600,4 @@ $darkGreen : #255d2e;
                 }
             }
         }
-    
-    
-        .alert-danger{
-            background-color: rgba(255, 0, 0, 0.685);
-            color: #ffffff;
-            padding: 1%;
-            border-radius: 5px;
-            grid-column: 1/8;
-            text-align: center;
-        }
-          
-        .alert-success{
-            background-color: rgba(6, 173, 6, 0.685);
-            color: #ffffff;
-            padding: 1%;
-            border-radius: 5px;
-            grid-column: 1/8;
-            text-align: center;
-        } 
     }
