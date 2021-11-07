@@ -147,7 +147,7 @@ class ClientView extends \mf\view\AbstractView
             if (isset($_SESSION['orders'][$product->id])) {
                 $value = $_SESSION['orders'][$product->id];
             } else {
-                $value = 1;
+                $value = 0;
             }
 
             $products_list .= <<<EOT
@@ -248,7 +248,8 @@ class ClientView extends \mf\view\AbstractView
                     <li><img src="../../html/elements/producer-avatar.png" alt=""></li>
                     <li>$producer_user->mail</li>
                     <li>Products : 3</li>
-                    <li>$producer_user->phone</li>
+                    <li>$producer_user->phone | $producer->location</li>
+                    <li>Siret : $producer->siret</li>
                 </ul>
             </div>
         PROD;
@@ -256,7 +257,16 @@ class ClientView extends \mf\view\AbstractView
         // html for producer's products
         $producer_product_html = '<main id="store"><section id="products">';
 
+        $add_to_order = $route->urlFor('clientAddOrder');
+
         foreach ($producer_products as $product) {
+
+            if (isset($_SESSION['orders'][$product->id])) {
+                $value = $_SESSION['orders'][$product->id];
+            } else {
+                $value = 1;
+            }
+
             $product_link = $route->urlFor('clientProduct', [['id', $product->id]]);
 
             $producer_product_html .= <<<PRODUCT
@@ -265,6 +275,12 @@ class ClientView extends \mf\view\AbstractView
                 <ul>
                     <li><b><a href="$product_link">$product->name</a></b></li>
                     <li>$product->unit_price €</li>
+                    <li>
+                        <form method="post" action="$add_to_order">
+                            <input type="number" step="1" min="1" value="$value" name="quantity" required>
+                            <button type="submit" name="product_id" value="$product->id" ><img src="../../html/elements/checkout-btn.png" alt=""></button>
+                        </form>
+                    </li>
                 </ul>
             </div>
             PRODUCT;
