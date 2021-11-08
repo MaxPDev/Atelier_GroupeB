@@ -252,7 +252,7 @@ class ClientView extends \mf\view\AbstractView
                     <li><h4>$producer_user->name</h4></li>
                     <li><img src="../../html/elements/producer-avatar.png" alt=""></li>
                     <li>$producer_user->mail</li>
-                    <li>Products : 3</li>
+                    <li>Products : {$producer->products->count()} </li>
                     <li>$producer_user->phone | $producer->location</li>
                     <li>Siret : $producer->siret</li>
                 </ul>
@@ -322,8 +322,8 @@ class ClientView extends \mf\view\AbstractView
                     <li>$producer_user->name</li>
                     <li><img src="../../html/elements/producer-avatar.png" alt=""></li>
                     <li>$producer->location</li>
-                    <li>Products : {$producer->products->count()}</li>
                     <li>Orders : 15 orders</li>
+                    <li>Products : {$producer->products->count()}</li>
                     <li><a href='$link_producer'>See more</a></li>
                 </ul>
             </div>
