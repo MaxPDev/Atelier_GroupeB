@@ -25,13 +25,15 @@ class ProducerView extends \mf\view\AbstractView
      */
     private function renderHeader()
     {
+        $req = new HttpRequest();
+
         $router = new Router();
 
         $producer = User::find($_SESSION['user_login']);
 
         $html = <<<EOT
             <header id="headerManager">
-                <img id="header_logo" src="../../html/img/logo.png" alt="Le Hangar Local">
+                <img id="header_logo" src="$req->root/html/img/logo.png" alt="Le Hangar Local">
                 <h3>{$producer->name}</h3>
                 <nav>
                     <ul>
@@ -164,10 +166,12 @@ EOT;
      */
     public function renderProfile()
     {
+        $req = new HttpRequest();
+
         $producer = $this->data;
 
         $html = <<<EOT
-        <img src="../../html/elements/producer-avatar.png" alt="pictureProfileProducer">
+        <img src="$req->root/html/elements/producer-avatar.png" alt="pictureProfileProducer">
         <h1>{$producer->user->name}</h1>
         <section id="producerProfile">
             <div>
