@@ -25,9 +25,8 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderHeader($title)
     {
-        $req = new HttpRequest();
-        var_dump($req);
-        // $req->root;
+        $req = new HttpRequest();   
+
         $nav = $this->renderHeaderNav();
         $header_html = <<<HEADER
         <header>
@@ -52,17 +51,18 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderHome()
     {
+        $req = new HttpRequest();
         $html = <<<EOT
         <main id="home">
             <div>
-                <img src="../../html/elements/icon-1.png" alt="">
+                <img src="$req->root/html/elements/icon-1.png" alt="">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                     porro ullam obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus
                     dicta quia ducimus!</p>
             </div>
 
             <div>
-                <img src="../../html/elements/icon-2.png" alt="">
+                <img src="$req->root/html/elements/icon-2.png" alt="">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                     porro ullam
                     obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
@@ -70,7 +70,7 @@ class ClientView extends \mf\view\AbstractView
             </div>
 
             <div>
-                <img src="../../html/elements/icon-3.png" alt="">
+                <img src="$req->root/html/elements/icon-3.png" alt="">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                     porro ullam
                     obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
@@ -87,6 +87,8 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderHeaderNav()
     {
+        $req = new HttpRequest();
+
         $route = new Router();
 
         $home_link = $route->urlFor('home');
@@ -101,8 +103,8 @@ class ClientView extends \mf\view\AbstractView
             <a href='$products_link'>Products</a>
             <a href='$producers_link'>Producers</a>
             <a href='$order_link'>Order</a>
-            <a href='$checkout_link'><img src="../../html/elements/checkout-icon.png"></a>
-            <a href='$login_link'><img src="../../html/elements/avatar.png"></a>
+            <a href='$checkout_link'><img src="$req->root/html/elements/checkout-icon.png"></a>
+            <a href='$login_link'><img src="$req->root/html/elements/avatar.png"></a>
         NAV;
 
         return $header_nav_html;
@@ -134,6 +136,8 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderAllProducts()
     {
+        $req = new HttpRequest();
+
         $route = new Router();
 
         $add_to_order = $route->urlFor('clientAddOrder');
@@ -162,7 +166,7 @@ class ClientView extends \mf\view\AbstractView
                                     <li>
                                         <form method="post" action="$add_to_order">
                                             <input type="number" step="1" min="1" value="$value" name="quantity" required>
-                                            <button type="submit" name="product_id" value="$product->id" ><img src="../../html/elements/checkout-btn.png" alt=""></button>
+                                            <button type="submit" name="product_id" value="$product->id" ><img src="$req->root/html/elements/checkout-btn.png" alt=""></button>
                                         </form>
                                     </li>
                                 </ul>
@@ -237,6 +241,8 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderProducer()
     {
+        $req = new HttpRequest();
+
         $route = new Router();
 
         $producer = $this->data;
@@ -248,7 +254,7 @@ class ClientView extends \mf\view\AbstractView
             <div id="producerProducts">
                 <ul>
                     <li><h4>$producer_user->name</h4></li>
-                    <li><img src="http://localhost/piscagli5u/Atelier_GroupeB/html/elements/producer-avatar.png" alt=""></li>
+                    <li><img src="$req->root/html/elements/producer-avatar.png" alt=""></li>
                     <li>$producer_user->mail</li>
                     <li>Products : {$producer->products->count()} </li>
                     <li>$producer_user->phone | $producer->location</li>
@@ -281,7 +287,7 @@ class ClientView extends \mf\view\AbstractView
                     <li>
                         <form method="post" action="$add_to_order">
                             <input type="number" step="1" min="1" value="$value" name="quantity" required>
-                            <button type="submit" name="product_id" value="$product->id" ><img src="../../html/elements/checkout-btn.png" alt=""></button>
+                            <button type="submit" name="product_id" value="$product->id" ><img src="$req->root/html/elements/checkout-btn.png" alt=""></button>
                         </form>
                     </li>
                 </ul>
@@ -305,6 +311,8 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderProducers()
     {
+        $req = new HttpRequest();
+
         $route = new Router();
         $producers = $this->data;
         $producers_article = '<main id="producer">';
@@ -318,7 +326,7 @@ class ClientView extends \mf\view\AbstractView
             <div>
                 <ul>
                     <li>$producer_user->name</li>
-                    <li><img src="../../html/elements/producer-avatar.png" alt=""></li>
+                    <li><img src="$req->root/html/elements/producer-avatar.png" alt=""></li>
                     <li>$producer->location</li>
                     <li>Orders : 15 orders</li>
                     <li>Products : {$producer->products->count()}</li>
