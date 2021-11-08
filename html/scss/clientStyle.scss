@@ -1,6 +1,6 @@
 @import "_clientMixin.scss";
 
-$gutt: 0px;
+$gutt: 0;
 $grid_cols: 11;
 $screen_size_s: 768;
 
@@ -23,11 +23,11 @@ body{
     }
 
     header {
-        @include grid(1, 2, 10px);
+        @include grid(1, 2, .625em);
 
         section{
             @include placement(1, 3, 1, 2);
-            @include grid(1, 1, 10px);
+            @include grid(1, 1, .625em);
 
             h1{
                 @include placement(1, 1, 1, 2);
@@ -46,27 +46,27 @@ body{
 
         nav{
             @include placement(1, 1, 1, 2);
-            @include grid(1, 1, 10px);
+            @include grid(1, 1, .625em);
 
             div{
                 @include placement(1, 1, 1, 2);
-                margin: 20px;
+                margin: 1.25em;
                 text-align: left;
                 img{
-                    width : 100px;
+                    width : 6.25em;
                 }
             }
 
             
             div:nth-child(2){
                 @include placement(1, 1, 2, 3);
-                margin: 20px;
+                margin: 1.25em;
                 a{
                     color: aliceblue;
                     text-decoration: none;
                     img{
-                        width: 25px;
-                        margin: 2px;
+                        width: 2.3125em;
+                        margin: .125em;
                     }
                 }
             }
@@ -74,17 +74,17 @@ body{
     }
 
     main{
-        padding: 30px;
+        padding: 1.875em;
     }
 
     #home{
-        @include grid(3, 1, 10px);
+        @include grid(3, 1, .625em);
 
         div{
-            margin-bottom: 50px;
+            margin-bottom: 3.125em;
             img{
-                width: 100px;
-                margin-bottom: 20px;
+                width: 6.25em;
+                margin-bottom: 1.25em;
             }
         }
 
@@ -102,18 +102,18 @@ body{
     }
 
     #menu{
-        margin-bottom: 20px;
+        margin-bottom: 1.25em;
         ul{
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
 
             li{
-                border: 2px solid green;
+                border: .125em solid green;
                 border-radius: 1em;
                 flex-basis: 15%;
-                margin: 5px;
-                padding: 0 10px;
+                margin: .3125em;
+                padding: 0 .625em;
 
                 a{
                     color: green;
@@ -125,18 +125,18 @@ body{
 
     #products{
         div{
-            border: 1px solid gray;
-            box-shadow: 0 0 20px  gray;
-            border-radius: 10px;
+            border: .0625em solid gray;
+            box-shadow: 0 0 1.25em  gray;
+            border-radius: .625em;
 
             img{
                 width: 100%;
-                border-radius: 10px 10px 0 0;
+                border-radius: .625em .625em 0 0;
             }
 
             ul{
-                padding: 10px;
-                @include grid(2, 2, 10px);
+                padding: .625em;
+                @include grid(2, 2, .625em);
 
                 li{
                     color: darkgreen;
@@ -151,13 +151,13 @@ body{
                 li:nth-child(3){
                     @include placement(2, 3, 2, 3);
                     form{
-                        @include grid(2, 1, 5px);
+                        @include grid(2, 1, .3125em);
                         button{                        
                             @include placement(1, 2, 2, 3);
                             border: none;
                             background-color: white;
                             img{
-                                width: 40px;
+                                width: 2.5em;
                             }
                         }
                         input{
@@ -175,15 +175,15 @@ body{
     #productsDetails{
         div:nth-child(1){
             img{
-                border-radius: 20px;
-                box-shadow: 0 0 20px gray;
+                border-radius: 1.25em;
+                box-shadow: 0 0 1.25em gray;
                 width: 100%;
             }
         }
         div:nth-child(2){
             ul{
                 li{
-                    padding: 10px;
+                    padding: .625em;
                     h3{
                         font-weight: normal;
                         color: darkgreen;
@@ -191,13 +191,13 @@ body{
                 }
                 
                 form{
-                    @include grid(2, 1, 5px);
+                    @include grid(2, 1, .3125em);
                     button{
                         color: white;
                         background-color: darkgreen;
-                        padding: 10px;
+                        padding: .625em;
                         font-size: 1em;
-                        border-radius: 20px;
+                        border-radius: 1.25em;
                     }
                     input{
                         background-color: gray;
@@ -210,17 +210,17 @@ body{
     }
 
     #producerProducts{
-        margin: 30px;
+        margin: 1.875em;
         background-color: green;
         color: white;
-        border-radius: 20px;
+        border-radius: 1.25em;
 
         img {
-            width: 100px;
+            width: 6.25em;
         }
         
         li{
-            margin-top: 10px;
+            margin-top: .625em;
             a{
             text-decoration: none;
             color: white;
@@ -229,8 +229,8 @@ body{
 
         li:nth-child(6){
             background-color: gray;
-            border-radius: 0 0 20px 20px;
-            padding: 10px;
+            border-radius: 0 0 1.25em 1.25em;
+            padding: .625em;
         }
     }
 
@@ -238,14 +238,14 @@ body{
         div{
             background-color: green;
             color: white;
-            border-radius: 20px;
+            border-radius: 1.25em;
      
             img {
-                width: 100px;
+                width: 6.25em;
             }
             
             li{
-                margin-top: 10px;
+                margin-top: .625em;
                 a{
                 text-decoration: none;
                 color: white;
@@ -254,26 +254,26 @@ body{
 
             li:nth-child(6){
                 background-color: gray;
-                border-radius: 0 0 20px 20px;
-                padding: 10px;
+                border-radius: 0 0 1.25em 1.25em;
+                padding: .625em;
             }
         }
     }
 
     #checkOrder{        
-        @include grid(1, 1, 20px);
+        @include grid(1, 1, 1.25em);
         input[type="submit"]{
             color: white;
             background-color: darkgreen;
-            padding: 10px;
+            padding: .625em;
             font-size: 1em;
-            border-radius: 20px;
+            border-radius: 1.25em;
         }
         input[type="text"]{
             background-color: white;
-            border: darkgreen solid 2px;
-            border-radius: 20px;
-            padding: 10px;
+            border: darkgreen solid .125em;
+            border-radius: 1.25em;
+            padding: .625em;
             font-size: 1em;
         }
     }
@@ -286,30 +286,30 @@ body{
             }
         }
         hr, div{
-            margin: 20px;
+            margin: 1.25em;
         }
         h2{
             color: darkgreen;
         }
         div a{
-            margin: 20px;
+            margin: 1.25em;
             background-color: green;
             color: white;
             text-decoration: none;
-            padding: 10px;
-            border-radius: 20px;
+            padding: .625em;
+            border-radius: 1.25em;
         }
     }
 
     #open-modal{
         form{
-            margin: 10px;
-            @include grid(1, 1, 10px);
+            margin: .625em;
+            @include grid(1, 1, .625em);
             input {
-                padding: 10px;
-                border: 2px solid darkgreen;
+                padding: .625em;
+                border: .125em solid darkgreen;
                 color: darkgreen;
-                border-radius: 20px;
+                border-radius: 1.25em;
                 font-size: 1em;
             }
             input[type=submit]{
@@ -319,7 +319,7 @@ body{
         }
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 48em) {
         header {
             section{
                 h1{
@@ -330,16 +330,16 @@ body{
             nav{
                 div{
                     img{
-                        width : 100px;
+                        width : 6.25em;
                     }
                 }
                 div:nth-child(2){
                     a{
                         font-size: 1em;
-                        margin: 5px;
+                        margin: .3125em;
                         img{
-                            width: 23px;
-                            margin: 2px;
+                            width: 1.4375em;
+                            margin: .125em;
                         }
                     }
                 }
@@ -349,20 +349,20 @@ body{
 
         #store{
             #products{
-                @include grid(3, 1, 20px);
+                @include grid(3, 1, 1.25em);
             }
         }
 
         #productsDetails{
-            @include grid(2, 1, 20px);
+            @include grid(2, 1, 1.25em);
         }
 
         #producer{
-            @include grid(4, 1, 10px);
+            @include grid(4, 1, .625em);
         }
     }
 
-    @media (min-width: 481px) and (max-width: 767px) {
+    @media (min-width: 30.0625em) and (max-width: 47.9375em) {
         header {
             section{
                 h1{
@@ -372,19 +372,19 @@ body{
 
             nav{
                 div{
-                    margin: 10px;
+                    margin: .625em;
                     img{
-                        width : 80px;
+                        width : 5em;
                     }
                 }
                 div:nth-child(2){
-                    margin: 10px;
+                    margin: .625em;
                     a{
-                        margin: 2px;
+                        margin: .125em;
                         font-size: .9em;
                         img{
-                            width: 20px;
-                            margin: 2px;
+                            width: 1.25em;
+                            margin: .125em;
                         }
                     }
                 }
@@ -393,16 +393,16 @@ body{
 
         #store{
             #products{
-                @include grid(2, 1, 20px);
+                @include grid(2, 1, 1.25em);
             }
         }
 
         #producer{
-            @include grid(3, 1, 10px);
+            @include grid(3, 1, .625em);
         }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 30em) {
         header {
             section{
                 h1{
@@ -412,19 +412,19 @@ body{
 
             nav{
                 div{
-                    margin: 5px;
+                    margin: .3125em;
                     img{
-                        width : 60px;
+                        width : 3.75em;
                     }
                 }
                 div:nth-child(2){
-                    margin: 5px;
+                    margin: .3125em;
                     a{
-                        margin: 1px;
+                        margin: 0.0625em;
                         font-size: .8em;
                         img{
-                            width: 17px;
-                            margin: 2px;
+                            width: 1.0625em;
+                            margin: .125em;
                         }
                     }
                 }
@@ -432,7 +432,7 @@ body{
         }
 
         #home{
-            @include grid(1, 3, 10px);
+            @include grid(1, 3, .625em);
             
             div:nth-child(1){
                 @include placement(1, 2 , 1, 3);
@@ -449,7 +449,7 @@ body{
 
         #store{
             #products{
-                @include grid(1, 1, 20px);
+                @include grid(1, 1, 1.25em);
             }
         }
     }
@@ -458,7 +458,7 @@ body{
 .alert-danger{
     background-color: darkred;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: .3125em;
     grid-column: 1/8;
     text-align: center;
 }
@@ -466,7 +466,7 @@ body{
 .alert-success{
     background-color: darkgreen;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: .3125em;
     grid-column: 1/8;
     text-align: center;
 } 
