@@ -46,10 +46,11 @@ class Router extends AbstractRouter {
             $controler->$fn();
         } else {
             //Default route
-            $defaultUrl = self::$aliases["default"];
+            $defaultUrl = self::$aliases['default'];
             $controler = new self::$routes[$defaultUrl][0]();
             $fn = self::$routes[$defaultUrl][1];
             $controler->$fn();
+            var_dump(self::$routes[$defaultUrl][0]);
         }
     }
 

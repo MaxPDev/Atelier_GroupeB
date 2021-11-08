@@ -6,7 +6,7 @@ use mf\router\Router;
 use app\auth\AppAuthentification;
 
 
-use mf\utils\HttpRequest as HttpRequest;
+use mf\utils\HttpRequest;
 
 class ClientView extends \mf\view\AbstractView
 {
@@ -25,15 +25,18 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderHeader($title)
     {
+        $req = new HttpRequest();
+        var_dump($req);
+        // $req->root;
         $nav = $this->renderHeaderNav();
         $header_html = <<<HEADER
         <header>
             <section>
-                <img src="../../html/elements/header-bg-trimed.png" alt="">
+                <img src="$req->root/html/elements/header-bg-trimed.png" alt="">
                 <h1>$title</h1>
             </section>
             <nav>
-                <img src="../../html/img/logo.png" alt="logo">
+                <img src="$req->root/html/img/logo.png" alt="logo">
                 <div>
                     $nav
                 </div>
@@ -205,12 +208,7 @@ class ClientView extends \mf\view\AbstractView
             <div><img src="$product->img_url"></div>
             <div>
                 <ul>
-                    <li>
-                        <h2>$product->name</h2>
-                    </li>
-                    <li>
-                        <a href="$link_producer"><h3>$producer_user->name</h3></a>
-                    </li>
+                    <li>main.php
                     <li>
                         <h2>$product->unit_price €</h2>
                     </li>
@@ -250,7 +248,7 @@ class ClientView extends \mf\view\AbstractView
             <div id="producerProducts">
                 <ul>
                     <li><h4>$producer_user->name</h4></li>
-                    <li><img src="../../html/elements/producer-avatar.png" alt=""></li>
+                    <li><img src="http://localhost/piscagli5u/Atelier_GroupeB/html/elements/producer-avatar.png" alt=""></li>
                     <li>$producer_user->mail</li>
                     <li>Products : {$producer->products->count()} </li>
                     <li>$producer_user->phone | $producer->location</li>
