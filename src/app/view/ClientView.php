@@ -35,8 +35,16 @@ class ClientView extends \mf\view\AbstractView
         <header>
             <section>
                 <img src="$req->root/html/elements/header-bg-trimed.png" alt="">
+                <! --picture>
+                    <source media="(min-width: 62em)"
+                            srcset="$req->root/html/elements/header-bg-trimed.png 1900w,
+                                    $req->root/html/elements/header-bg-complete.png 600w"
+                            sizes="50vw">
+                            <img src="$req->root/html/elements/header-bg-complete.png" alt="background">
+                    </picture -->
                 <h1>$title</h1>
             </section>
+
             <nav>
                 <div>
                     <a href="$home_link"><img src="$req->root/html/img/logo.png" alt="logo"></a>
