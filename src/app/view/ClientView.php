@@ -167,12 +167,15 @@ class ClientView extends \mf\view\AbstractView
                 $value = 0;
             }
 
+            $link_producer = $route->urlFor('clientProducer', [['id', $product->producer->id]]);
+
             $products_list .= <<<EOT
                             <div>
                                 <img src="$product->img_url" alt="">
                                 <ul>
                                     <li><b><a href="$product_link">$product->name </a></b></li>
                                     <li>$product->unit_price €</li>
+                                    <li><a href="$link_producer">{$product->producer->user->name}</a></li>
                                     <li>
                                         <form method="post" action="$add_to_order">
                                             <input type="number" step="1" min="1" value="$value" name="quantity" required>
@@ -298,6 +301,7 @@ class ClientView extends \mf\view\AbstractView
                 <ul>
                     <li><b><a href="$product_link">$product->name</a></b></li>
                     <li>$product->unit_price €</li>
+                    <li>{$producer->user->name}</li>
                     <li>
                         <form method="post" action="$add_to_order">
                             <input type="number" step="1" min="1" value="$value" name="quantity" required>

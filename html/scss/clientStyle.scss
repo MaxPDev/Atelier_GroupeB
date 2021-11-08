@@ -151,7 +151,12 @@ body{
                 }
 
                 li:nth-child(3){
-                    @include placement(2, 3, 2, 3);
+                    a{
+                        color: darkgreen;
+                    }
+                }
+
+                li:nth-child(4){
                     form{
                         @include grid(2, 1, .3125em);
                         button{                        
