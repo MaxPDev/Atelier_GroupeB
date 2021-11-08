@@ -147,7 +147,7 @@ class ClientView extends \mf\view\AbstractView
             if (isset($_SESSION['orders'][$product->id])) {
                 $value = $_SESSION['orders'][$product->id];
             } else {
-                $value = 1;
+                $value = 0;
             }
 
             $products_list .= <<<EOT
@@ -196,7 +196,7 @@ class ClientView extends \mf\view\AbstractView
         if (isset($_SESSION['orders'][$product->id])) {
             $value = $_SESSION['orders'][$product->id];
         } else {
-            $value = 1;
+            $value = 0;
         }
 
         $link_producer = $route->urlFor('clientProducer', [['id', $producer->id]]);
@@ -269,7 +269,7 @@ class ClientView extends \mf\view\AbstractView
             if (isset($_SESSION['orders'][$product->id])) {
                 $value = $_SESSION['orders'][$product->id];
             } else {
-                $value = 1;
+                $value = 0;
             }
 
             $product_link = $route->urlFor('clientProduct', [['id', $product->id]]);

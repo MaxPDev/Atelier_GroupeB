@@ -13,7 +13,8 @@ use app\model\User;
 use app\model\Order;
 
 
-class ClientController extends \mf\control\AbstractController {
+class ClientController extends \mf\control\AbstractController
+{
 
 
     /* Constructeur :
@@ -23,7 +24,7 @@ class ClientController extends \mf\control\AbstractController {
      * c.f. la classe \mf\control\AbstractController
      * 
      */
-    
+
     public function __construct()
     {
         parent::__construct();
@@ -42,15 +43,15 @@ class ClientController extends \mf\control\AbstractController {
      * Gets all products, or by category according to http parameters
      * Prepare datas and call products view
      */
-    public function viewAllProducts() 
+    public function viewAllProducts()
     {
         $categories = Category::get();
         // $category_choosen = $this->request->get['category'];
-        
-        if( !isset($this->request->get['category']) ||  !$this->request->get['category']) {
-            $products = Product::orderBy('name','asc')->get();
+
+        if (!isset($this->request->get['category']) ||  !$this->request->get['category']) {
+            $products = Product::orderBy('name', 'asc')->get();
         } else {
-            $products = Product::where('id_category','=',$this->request->get['category'])->orderBy('name','asc')->get();
+            $products = Product::where('id_category', '=', $this->request->get['category'])->orderBy('name', 'asc')->get();
         }
 
         $view_all_products = new ClientView([$categories, $products]);
@@ -61,16 +62,15 @@ class ClientController extends \mf\control\AbstractController {
      * Get one product with id from url parameters
      * Prepare data and call one product view
      */
-    public function viewProduct() 
+    public function viewProduct()
     {
         $id_product = $this->request->get['id'];
 
         $product = Product::find($id_product);
-        $producer = Producer::select()->where('id','=',$product->id_producer)->first();
-        
+        $producer = Producer::select()->where('id', '=', $product->id_producer)->first();
+
         $view_product = new ClientView([$product, $producer]);
         $view_product->render('renderProduct');
-
     }
 
     /**
@@ -85,7 +85,7 @@ class ClientController extends \mf\control\AbstractController {
         $view_producer = new ClientView($producer);
         $view_producer->render('renderProducer');
     }
-    
+
     /**
      * Call all producers view
      */
@@ -95,7 +95,6 @@ class ClientController extends \mf\control\AbstractController {
 
         $view_producers = new ClientView($producers);
         $view_producers->render('renderProducers');
-
     }
 
     /**
@@ -113,10 +112,10 @@ class ClientController extends \mf\control\AbstractController {
     public function checkOrder()
     {
         $order_id = $this->request->post['orderId'];
-        if($order_id){
+        if ($order_id) {
             $order = Order::find($order_id);
             $view_order = new ClientView($order->status);
-        }else{
+        } else {
             $view_order = new ClientView(null);
         }
         $view_order->render('renderOrder');
@@ -127,10 +126,10 @@ class ClientController extends \mf\control\AbstractController {
      */
     public function viewCheckout()
     {
-        $products=[];
-        if(isset($_SESSION['orders'])){
+        $products = [];
+        if (isset($_SESSION['orders'])) {
             foreach ($_SESSION['orders'] as $key => $value) {
-                array_push($products,Product::find($key));
+                array_push($products, Product::find($key));
             }
         }
         $view_order = new ClientView($products);
@@ -143,10 +142,10 @@ class ClientController extends \mf\control\AbstractController {
     public function deleteProductCheckout()
     {
         $id_product = $this->request->get['id'];
-        if(isset($_SESSION['orders'][$id_product])){
+        if (isset($_SESSION['orders'][$id_product])) {
             unset($_SESSION['orders'][$id_product]);
-        }else{
-            $_SESSION['errorMsg']="ops! product not found";
+        } else {
+            $_SESSION['errorMsg'] = "ops! product not found";
         }
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
@@ -158,7 +157,7 @@ class ClientController extends \mf\control\AbstractController {
     {
         $id_product = $this->request->get['id'];
         $action = $this->request->get['action'];
-        if($id_product&&$action){
+        if ($id_product && $action) {
             switch ($action) {
                 case 'remove':
                     $_SESSION['orders'][$id_product]--;
@@ -178,25 +177,25 @@ class ClientController extends \mf\control\AbstractController {
      */
     public function confirmOrder()
     {
-        if($_POST['fullname']&&$_POST['email']&&$_POST['mobile']&&isset($_SESSION['orders'])){
-            $order=new Order;
-            $id=uniqid();
-            $order->id=$id;
-            $order->name=filter_var($_POST['fullname'], FILTER_SANITIZE_SPECIAL_CHARS);
-            $order->mail=filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-            $order->phone=filter_var($_POST['mobile'], FILTER_SANITIZE_SPECIAL_CHARS);
-            $order->status="Orderd";
-            $order->place="Nancy";
+        if ($_POST['fullname'] && $_POST['email'] && $_POST['mobile'] && isset($_SESSION['orders'])) {
+            $order = new Order;
+            $id = uniqid();
+            $order->id = $id;
+            $order->name = filter_var($_POST['fullname'], FILTER_SANITIZE_SPECIAL_CHARS);
+            $order->mail = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+            $order->phone = filter_var($_POST['mobile'], FILTER_SANITIZE_SPECIAL_CHARS);
+            $order->status = "Orderd";
+            $order->place = "Nancy";
             $order->save();
-            $order=Order::find($id);
+            $order = Order::find($id);
             foreach ($_SESSION['orders'] as $key => $qte) {
-                $product=Product::find($key);
-                $order->products()->attach($key,['quantity' => 3]);
+                $product = Product::find($key);
+                $order->products()->attach($key, ['quantity' => 3]);
             }
             unset($_SESSION['orders']);
-            $_SESSION['orderID']=$id;
-        }else{
-            $_SESSION['errorMsg']="Ops please make sure to inser your information";
+            $_SESSION['orderID'] = $id;
+        } else {
+            $_SESSION['errorMsg'] = "Ops please make sure to inser your information";
         }
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
@@ -208,12 +207,12 @@ class ClientController extends \mf\control\AbstractController {
     {
         $id_product = $this->request->post['product_id'];
         $quantity = $this->request->post['quantity'];
-        
-        if(isset($_SESSION['orders'][$id_product])){
-             $_SESSION['orders'][$id_product]+= (int)$quantity;                
-        }else{
-            $_SESSION['orders'][$id_product]= (int)$quantity;    
-        }        
+
+        if (isset($_SESSION['orders'][$id_product])) {
+            $_SESSION['orders'][$id_product] = (int)$quantity;
+        } else {
+            $_SESSION['orders'][$id_product] = (int)$quantity;
+        }
         $route = new Router();
         $_GET['id'] = $id_product; // TO DO ajouter un param optionnel à execute Route
         header('Location: ' . $_SERVER['HTTP_REFERER']);
