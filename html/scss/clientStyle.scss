@@ -38,9 +38,11 @@ body{
                 font-weight: normal;
             }
 
-            img{
+            picture{
                 @include placement(1, 1, 1, 2);
-                width: 100%;
+                img{
+                    width: 100%;
+                }
             }
         }
 

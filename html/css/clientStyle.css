@@ -40,11 +40,13 @@ body {
   color: aliceblue;
   font-weight: normal;
 }
-#clientbody header section img {
+#clientbody header section picture {
   grid-row-start: 1;
   grid-row-end: 1;
   grid-column-start: 1;
   grid-column-end: 2;
+}
+#clientbody header section picture img {
   width: 100%;
 }
 #clientbody header nav {
