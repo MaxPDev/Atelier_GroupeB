@@ -63,16 +63,16 @@ class ClientView extends \mf\view\AbstractView
     {
         $req = new HttpRequest();
         $html = <<<EOT
-        <main id="home">
+        <section id="home">
             <div>
-                <img src="$req->root/html/elements/icon-1.png" alt="">
+                <img src="$req->root/html/elements/icon-1.png" alt="icone1">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                     porro ullam obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus
                     dicta quia ducimus!</p>
             </div>
 
             <div>
-                <img src="$req->root/html/elements/icon-2.png" alt="">
+                <img src="$req->root/html/elements/icon-2.png" alt="icone2">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                     porro ullam
                     obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
@@ -80,13 +80,13 @@ class ClientView extends \mf\view\AbstractView
             </div>
 
             <div>
-                <img src="$req->root/html/elements/icon-3.png" alt="">
+                <img src="$req->root/html/elements/icon-3.png" alt="icone3">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                     porro ullam
                     obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
                     ducimus!</p>
             </div>
-        </main>
+        </section>
         EOT;
 
         return $html;
@@ -113,8 +113,8 @@ class ClientView extends \mf\view\AbstractView
             <a href='$products_link'>Products</a>
             <a href='$producers_link'>Producers</a>
             <a href='$order_link'>Order</a>
-            <a href='$checkout_link'><img src="$req->root/html/elements/checkout-icon.png"></a>
-            <a href='$login_link'><img src="$req->root/html/elements/avatar.png"></a>
+            <a href='$checkout_link'><img src="$req->root/html/elements/checkout-icon.png" alt="icon checkout"></a>
+            <a href='$login_link'><img src="$req->root/html/elements/avatar.png" alt="avatar"></a>
         NAV;
 
         return $header_nav_html;
@@ -171,15 +171,15 @@ class ClientView extends \mf\view\AbstractView
 
             $products_list .= <<<EOT
                             <div>
-                                <img src="$product->img_url" alt="">
+                                <img src="$product->img_url" alt="produit">
                                 <ul>
                                     <li><b><a href="$product_link">$product->name </a></b></li>
                                     <li>$product->unit_price €</li>
-                                    <li><a href="$link_producer">{$product->producer->user->name}</a></li>
+                                    <li>Producer: <a href="$link_producer"> {$product->producer->user->name}</a></li>
                                     <li>
                                         <form method="post" action="$add_to_order">
                                             <input type="number" step="1" min="1" value="$value" name="quantity" required>
-                                            <button type="submit" name="product_id" value="$product->id" ><img src="$req->root/html/elements/checkout-btn.png" alt=""></button>
+                                            <button type="submit" name="product_id" value="$product->id" ><img src="$req->root/html/elements/checkout-btn.png" alt="checkout order"></button>
                                         </form>
                                     </li>
                                 </ul>
@@ -188,14 +188,14 @@ class ClientView extends \mf\view\AbstractView
         }
 
         $products_html = <<<EOT
-            <main id="store">
+            <article id="store">
                 <nav>
                 $categories_list
                 </nav>
                 <section id="products">
                 $products_list
                 </section>
-            </main>
+            </article>
         EOT;
         return $products_html;
     }
@@ -222,7 +222,7 @@ class ClientView extends \mf\view\AbstractView
         $link_producer = $route->urlFor('clientProducer', [['id', $producer->id]]);
 
         $product_article = <<<IMG
-            <div><img src="$product->img_url"></div>
+            <div><img src="$product->img_url" alt="product link"></div>
             <div>
                 <ul>
                     <li>
@@ -246,9 +246,9 @@ class ClientView extends \mf\view\AbstractView
         IMG;
 
         $product_html = <<<EOT
-            <main id="productsDetails">
+            <article id="productsDetails">
                 $product_article
-            </main>
+            </article>
         EOT;
         return $product_html;
     }
@@ -271,7 +271,7 @@ class ClientView extends \mf\view\AbstractView
             <div id="producerProducts">
                 <ul>
                     <li><h4>$producer_user->name</h4></li>
-                    <li><img src="$req->root/html/elements/producer-avatar.png" alt=""></li>
+                    <li><img src="$req->root/html/elements/producer-avatar.png" alt="avatar"></li>
                     <li>$producer_user->mail</li>
                     <li>Products : {$producer->products->count()} </li>
                     <li>$producer_user->phone | $producer->location</li>
@@ -281,7 +281,7 @@ class ClientView extends \mf\view\AbstractView
         PROD;
 
         // html for producer's products
-        $producer_product_html = '<main id="store"><section id="products">';
+        $producer_product_html = '<article id="store"><section id="products">';
 
         $add_to_order = $route->urlFor('clientAddOrder');
 
@@ -305,7 +305,7 @@ class ClientView extends \mf\view\AbstractView
                     <li>
                         <form method="post" action="$add_to_order">
                             <input type="number" step="1" min="1" value="$value" name="quantity" required>
-                            <button type="submit" name="product_id" value="$product->id" ><img src="$req->root/html/elements/checkout-btn.png" alt=""></button>
+                            <button type="submit" name="product_id" value="$product->id" ><img src="$req->root/html/elements/checkout-btn.png" alt="Checkout button"></button>
                         </form>
                     </li>
                 </ul>
@@ -313,7 +313,7 @@ class ClientView extends \mf\view\AbstractView
             PRODUCT;
         }
 
-        $producer_product_html .= "</section></main>";
+        $producer_product_html .= "</section></article>";
 
         $producer_all_html = <<<EOL
         $producer_html
@@ -333,7 +333,7 @@ class ClientView extends \mf\view\AbstractView
 
         $route = new Router();
         $producers = $this->data;
-        $producers_article = '<main id="producer">';
+        $producers_article = '<article id="producer">';
 
         foreach ($producers as $producer) {
 
@@ -344,7 +344,7 @@ class ClientView extends \mf\view\AbstractView
             <div>
                 <ul>
                     <li>$producer_user->name</li>
-                    <li><img src="$req->root/html/elements/producer-avatar.png" alt=""></li>
+                    <li><img src="$req->root/html/elements/producer-avatar.png" alt="Producer"></li>
                     <li>$producer->location</li>
                     <li>Orders : 15 orders</li>
                     <li>Products : {$producer->products->count()}</li>
@@ -354,7 +354,7 @@ class ClientView extends \mf\view\AbstractView
             EOT;
         }
 
-        $producers_article .= "</main>";
+        $producers_article .= "</article>";
         $producers_html = <<<PRODS
             $producers_article
         PRODS;
@@ -375,7 +375,7 @@ class ClientView extends \mf\view\AbstractView
 
 
         $order_html = <<<ORDER
-        <main id="checkOrder">
+        <article id="checkOrder">
             $message
             <div>
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
@@ -385,7 +385,7 @@ class ClientView extends \mf\view\AbstractView
                 <input type="text" name="orderId" placeholder="Order confirm number">
                 <input value="Check" type="submit">
             </form>
-        </main>
+        </article>
         ORDER;
 
 
@@ -404,14 +404,14 @@ class ClientView extends \mf\view\AbstractView
         if (isset($_SESSION['orderID'])) {
             $id = $_SESSION['orderID'];
             $html .= <<<CHECKOUT
-                <main id="checkout">
+                <article id="checkout">
                     <h1 class="alert-success"> Order confirmed: $id </h1>
-                </main>
+                </article>
             CHECKOUT;
             unset($_SESSION['orderID']);
         } else if (isset($_SESSION['orders'])) {
             $html .= <<<CHECKOUT
-                <main id="checkout">
+                <article id="checkout">
                     <table>
                         <tbody>
                             <tr>
@@ -460,13 +460,13 @@ class ClientView extends \mf\view\AbstractView
                     </form> 
                 </div>
                 </div>
-            </main>
+            </article>
             PRODUCT;
         } else {
             $html .= <<<CHECKOUT
-                <main id="checkout">
+                <article id="checkout">
                     <h1 class="alert-danger"> Your Cart is empty </h1>
-                </main>
+                </article>
             CHECKOUT;
         }
         return $html;
@@ -514,10 +514,10 @@ class ClientView extends \mf\view\AbstractView
         $center = $this->$selector();
 
         $body = <<<EOT
-        <section id="clientbody">
+        <main id="clientbody">
         ${header}
         ${center}
-        </section>
+        </main>
         EOT;
         return $body;
     }
