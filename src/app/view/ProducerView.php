@@ -31,15 +31,35 @@ class ProducerView extends \mf\view\AbstractView
 
         $producer = User::find($_SESSION['user_login']);
 
+        $currentPath = $_SERVER["REQUEST_URI"];
+        $currentPath = substr($currentPath, 0, -1);
+        $pathAliase = substr($currentPath, strrpos($currentPath, "/") + 1);
+
+        $route1 = "";
+        $route2 = "";
+        $route3 = "";
+
+        switch ($pathAliase) {
+            case 'producerOrderedProducts':
+                $route1 = 'class="active"';
+                break;
+            case 'producerProducts':
+                $route2 = 'class="active"';
+                break;
+            case 'producerProfile':
+                $route3 = 'class="active"';
+                break;
+        }
+
         $html = <<<EOT
             <header id="headerManager">
                 <img id="header_logo" src="$req->root/html/img/logo.png" alt="Le Hangar Local">
                 <h3>{$producer->name}</h3>
                 <nav>
                     <ul>
-                        <li><a href="{$router->urlFor('producerOrderedProducts')}">Ordererd products</a></li>
-                        <li id="active"><a href="{$router->urlFor('producerProducts')}">My Products</a></li>
-                        <li><a href="{$router->urlFor('producerProfile')}">Profile</a></li>
+                        <li $route1><a href="{$router->urlFor('producerOrderedProducts')}">Ordererd products</a></li>
+                        <li $route2><a href="{$router->urlFor('producerProducts')}">My Products</a></li>
+                        <li $route3><a href="{$router->urlFor('producerProfile')}">Profile</a></li>
                         <li><a href="{$router->urlFor("logout")}">Logout</a></li>
                     </ul>
                 </nav>

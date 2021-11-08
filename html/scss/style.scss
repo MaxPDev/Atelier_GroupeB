@@ -221,7 +221,9 @@ $darkGreen : #255d2e;
             //but also a grid, of 1col 1fr
             @include grid(6, 1fr, 2, auto, 1em 0);
     
-    
+            > img{
+                width: 100px;
+            }
     
     
             //***********************************************************************
@@ -600,4 +602,12 @@ $darkGreen : #255d2e;
                 }
             }
         }
+
+        .active{
+            a{
+                color: darkgreen !important;
+            }
+            background-color: white;
+        }
+
     }
