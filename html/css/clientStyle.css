@@ -57,26 +57,29 @@ body {
   grid-template-rows: repeat(1, 1fr);
   gap: 10px;
 }
-#clientbody header nav img {
-  width: 100px;
+#clientbody header nav div {
   grid-row-start: 1;
   grid-row-end: 1;
   grid-column-start: 1;
   grid-column-end: 2;
   margin: 20px;
+  text-align: left;
 }
-#clientbody header nav div {
+#clientbody header nav div img {
+  width: 100px;
+}
+#clientbody header nav div:nth-child(2) {
   grid-row-start: 1;
   grid-row-end: 1;
   grid-column-start: 2;
   grid-column-end: 3;
   margin: 20px;
 }
-#clientbody header nav div a {
+#clientbody header nav div:nth-child(2) a {
   color: aliceblue;
   text-decoration: none;
 }
-#clientbody header nav div a img {
+#clientbody header nav div:nth-child(2) a img {
   width: 25px;
   margin: 2px;
 }
@@ -323,14 +326,14 @@ body {
   #clientbody header section h1 {
     font-size: 5em;
   }
-  #clientbody header nav img {
+  #clientbody header nav div img {
     width: 100px;
   }
-  #clientbody header nav div a {
+  #clientbody header nav div:nth-child(2) a {
     font-size: 1em;
     margin: 5px;
   }
-  #clientbody header nav div a img {
+  #clientbody header nav div:nth-child(2) a img {
     width: 23px;
     margin: 2px;
   }
@@ -357,14 +360,20 @@ body {
   #clientbody header section h1 {
     font-size: 3em;
   }
-  #clientbody header nav img {
+  #clientbody header nav div {
+    margin: 10px;
+  }
+  #clientbody header nav div img {
     width: 80px;
   }
-  #clientbody header nav div a {
+  #clientbody header nav div:nth-child(2) {
+    margin: 10px;
+  }
+  #clientbody header nav div:nth-child(2) a {
     margin: 2px;
     font-size: 0.9em;
   }
-  #clientbody header nav div a img {
+  #clientbody header nav div:nth-child(2) a img {
     width: 20px;
     margin: 2px;
   }
@@ -385,14 +394,20 @@ body {
   #clientbody header section h1 {
     font-size: 2em;
   }
-  #clientbody header nav img {
+  #clientbody header nav div {
+    margin: 5px;
+  }
+  #clientbody header nav div img {
     width: 60px;
   }
-  #clientbody header nav div a {
+  #clientbody header nav div:nth-child(2) {
+    margin: 5px;
+  }
+  #clientbody header nav div:nth-child(2) a {
     margin: 1px;
     font-size: 0.8em;
   }
-  #clientbody header nav div a img {
+  #clientbody header nav div:nth-child(2) a img {
     width: 17px;
     margin: 2px;
   }

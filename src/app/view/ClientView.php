@@ -25,7 +25,10 @@ class ClientView extends \mf\view\AbstractView
      */
     private function renderHeader($title)
     {
-        $req = new HttpRequest();   
+        $req = new HttpRequest();
+
+        $route = new Router();
+        $home_link = $route->urlFor('home');
 
         $nav = $this->renderHeaderNav();
         $header_html = <<<HEADER
@@ -35,7 +38,9 @@ class ClientView extends \mf\view\AbstractView
                 <h1>$title</h1>
             </section>
             <nav>
-                <img src="$req->root/html/img/logo.png" alt="logo">
+                <div>
+                    <a href="$home_link"><img src="$req->root/html/img/logo.png" alt="logo"></a>
+                </div>
                 <div>
                     $nav
                 </div>
