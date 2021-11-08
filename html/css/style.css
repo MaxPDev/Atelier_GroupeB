@@ -356,21 +356,21 @@
         align-items: center; }
         #managerBody main section#dashboardInfos > article > a, #managerBody main section#dashboardInfos > article > p {
           text-decoration: none;
-          font-size: 2em;
+          font-size: 1.5rem;
           text-align: center;
           color: #c6c6c6; }
           #managerBody main section#dashboardInfos > article > a p, #managerBody main section#dashboardInfos > article > p p {
-            font-size: 2em;
+            font-size: 1.2rem;
             text-align: center;
             color: #c6c6c6; }
             @media screen and (min-width: 62em) {
               #managerBody main section#dashboardInfos > article > a p, #managerBody main section#dashboardInfos > article > p p {
-                font-size: 1.2em; } }
-          #managerBody main section#dashboardInfos > article > a span, #managerBody main section#dashboardInfos > article > p span {
-            font-size: 1.5em; }
+                font-size: 1.5rem; } }
+          #managerBody main section#dashboardInfos > article > a span p, #managerBody main section#dashboardInfos > article > p span p {
+            font-size: 1.2rem; }
             @media screen and (min-width: 62em) {
-              #managerBody main section#dashboardInfos > article > a span, #managerBody main section#dashboardInfos > article > p span {
-                font-size: 1.2em; } }
+              #managerBody main section#dashboardInfos > article > a span p, #managerBody main section#dashboardInfos > article > p span p {
+                font-size: 1.5rem; } }
       #managerBody main section#dashboardInfos > article:nth-child(1) {
         grid-column: 1 / 4;
         grid-row: 1 / 1; }
@@ -556,19 +556,5 @@
           #managerBody .login > form > input:nth-child(3) {
             grid-column: 3 / 7;
             grid-row: 5 / 5; } }
-  #managerBody .alert-danger {
-    background-color: rgba(255, 0, 0, 0.685);
-    color: #ffffff;
-    padding: 1%;
-    border-radius: 5px;
-    grid-column: 1/8;
-    text-align: center; }
-  #managerBody .alert-success {
-    background-color: rgba(6, 173, 6, 0.685);
-    color: #ffffff;
-    padding: 1%;
-    border-radius: 5px;
-    grid-column: 1/8;
-    text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
