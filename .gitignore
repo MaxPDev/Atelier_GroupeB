@@ -3,3 +3,4 @@ vendor/
 *.lock
 *.json
 composer.phar
+.sass-cache/
