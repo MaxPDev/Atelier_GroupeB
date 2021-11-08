@@ -40,7 +40,7 @@ class ClientView extends \mf\view\AbstractView
                             srcset="$req->root/html/elements/header-bg-trimed.png 1900w,
                                     $req->root/html/elements/header-bg-complete.png 600w"
                             sizes="50vw">
-                            <img src="$req->root/html/elements/header-bg-complete.png" alt="background">
+                            <!-- -img src="$req->root/html/elements/header-bg-complete.png" alt="background" -->
                     </picture -->
                 <h1>$title</h1>
             </section>
