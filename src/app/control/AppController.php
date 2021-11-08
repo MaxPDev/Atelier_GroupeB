@@ -86,7 +86,7 @@ class AppController extends \mf\control\AbstractController {
         $auth = new AppAuthentification();
         $router = new Router();
         $auth->logout();
-        $router->executeRoute('login');
+        $router->executeRoute('home');
     }
 
 }

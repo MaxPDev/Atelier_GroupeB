@@ -217,8 +217,12 @@ class ClientView extends \mf\view\AbstractView
             <div><img src="$product->img_url"></div>
             <div>
                 <ul>
-                    <li>main.php
                     <li>
+                        <h2>$product->name</h2>
+                    </li>
+                    <li>
+                        <a href="$link_producer"><h3>$producer_user->name</h3></a>
+                    </li>
                         <h2>$product->unit_price €</h2>
                     </li>
                     <li>
@@ -434,7 +438,7 @@ class ClientView extends \mf\view\AbstractView
                 </tbody>
             </table>
             <hr>
-            <h2>Total: $orderTotal</h2>
+            <h2>Total: $orderTotal €</h2>
 
             <div id="open-modal" class="modal-window">
                 <div>

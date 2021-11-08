@@ -50,7 +50,6 @@ class Router extends AbstractRouter {
             $controler = new self::$routes[$defaultUrl][0]();
             $fn = self::$routes[$defaultUrl][1];
             $controler->$fn();
-            var_dump(self::$routes[$defaultUrl][0]);
         }
     }
 
