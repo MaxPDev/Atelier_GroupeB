@@ -263,12 +263,12 @@ class ManagerView extends \mf\view\AbstractView {
         $footer = $this->renderFooter();
         
         $body = <<<EOT
-        <section id="managerBody">
+        <main id="managerBody">
         ${header}
-            <main>
+            <section>
                 ${center}
-            </main>
-        </section>
+            </section>
+        </main>
         EOT;
         return $body;
         

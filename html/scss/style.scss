@@ -212,7 +212,7 @@ $darkGreen : #255d2e;
             }
         }
         
-        main{
+        header + section{
             //in the body's grid : main is a element of 1,2 (100% width) on row 2
             @include element(1,2,2,2);
             @media screen and (min-width : 62em) {
