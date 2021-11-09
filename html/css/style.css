@@ -208,7 +208,7 @@
             #managerBody header#headerProducer nav > ul > li:nth-child(3) {
               grid-column: 1 / 1;
               grid-row: 3 / 3; } }
-  #managerBody main {
+  #managerBody header + section {
     grid-column: 1 / 2;
     grid-row: 2 / 2;
     display: grid;
@@ -217,26 +217,28 @@
     grid-auto-flow: row;
     grid-gap: 1em 0; }
     @media screen and (min-width: 62em) {
-      #managerBody main {
+      #managerBody header + section {
         grid-column: 2 / 6;
         grid-row: 1 / 1; } }
-    #managerBody main > h1 {
+    #managerBody header + section > img {
+      width: 100px; }
+    #managerBody header + section > h1 {
       grid-column: 1 / 5;
       grid-row: 1 / 1;
       font-size: 2.2em;
       text-align: center;
       color: #3d3d3d; }
       @media screen and (min-width: 62em) {
-        #managerBody main > h1 {
+        #managerBody header + section > h1 {
           grid-column: 1 / 4;
           grid-row: 1 / 1; } }
-    #managerBody main table {
+    #managerBody header + section table {
       grid-column: 1 / 7;
       grid-row: 2 / 2;
       text-align: center; }
-    #managerBody main > h1#orderNumber {
+    #managerBody header + section > h1#orderNumber {
       text-align: left; }
-    #managerBody main > div#orderActions {
+    #managerBody header + section > div#orderActions {
       grid-column: 1 / 4;
       grid-row: 3 / 3;
       display: grid;
@@ -247,7 +249,7 @@
       font-size: 1em;
       text-align: center; }
       @media screen and (min-width: 62em) {
-        #managerBody main > div#orderActions {
+        #managerBody header + section > div#orderActions {
           grid-column: 2 / 6;
           grid-row: 2 / 2;
           display: grid;
@@ -255,7 +257,7 @@
           grid-template-rows: repeat(2, auto);
           grid-auto-flow: row;
           grid-gap: 10px; } }
-      #managerBody main > div#orderActions > p {
+      #managerBody header + section > div#orderActions > p {
         grid-column: 1 / 1;
         grid-row: 1 / 1;
         margin: 0;
@@ -263,10 +265,10 @@
         background-color: #a1a1a1;
         color: #fff; }
         @media screen and (min-width: 62em) {
-          #managerBody main > div#orderActions > p {
+          #managerBody header + section > div#orderActions > p {
             grid-column: 3 / 5;
             grid-row: 1 / 1; } }
-      #managerBody main > div#orderActions > a {
+      #managerBody header + section > div#orderActions > a {
         font-size: 1em;
         text-decoration: none;
         background: none;
@@ -274,21 +276,21 @@
         outline: none;
         border: 5px solid #91b083;
         box-sizing: border-box; }
-      #managerBody main > div#orderActions > a:nth-of-type(1) {
+      #managerBody header + section > div#orderActions > a:nth-of-type(1) {
         grid-column: 2 / 2;
         grid-row: 1 / 1; }
         @media screen and (min-width: 62em) {
-          #managerBody main > div#orderActions > a:nth-of-type(1) {
+          #managerBody header + section > div#orderActions > a:nth-of-type(1) {
             grid-column: 1 / 3;
             grid-row: 2 / 2; } }
-      #managerBody main > div#orderActions > a:nth-of-type(2) {
+      #managerBody header + section > div#orderActions > a:nth-of-type(2) {
         grid-column: 3 / 3;
         grid-row: 1 / 1; }
         @media screen and (min-width: 62em) {
-          #managerBody main > div#orderActions > a:nth-of-type(2) {
+          #managerBody header + section > div#orderActions > a:nth-of-type(2) {
             grid-column: 5 / 7;
             grid-row: 2 / 2; } }
-    #managerBody main > section#orderInformations {
+    #managerBody header + section > section#orderInformations {
       grid-column: 5 / 7;
       grid-row: 1 / 2;
       display: grid;
@@ -297,7 +299,7 @@
       grid-auto-flow: row;
       grid-gap: 10px 0; }
       @media screen and (min-width: 62em) {
-        #managerBody main > section#orderInformations {
+        #managerBody header + section > section#orderInformations {
           grid-column: 1 / 7;
           grid-row: 3 / 3;
           display: grid;
@@ -306,39 +308,39 @@
           grid-auto-flow: row;
           grid-gap: 10px 0;
           text-align: center; } }
-      #managerBody main > section#orderInformations > article > p {
+      #managerBody header + section > section#orderInformations > article > p {
         margin: 0; }
-      #managerBody main > section#orderInformations > article > p:last-child {
+      #managerBody header + section > section#orderInformations > article > p:last-child {
         color: #3d3d3d; }
-      #managerBody main > section#orderInformations > article:nth-of-type(1) {
+      #managerBody header + section > section#orderInformations > article:nth-of-type(1) {
         grid-column: 1 / 2;
         grid-row: 1 / 1; }
         @media screen and (min-width: 62em) {
-          #managerBody main > section#orderInformations > article:nth-of-type(1) {
+          #managerBody header + section > section#orderInformations > article:nth-of-type(1) {
             grid-column: 1 / 1;
             grid-row: 1 / 1; } }
-      #managerBody main > section#orderInformations > article:nth-of-type(2) {
+      #managerBody header + section > section#orderInformations > article:nth-of-type(2) {
         grid-column: 2 / 3;
         grid-row: 1 / 1; }
         @media screen and (min-width: 62em) {
-          #managerBody main > section#orderInformations > article:nth-of-type(2) {
+          #managerBody header + section > section#orderInformations > article:nth-of-type(2) {
             grid-column: 2 / 2;
             grid-row: 1 / 1; } }
-      #managerBody main > section#orderInformations > article:nth-of-type(3) {
+      #managerBody header + section > section#orderInformations > article:nth-of-type(3) {
         grid-column: 1 / 2;
         grid-row: 2 / 2; }
         @media screen and (min-width: 62em) {
-          #managerBody main > section#orderInformations > article:nth-of-type(3) {
+          #managerBody header + section > section#orderInformations > article:nth-of-type(3) {
             grid-column: 3 / 3;
             grid-row: 1 / 1; } }
-    #managerBody main table {
+    #managerBody header + section table {
       grid-column: 1 / 7;
       grid-row: 5 / 5; }
-    #managerBody main h1#myDashboard {
+    #managerBody header + section h1#myDashboard {
       text-align: center;
       grid-column: 1 / 7;
       grid-row: 1 / 1; }
-    #managerBody main section#dashboardInfos {
+    #managerBody header + section section#dashboardInfos {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       grid-template-rows: repeat(2, auto);
@@ -347,66 +349,66 @@
       grid-column: 1 / 7;
       grid-row: 2 / 2;
       padding: 0 1em; }
-      #managerBody main section#dashboardInfos > article {
+      #managerBody header + section section#dashboardInfos > article {
         background-color: #255d2e;
         border-radius: 10px;
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
         align-items: center; }
-        #managerBody main section#dashboardInfos > article > a, #managerBody main section#dashboardInfos > article > p {
+        #managerBody header + section section#dashboardInfos > article > a, #managerBody header + section section#dashboardInfos > article > p {
           text-decoration: none;
-          font-size: 2em;
+          font-size: 1.5rem;
           text-align: center;
           color: #c6c6c6; }
-          #managerBody main section#dashboardInfos > article > a p, #managerBody main section#dashboardInfos > article > p p {
-            font-size: 2em;
+          #managerBody header + section section#dashboardInfos > article > a p, #managerBody header + section section#dashboardInfos > article > p p {
+            font-size: 1.2rem;
             text-align: center;
             color: #c6c6c6; }
             @media screen and (min-width: 62em) {
-              #managerBody main section#dashboardInfos > article > a p, #managerBody main section#dashboardInfos > article > p p {
-                font-size: 1.2em; } }
-          #managerBody main section#dashboardInfos > article > a span, #managerBody main section#dashboardInfos > article > p span {
-            font-size: 1.5em; }
+              #managerBody header + section section#dashboardInfos > article > a p, #managerBody header + section section#dashboardInfos > article > p p {
+                font-size: 1.5rem; } }
+          #managerBody header + section section#dashboardInfos > article > a span p, #managerBody header + section section#dashboardInfos > article > p span p {
+            font-size: 1.2rem; }
             @media screen and (min-width: 62em) {
-              #managerBody main section#dashboardInfos > article > a span, #managerBody main section#dashboardInfos > article > p span {
-                font-size: 1.2em; } }
-      #managerBody main section#dashboardInfos > article:nth-child(1) {
+              #managerBody header + section section#dashboardInfos > article > a span p, #managerBody header + section section#dashboardInfos > article > p span p {
+                font-size: 1.5rem; } }
+      #managerBody header + section section#dashboardInfos > article:nth-child(1) {
         grid-column: 1 / 4;
         grid-row: 1 / 1; }
         @media screen and (min-width: 62em) {
-          #managerBody main section#dashboardInfos > article:nth-child(1) {
+          #managerBody header + section section#dashboardInfos > article:nth-child(1) {
             grid-column: 1 / 5;
             grid-row: 1 / 1; } }
-      #managerBody main section#dashboardInfos > article:nth-child(2) {
+      #managerBody header + section section#dashboardInfos > article:nth-child(2) {
         grid-column: 4 / 6;
         grid-row: 1 / 1; }
         @media screen and (min-width: 62em) {
-          #managerBody main section#dashboardInfos > article:nth-child(2) {
+          #managerBody header + section section#dashboardInfos > article:nth-child(2) {
             grid-column: 5 / 7;
             grid-row: 1 / 1; } }
-      #managerBody main section#dashboardInfos > article:nth-child(3) {
+      #managerBody header + section section#dashboardInfos > article:nth-child(3) {
         grid-column: 6 / 7;
         grid-row: 1 / 1; }
         @media screen and (min-width: 62em) {
-          #managerBody main section#dashboardInfos > article:nth-child(3) {
+          #managerBody header + section section#dashboardInfos > article:nth-child(3) {
             grid-column: 5 / 7;
             grid-row: 2 / 2; } }
-      #managerBody main section#dashboardInfos > article:nth-child(4) {
+      #managerBody header + section section#dashboardInfos > article:nth-child(4) {
         grid-column: 1 / 4;
         grid-row: 2 / 2; }
         @media screen and (min-width: 62em) {
-          #managerBody main section#dashboardInfos > article:nth-child(4) {
+          #managerBody header + section section#dashboardInfos > article:nth-child(4) {
             grid-column: 1 / 3;
             grid-row: 2 / 2; } }
-      #managerBody main section#dashboardInfos > article:nth-child(5) {
+      #managerBody header + section section#dashboardInfos > article:nth-child(5) {
         grid-column: 4 / 7;
         grid-row: 2 / 2; }
         @media screen and (min-width: 62em) {
-          #managerBody main section#dashboardInfos > article:nth-child(5) {
+          #managerBody header + section section#dashboardInfos > article:nth-child(5) {
             grid-column: 3 / 5;
             grid-row: 2 / 2; } }
-    #managerBody main section#producerProductPage {
+    #managerBody header + section section#producerProductPage {
       grid-column: 1 / 7;
       grid-row: 2 / 5;
       display: grid;
@@ -416,13 +418,13 @@
       grid-gap: 10px;
       padding: 0.5em; }
       @media screen and (min-width: 62em) {
-        #managerBody main section#producerProductPage {
+        #managerBody header + section section#producerProductPage {
           display: grid;
           grid-template-columns: repeat(6, 1fr);
           grid-template-rows: repeat(6, auto);
           grid-auto-flow: row;
           grid-gap: 1em 0.5em; } }
-      #managerBody main section#producerProductPage .producerInfoProduct {
+      #managerBody header + section section#producerProductPage .producerInfoProduct {
         background-color: #255d2e;
         border-radius: 6px;
         text-align: center;
@@ -431,60 +433,60 @@
         display: flex;
         flex-flow: column nowrap;
         justify-content: space-evenly; }
-        #managerBody main section#producerProductPage .producerInfoProduct > h2 {
+        #managerBody header + section section#producerProductPage .producerInfoProduct > h2 {
           font-size: 1.2em; }
-        #managerBody main section#producerProductPage .producerInfoProduct > h1 {
+        #managerBody header + section section#producerProductPage .producerInfoProduct > h1 {
           font-size: 2em;
           margin: 0.5em; }
           @media screen and (min-width: 62em) {
-            #managerBody main section#producerProductPage .producerInfoProduct > h1 {
+            #managerBody header + section section#producerProductPage .producerInfoProduct > h1 {
               margin: revert; } }
-      #managerBody main section#producerProductPage > article:nth-child(1) {
+      #managerBody header + section section#producerProductPage > article:nth-child(1) {
         grid-column: 1 / 2;
         grid-row: 1 / 1; }
         @media screen and (min-width: 62em) {
-          #managerBody main section#producerProductPage > article:nth-child(1) {
+          #managerBody header + section section#producerProductPage > article:nth-child(1) {
             grid-column: 1 / 2;
             grid-row: 1 / 3; } }
-      #managerBody main section#producerProductPage > article:nth-child(2) {
+      #managerBody header + section section#producerProductPage > article:nth-child(2) {
         grid-column: 1 / 2;
         grid-row: 2 / 2; }
         @media screen and (min-width: 62em) {
-          #managerBody main section#producerProductPage > article:nth-child(2) {
+          #managerBody header + section section#producerProductPage > article:nth-child(2) {
             grid-column: 2 / 3;
             grid-row: 1 / 3; } }
-      #managerBody main section#producerProductPage > article:nth-child(3) {
+      #managerBody header + section section#producerProductPage > article:nth-child(3) {
         grid-column: 1 / 2;
         grid-row: 3 / 3; }
         @media screen and (min-width: 62em) {
-          #managerBody main section#producerProductPage > article:nth-child(3) {
+          #managerBody header + section section#producerProductPage > article:nth-child(3) {
             grid-column: 3 / 4;
             grid-row: 1 / 3; } }
-      #managerBody main section#producerProductPage > article:nth-child(4) {
+      #managerBody header + section section#producerProductPage > article:nth-child(4) {
         grid-column: 2 / 7;
         grid-row: 1 / 5; }
         @media screen and (min-width: 62em) {
-          #managerBody main section#producerProductPage > article:nth-child(4) {
+          #managerBody header + section section#producerProductPage > article:nth-child(4) {
             grid-column: 1 / 5;
             grid-row: 3 / 6; } }
-      #managerBody main section#producerProductPage > article:nth-child(5) {
+      #managerBody header + section section#producerProductPage > article:nth-child(5) {
         grid-column: 7 / 9;
         grid-row: 1 / 5; }
         @media screen and (min-width: 62em) {
-          #managerBody main section#producerProductPage > article:nth-child(5) {
+          #managerBody header + section section#producerProductPage > article:nth-child(5) {
             grid-column: 5 / 7;
             grid-row: 2 / 6; } }
-        #managerBody main section#producerProductPage > article:nth-child(5) > img {
+        #managerBody header + section section#producerProductPage > article:nth-child(5) > img {
           max-width: 90%;
           border-radius: 8px;
           box-shadow: 0px 2px 10px 1px #787878; }
-    #managerBody main section#producerProfile {
+    #managerBody header + section section#producerProfile {
       grid-column: 2 / 7;
       grid-row: 2 / 5; }
-      #managerBody main section#producerProfile > div > h4 {
+      #managerBody header + section section#producerProfile > div > h4 {
         border-bottom: 5px solid #255d2e;
         width: max-content; }
-      #managerBody main section#producerProfile > div > h1 {
+      #managerBody header + section section#producerProfile > div > h1 {
         font-weight: 100; }
   #managerBody .tableList {
     text-align: center;
@@ -556,19 +558,9 @@
           #managerBody .login > form > input:nth-child(3) {
             grid-column: 3 / 7;
             grid-row: 5 / 5; } }
-  #managerBody .alert-danger {
-    background-color: rgba(255, 0, 0, 0.685);
-    color: #ffffff;
-    padding: 1%;
-    border-radius: 5px;
-    grid-column: 1/8;
-    text-align: center; }
-  #managerBody .alert-success {
-    background-color: rgba(6, 173, 6, 0.685);
-    color: #ffffff;
-    padding: 1%;
-    border-radius: 5px;
-    grid-column: 1/8;
-    text-align: center; }
+  #managerBody .active {
+    background-color: white; }
+    #managerBody .active a {
+      color: darkgreen !important; }
 
 /*# sourceMappingURL=style.css.map */

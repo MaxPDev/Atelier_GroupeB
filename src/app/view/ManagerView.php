@@ -25,6 +25,8 @@ class ManagerView extends \mf\view\AbstractView {
      */
     private function renderHeader()
     {
+        $req = new HttpRequest();
+
         $router = new Router();
         $user=User::find($_SESSION['user_login']);
 
@@ -47,7 +49,7 @@ class ManagerView extends \mf\view\AbstractView {
         }
         return <<<EOT
             <header id="headerManager">
-            <img id="header_logo" src="../../html/img/logo.png" alt="Le Hangar Local">
+            <img id="header_logo" src="$req->root/html/img/logo.png" alt="Le Hangar Local">
             <h3>$user->name</h3>
             <nav>
                 <ul>
@@ -261,12 +263,12 @@ class ManagerView extends \mf\view\AbstractView {
         $footer = $this->renderFooter();
         
         $body = <<<EOT
-        <section id="managerBody">
+        <main id="managerBody">
         ${header}
-            <main>
+            <section>
                 ${center}
-            </main>
-        </section>
+            </section>
+        </main>
         EOT;
         return $body;
         

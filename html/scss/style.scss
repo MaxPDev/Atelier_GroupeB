@@ -212,7 +212,7 @@ $darkGreen : #255d2e;
             }
         }
         
-        main{
+        header + section{
             //in the body's grid : main is a element of 1,2 (100% width) on row 2
             @include element(1,2,2,2);
             @media screen and (min-width : 62em) {
@@ -221,7 +221,9 @@ $darkGreen : #255d2e;
             //but also a grid, of 1col 1fr
             @include grid(6, 1fr, 2, auto, 1em 0);
     
-    
+            > img{
+                width: 100px;
+            }
     
     
             //***********************************************************************
@@ -371,25 +373,25 @@ $darkGreen : #255d2e;
     
                     &>a, &>p{
                         text-decoration: none;
-                        font-size: 2em;
+                        font-size: 1.5rem;
                         text-align: center;
                         color: #c6c6c6;
     
                         //p for the context of the information
                         p{
-                            font-size: 2em;
+                            font-size: 1.2rem;
                             text-align: center;
                             color: rgb(198, 198, 198);
                             @media screen and (min-width : 62em) {
-                                font-size: 1.2em;
+                                font-size: 1.5rem;
                             }
                         }
     
                         //span for the number of information
-                        span{
-                            font-size: 1.5em;
+                        span p {
+                            font-size: 1.2rem;
                             @media screen and (min-width : 62em) {
-                                font-size: 1.2em;
+                                font-size: 1.5rem;
                             }
                         }
                     }
@@ -600,23 +602,12 @@ $darkGreen : #255d2e;
                 }
             }
         }
-    
-    
-        .alert-danger{
-            background-color: rgba(255, 0, 0, 0.685);
-            color: #ffffff;
-            padding: 1%;
-            border-radius: 5px;
-            grid-column: 1/8;
-            text-align: center;
+
+        .active{
+            a{
+                color: darkgreen !important;
+            }
+            background-color: white;
         }
-          
-        .alert-success{
-            background-color: rgba(6, 173, 6, 0.685);
-            color: #ffffff;
-            padding: 1%;
-            border-radius: 5px;
-            grid-column: 1/8;
-            text-align: center;
-        } 
+
     }
