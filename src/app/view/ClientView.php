@@ -66,7 +66,7 @@ class ClientView extends \mf\view\AbstractView
     {
         $req = new HttpRequest();
         $html = <<<EOT
-        <main id="home">
+        <section id="home">
             <div>
                 <img src="$req->root/html/elements/icon-1.png" alt="">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
@@ -89,7 +89,7 @@ class ClientView extends \mf\view\AbstractView
                     obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
                     ducimus!</p>
             </div>
-        </main>
+        </section>
         EOT;
 
         return $html;
@@ -188,14 +188,14 @@ class ClientView extends \mf\view\AbstractView
         }
 
         $products_html = <<<EOT
-            <main id="store">
+            <section id="store">
                 <nav>
                 $categories_list
                 </nav>
                 <section id="products">
                 $products_list
                 </section>
-            </main>
+            </section>
         EOT;
         return $products_html;
     }
@@ -246,9 +246,9 @@ class ClientView extends \mf\view\AbstractView
         IMG;
 
         $product_html = <<<EOT
-            <main id="productsDetails">
+            <section id="productsDetails">
                 $product_article
-            </main>
+            </section>
         EOT;
         return $product_html;
     }
@@ -281,7 +281,7 @@ class ClientView extends \mf\view\AbstractView
         PROD;
 
         // html for producer's products
-        $producer_product_html = '<main id="store"><section id="products">';
+        $producer_product_html = '<section id="store"><section id="products">';
 
         $add_to_order = $route->urlFor('clientAddOrder');
 
@@ -312,7 +312,7 @@ class ClientView extends \mf\view\AbstractView
             PRODUCT;
         }
 
-        $producer_product_html .= "</section></main>";
+        $producer_product_html .= "</section></section>";
 
         $producer_all_html = <<<EOL
         $producer_html
@@ -332,7 +332,7 @@ class ClientView extends \mf\view\AbstractView
 
         $route = new Router();
         $producers = $this->data;
-        $producers_article = '<main id="producer">';
+        $producers_article = '<section id="producer">';
 
         foreach ($producers as $producer) {
 
@@ -353,7 +353,7 @@ class ClientView extends \mf\view\AbstractView
             EOT;
         }
 
-        $producers_article .= "</main>";
+        $producers_article .= "</section>";
         $producers_html = <<<PRODS
             $producers_article
         PRODS;
@@ -374,7 +374,7 @@ class ClientView extends \mf\view\AbstractView
 
 
         $order_html = <<<ORDER
-        <main id="checkOrder">
+        <section id="checkOrder">
             $message
             <div>
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
@@ -384,7 +384,7 @@ class ClientView extends \mf\view\AbstractView
                 <input type="text" name="orderId" placeholder="Order confirm number">
                 <input value="Check" type="submit">
             </form>
-        </main>
+        </section>
         ORDER;
 
 
@@ -403,14 +403,14 @@ class ClientView extends \mf\view\AbstractView
         if (isset($_SESSION['orderID'])) {
             $id = $_SESSION['orderID'];
             $html .= <<<CHECKOUT
-                <main id="checkout">
+                <section id="checkout">
                     <h1 class="alert-success"> Order confirmed: $id </h1>
-                </main>
+                </section>
             CHECKOUT;
             unset($_SESSION['orderID']);
         } else if (isset($_SESSION['orders'])) {
             $html .= <<<CHECKOUT
-                <main id="checkout">
+                <section id="checkout">
                     <table>
                         <tbody>
                             <tr>
@@ -459,13 +459,13 @@ class ClientView extends \mf\view\AbstractView
                     </form> 
                 </div>
                 </div>
-            </main>
+            </section>
             PRODUCT;
         } else {
             $html .= <<<CHECKOUT
-                <main id="checkout">
+                <section id="checkout">
                     <h1 class="alert-danger"> Your Cart is empty </h1>
-                </main>
+                </section>
             CHECKOUT;
         }
         return $html;
@@ -513,10 +513,10 @@ class ClientView extends \mf\view\AbstractView
         $center = $this->$selector();
 
         $body = <<<EOT
-        <section id="clientbody">
+        <main id="clientbody">
         ${header}
         ${center}
-        </section>
+        </main>
         EOT;
         return $body;
     }

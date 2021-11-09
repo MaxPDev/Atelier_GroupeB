@@ -1,462 +1,369 @@
 body {
   margin: 0;
-  font-family: sans-serif;
-}
+  font-family: sans-serif; }
 
 #clientbody {
-  text-align: center;
-}
-#clientbody ul {
-  list-style: none;
-}
-#clientbody * {
-  margin: 0;
-  padding: 0;
-}
-#clientbody header {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0.625em;
-}
-#clientbody header section {
-  grid-row-start: 1;
-  grid-row-end: 3;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  gap: 0.625em;
-}
-#clientbody header section h1 {
-  grid-row-start: 1;
-  grid-row-end: 1;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: aliceblue;
-  font-weight: normal;
-}
-#clientbody header section img {
-  grid-row-start: 1;
-  grid-row-end: 1;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  width: 100%;
-}
-#clientbody header nav {
-  grid-row-start: 1;
-  grid-row-end: 1;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  gap: 0.625em;
-}
-#clientbody header nav div {
-  grid-row-start: 1;
-  grid-row-end: 1;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  margin: 1.25em;
-  text-align: left;
-}
-#clientbody header nav div img {
-  width: 6.25em;
-}
-#clientbody header nav div:nth-child(2) {
-  grid-row-start: 1;
-  grid-row-end: 1;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  margin: 1.25em;
-}
-#clientbody header nav div:nth-child(2) a {
-  color: aliceblue;
-  text-decoration: none;
-}
-#clientbody header nav div:nth-child(2) a img {
-  width: 2.3125em;
-  margin: 0.125em;
-}
-#clientbody main {
-  padding: 1.875em;
-}
-#clientbody #home {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  gap: 0.625em;
-}
-#clientbody #home div {
-  margin-bottom: 3.125em;
-}
-#clientbody #home div img {
-  width: 6.25em;
-  margin-bottom: 1.25em;
-}
-#clientbody #home div:nth-child(1) {
-  grid-row-start: 1;
-  grid-row-end: 1;
-  grid-column-start: 1;
-  grid-column-end: 2;
-}
-#clientbody #home div:nth-child(2) {
-  grid-row-start: 1;
-  grid-row-end: 1;
-  grid-column-start: 2;
-  grid-column-end: 3;
-}
-#clientbody #home div:nth-child(3) {
-  grid-row-start: 1;
-  grid-row-end: 1;
-  grid-column-start: 3;
-  grid-column-end: 4;
-}
-#clientbody #menu {
-  margin-bottom: 1.25em;
-}
-#clientbody #menu ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-#clientbody #menu ul li {
-  border: 0.125em solid green;
-  border-radius: 1em;
-  flex-basis: 15%;
-  margin: 0.3125em;
-  padding: 0 0.625em;
-}
-#clientbody #menu ul li a {
-  color: green;
-  text-decoration: none;
-}
-#clientbody #products div {
-  border: 0.0625em solid gray;
-  box-shadow: 0 0 1.25em gray;
-  border-radius: 0.625em;
-}
-#clientbody #products div img {
-  width: 100%;
-  border-radius: 0.625em 0.625em 0 0;
-}
-#clientbody #products div ul {
-  padding: 0.625em;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0.625em;
-}
-#clientbody #products div ul li {
-  color: darkgreen;
-  font-size: 1em;
-}
-#clientbody #products div ul li a {
-  text-decoration: none;
-  color: black;
-  font-size: 1em;
-}
-#clientbody #products div ul li:nth-child(3) {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 2;
-  grid-column-end: 3;
-}
-#clientbody #products div ul li:nth-child(3) form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  gap: 0.3125em;
-}
-#clientbody #products div ul li:nth-child(3) form button {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  border: none;
-  background-color: white;
-}
-#clientbody #products div ul li:nth-child(3) form button img {
-  width: 2.5em;
-}
-#clientbody #products div ul li:nth-child(3) form input {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  background-color: gray;
-  width: 95%;
-  font-size: 1em;
-}
-#clientbody #productsDetails div:nth-child(1) img {
-  border-radius: 1.25em;
-  box-shadow: 0 0 1.25em gray;
-  width: 100%;
-}
-#clientbody #productsDetails div:nth-child(2) ul li {
-  padding: 0.625em;
-}
-#clientbody #productsDetails div:nth-child(2) ul li h3 {
-  font-weight: normal;
-  color: darkgreen;
-}
-#clientbody #productsDetails div:nth-child(2) ul form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  gap: 0.3125em;
-}
-#clientbody #productsDetails div:nth-child(2) ul form button {
-  color: white;
-  background-color: darkgreen;
-  padding: 0.625em;
-  font-size: 1em;
-  border-radius: 1.25em;
-}
-#clientbody #productsDetails div:nth-child(2) ul form input {
-  background-color: gray;
-  width: 95%;
-  font-size: 1em;
-}
-#clientbody #producerProducts {
-  margin: 1.875em;
-  background-color: green;
-  color: white;
-  border-radius: 1.25em;
-}
-#clientbody #producerProducts img {
-  width: 6.25em;
-}
-#clientbody #producerProducts li {
-  margin-top: 0.625em;
-}
-#clientbody #producerProducts li a {
-  text-decoration: none;
-  color: white;
-}
-#clientbody #producerProducts li:nth-child(6) {
-  background-color: gray;
-  border-radius: 0 0 1.25em 1.25em;
-  padding: 0.625em;
-}
-#clientbody #producer div {
-  background-color: green;
-  color: white;
-  border-radius: 1.25em;
-}
-#clientbody #producer div img {
-  width: 6.25em;
-}
-#clientbody #producer div li {
-  margin-top: 0.625em;
-}
-#clientbody #producer div li a {
-  text-decoration: none;
-  color: white;
-}
-#clientbody #producer div li:nth-child(6) {
-  background-color: gray;
-  border-radius: 0 0 1.25em 1.25em;
-  padding: 0.625em;
-}
-#clientbody #checkOrder {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  gap: 1.25em;
-}
-#clientbody #checkOrder input[type=submit] {
-  color: white;
-  background-color: darkgreen;
-  padding: 0.625em;
-  font-size: 1em;
-  border-radius: 1.25em;
-}
-#clientbody #checkOrder input[type=text] {
-  background-color: white;
-  border: darkgreen solid 0.125em;
-  border-radius: 1.25em;
-  padding: 0.625em;
-  font-size: 1em;
-}
-#clientbody #checkout table {
-  width: 100%;
-}
-#clientbody #checkout table a, #clientbody #checkout table tbody > tr th {
-  color: darkgreen;
-}
-#clientbody #checkout hr, #clientbody #checkout div {
-  margin: 1.25em;
-}
-#clientbody #checkout h2 {
-  color: darkgreen;
-}
-#clientbody #checkout div a {
-  margin: 1.25em;
-  background-color: green;
-  color: white;
-  text-decoration: none;
-  padding: 0.625em;
-  border-radius: 1.25em;
-}
-#clientbody #open-modal form {
-  margin: 0.625em;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  gap: 0.625em;
-}
-#clientbody #open-modal form input {
-  padding: 0.625em;
-  border: 0.125em solid darkgreen;
-  color: darkgreen;
-  border-radius: 1.25em;
-  font-size: 1em;
-}
-#clientbody #open-modal form input[type=submit] {
-  background-color: darkgreen;
-  color: white;
-}
-@media (min-width: 48em) {
-  #clientbody header section h1 {
-    font-size: 5em;
-  }
-  #clientbody header nav div img {
-    width: 6.25em;
-  }
-  #clientbody header nav div:nth-child(2) a {
-    font-size: 1em;
-    margin: 0.3125em;
-  }
-  #clientbody header nav div:nth-child(2) a img {
-    width: 1.4375em;
-    margin: 0.125em;
-  }
-  #clientbody #store #products {
+  text-align: center; }
+  #clientbody ul {
+    list-style: none; }
+  #clientbody * {
+    margin: 0;
+    padding: 0; }
+  #clientbody header {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    gap: 1.25em;
-  }
-  #clientbody #productsDetails {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    gap: 1.25em;
-  }
-  #clientbody #producer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    gap: 0.625em;
-  }
-}
-@media (min-width: 30.0625em) and (max-width: 47.9375em) {
-  #clientbody header section h1 {
-    font-size: 3em;
-  }
-  #clientbody header nav div {
-    margin: 0.625em;
-  }
-  #clientbody header nav div img {
-    width: 5em;
-  }
-  #clientbody header nav div:nth-child(2) {
-    margin: 0.625em;
-  }
-  #clientbody header nav div:nth-child(2) a {
-    margin: 0.125em;
-    font-size: 0.9em;
-  }
-  #clientbody header nav div:nth-child(2) a img {
-    width: 1.25em;
-    margin: 0.125em;
-  }
-  #clientbody #store #products {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    gap: 1.25em;
-  }
-  #clientbody #producer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    gap: 0.625em;
-  }
-}
-@media (max-width: 30em) {
-  #clientbody header section h1 {
-    font-size: 2em;
-  }
-  #clientbody header nav div {
-    margin: 0.3125em;
-  }
-  #clientbody header nav div img {
-    width: 3.75em;
-  }
-  #clientbody header nav div:nth-child(2) {
-    margin: 0.3125em;
-  }
-  #clientbody header nav div:nth-child(2) a {
-    margin: 0.0625em;
-    font-size: 0.8em;
-  }
-  #clientbody header nav div:nth-child(2) a img {
-    width: 1.0625em;
-    margin: 0.125em;
-  }
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.625em; }
+    #clientbody header section {
+      grid-row-start: 1;
+      grid-row-end: 3;
+      grid-column-start: 1;
+      grid-column-end: 2;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      gap: 0.625em; }
+      #clientbody header section h1 {
+        grid-row-start: 1;
+        grid-row-end: 1;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: aliceblue;
+        font-weight: normal; }
+      #clientbody header section img {
+        grid-row-start: 1;
+        grid-row-end: 1;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        width: 100%; }
+    #clientbody header nav {
+      grid-row-start: 1;
+      grid-row-end: 1;
+      grid-column-start: 1;
+      grid-column-end: 2;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      gap: 0.625em; }
+      #clientbody header nav div {
+        grid-row-start: 1;
+        grid-row-end: 1;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        margin: 1.25em;
+        text-align: left; }
+        #clientbody header nav div img {
+          width: 6.25em; }
+      #clientbody header nav div:nth-child(2) {
+        grid-row-start: 1;
+        grid-row-end: 1;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        margin: 1.25em; }
+        #clientbody header nav div:nth-child(2) a {
+          color: aliceblue;
+          text-decoration: none; }
+          #clientbody header nav div:nth-child(2) a img {
+            width: 2.3125em;
+            margin: .125em; }
+  #clientbody header + section {
+    padding: 1.875em; }
   #clientbody #home {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 0.625em;
-  }
-  #clientbody #home div:nth-child(1) {
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-  #clientbody #home div:nth-child(2) {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-  #clientbody #home div:nth-child(3) {
-    grid-row-start: 3;
-    grid-row-end: 4;
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-  #clientbody #store #products {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 0.625em; }
+    #clientbody #home div {
+      margin-bottom: 3.125em; }
+      #clientbody #home div img {
+        width: 6.25em;
+        margin-bottom: 1.25em; }
+    #clientbody #home div:nth-child(1) {
+      grid-row-start: 1;
+      grid-row-end: 1;
+      grid-column-start: 1;
+      grid-column-end: 2; }
+    #clientbody #home div:nth-child(2) {
+      grid-row-start: 1;
+      grid-row-end: 1;
+      grid-column-start: 2;
+      grid-column-end: 3; }
+    #clientbody #home div:nth-child(3) {
+      grid-row-start: 1;
+      grid-row-end: 1;
+      grid-column-start: 3;
+      grid-column-end: 4; }
+  #clientbody #menu {
+    margin-bottom: 1.25em; }
+    #clientbody #menu ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around; }
+      #clientbody #menu ul li {
+        border: .125em solid green;
+        border-radius: 1em;
+        flex-basis: 15%;
+        margin: .3125em;
+        padding: 0 .625em; }
+        #clientbody #menu ul li a {
+          color: green;
+          text-decoration: none; }
+  #clientbody #products div {
+    border: .0625em solid gray;
+    box-shadow: 0 0 1.25em  gray;
+    border-radius: .625em; }
+    #clientbody #products div img {
+      width: 100%;
+      border-radius: .625em .625em 0 0; }
+    #clientbody #products div ul {
+      padding: .625em;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0.625em; }
+      #clientbody #products div ul li {
+        color: darkgreen;
+        font-size: 1em; }
+        #clientbody #products div ul li a {
+          text-decoration: none;
+          color: black;
+          font-size: 1em; }
+      #clientbody #products div ul li:nth-child(3) {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3; }
+        #clientbody #products div ul li:nth-child(3) form {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(1, 1fr);
+          gap: 0.3125em; }
+          #clientbody #products div ul li:nth-child(3) form button {
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            border: none;
+            background-color: white; }
+            #clientbody #products div ul li:nth-child(3) form button img {
+              width: 2.5em; }
+          #clientbody #products div ul li:nth-child(3) form input {
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            background-color: gray;
+            width: 95%;
+            font-size: 1em; }
+  #clientbody #productsDetails div:nth-child(1) img {
+    border-radius: 1.25em;
+    box-shadow: 0 0 1.25em gray;
+    width: 100%; }
+  #clientbody #productsDetails div:nth-child(2) ul li {
+    padding: .625em; }
+    #clientbody #productsDetails div:nth-child(2) ul li h3 {
+      font-weight: normal;
+      color: darkgreen; }
+  #clientbody #productsDetails div:nth-child(2) ul form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 0.3125em; }
+    #clientbody #productsDetails div:nth-child(2) ul form button {
+      color: white;
+      background-color: darkgreen;
+      padding: .625em;
+      font-size: 1em;
+      border-radius: 1.25em; }
+    #clientbody #productsDetails div:nth-child(2) ul form input {
+      background-color: gray;
+      width: 95%;
+      font-size: 1em; }
+  #clientbody #producerProducts {
+    margin: 1.875em;
+    background-color: green;
+    color: white;
+    border-radius: 1.25em; }
+    #clientbody #producerProducts img {
+      width: 6.25em; }
+    #clientbody #producerProducts li {
+      margin-top: .625em; }
+      #clientbody #producerProducts li a {
+        text-decoration: none;
+        color: white; }
+    #clientbody #producerProducts li:nth-child(6) {
+      background-color: gray;
+      border-radius: 0 0 1.25em 1.25em;
+      padding: .625em; }
+  #clientbody #producer div {
+    background-color: green;
+    color: white;
+    border-radius: 1.25em; }
+    #clientbody #producer div img {
+      width: 6.25em; }
+    #clientbody #producer div li {
+      margin-top: .625em; }
+      #clientbody #producer div li a {
+        text-decoration: none;
+        color: white; }
+    #clientbody #producer div li:nth-child(6) {
+      background-color: gray;
+      border-radius: 0 0 1.25em 1.25em;
+      padding: .625em; }
+  #clientbody #checkOrder {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    gap: 1.25em;
-  }
-}
+    gap: 1.25em; }
+    #clientbody #checkOrder input[type="submit"] {
+      color: white;
+      background-color: darkgreen;
+      padding: .625em;
+      font-size: 1em;
+      border-radius: 1.25em; }
+    #clientbody #checkOrder input[type="text"] {
+      background-color: white;
+      border: darkgreen solid .125em;
+      border-radius: 1.25em;
+      padding: .625em;
+      font-size: 1em; }
+  #clientbody #checkout table {
+    width: 100%; }
+    #clientbody #checkout table a, #clientbody #checkout table tbody > tr th {
+      color: darkgreen; }
+  #clientbody #checkout hr, #clientbody #checkout div {
+    margin: 1.25em; }
+  #clientbody #checkout h2 {
+    color: darkgreen; }
+  #clientbody #checkout div a {
+    margin: 1.25em;
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    padding: .625em;
+    border-radius: 1.25em; }
+  #clientbody #open-modal form {
+    margin: .625em;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 0.625em; }
+    #clientbody #open-modal form input {
+      padding: .625em;
+      border: .125em solid darkgreen;
+      color: darkgreen;
+      border-radius: 1.25em;
+      font-size: 1em; }
+    #clientbody #open-modal form input[type=submit] {
+      background-color: darkgreen;
+      color: white; }
+  @media (min-width: 48em) {
+    #clientbody header section h1 {
+      font-size: 5em; }
+    #clientbody header nav div img {
+      width: 6.25em; }
+    #clientbody header nav div:nth-child(2) a {
+      font-size: 1em;
+      margin: .3125em; }
+      #clientbody header nav div:nth-child(2) a img {
+        width: 1.4375em;
+        margin: .125em; }
+    #clientbody #store #products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      gap: 1.25em; }
+    #clientbody #productsDetails {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      gap: 1.25em; }
+    #clientbody #producer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      gap: 0.625em; } }
+  @media (min-width: 30.0625em) and (max-width: 47.9375em) {
+    #clientbody header section h1 {
+      font-size: 3em; }
+    #clientbody header nav div {
+      margin: .625em; }
+      #clientbody header nav div img {
+        width: 5em; }
+    #clientbody header nav div:nth-child(2) {
+      margin: .625em; }
+      #clientbody header nav div:nth-child(2) a {
+        margin: .125em;
+        font-size: .9em; }
+        #clientbody header nav div:nth-child(2) a img {
+          width: 1.25em;
+          margin: .125em; }
+    #clientbody #store #products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      gap: 1.25em; }
+    #clientbody #producer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      gap: 0.625em; } }
+  @media (max-width: 30em) {
+    #clientbody header section h1 {
+      font-size: 2em; }
+    #clientbody header nav div {
+      margin: .3125em; }
+      #clientbody header nav div img {
+        width: 3.75em; }
+    #clientbody header nav div:nth-child(2) {
+      margin: .3125em; }
+      #clientbody header nav div:nth-child(2) a {
+        margin: 0.0625em;
+        font-size: .8em; }
+        #clientbody header nav div:nth-child(2) a img {
+          width: 1.0625em;
+          margin: .125em; }
+    #clientbody #home {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 0.625em; }
+      #clientbody #home div:nth-child(1) {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 3; }
+      #clientbody #home div:nth-child(2) {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 3; }
+      #clientbody #home div:nth-child(3) {
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 3; }
+    #clientbody #store #products {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      gap: 1.25em; } }
 
 .alert-danger {
   background-color: darkred;
   color: #ffffff;
-  border-radius: 0.3125em;
+  border-radius: .3125em;
   grid-column: 1/8;
-  text-align: center;
-}
+  text-align: center; }
 
 .alert-success {
   background-color: darkgreen;
   color: #ffffff;
-  border-radius: 0.3125em;
+  border-radius: .3125em;
   grid-column: 1/8;
-  text-align: center;
-}
+  text-align: center; }
 
 /*# sourceMappingURL=clientStyle.css.map */
