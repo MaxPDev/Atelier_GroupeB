@@ -70,7 +70,7 @@ class ProducerController extends \mf\control\AbstractController
                 array_push($productsOrdered, $product);
         }
 
-        $view = new ProducerView($products);
+        $view = new ProducerView($productsOrdered);
 
         $view->render('renderMyOrderedProducts');
     }

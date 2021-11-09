@@ -227,18 +227,17 @@ EOT;
         foreach ($this->data as $product) {
             foreach ($product->orders as $order) {
                 $total = $product->unit_price * $order->pivot->quantity;
-
-                $productsHtml .= <<<EOT
-                    <tr>
-                        <td>{$product->name}</td>
-                        <td>{$order->pivot->quantity}</td>
-                        <td>{$product->unit_price} €</td>
-                        <td>{$total} €</td>
-                        <td>{$order->created_at}</td>
-                        <td><a href="{$router->urlFor('producerProduct', [['id',$product->id]])}">View</a></td>
-                    </tr>
-                EOT;
             }
+            $productsHtml .= <<<EOT
+                <tr>
+                    <td>{$product->name}</td>
+                    <td>{$order->pivot->quantity}</td>
+                    <td>{$product->unit_price} €</td>
+                    <td>{$total} €</td>
+                    <td>{$order->created_at}</td>
+                    <td><a href="{$router->urlFor('producerProduct', [['id',$product->id]])}">View</a></td>
+                </tr>
+            EOT;
         }
 
         $html = <<<EOT
