@@ -34,14 +34,7 @@ class ClientView extends \mf\view\AbstractView
         $header_html = <<<HEADER
         <header>
             <section>
-                <img src="$req->root/html/elements/header-bg-trimed.png" alt="">
-                <! --picture>
-                    <source media="(min-width: 62em)"
-                            srcset="$req->root/html/elements/header-bg-trimed.png 1900w,
-                                    $req->root/html/elements/header-bg-complete.png 600w"
-                            sizes="50vw">
-                            <!-- -img src="$req->root/html/elements/header-bg-complete.png" alt="background" -->
-                    </picture -->
+                <img src="$req->root/html/elements/header-bg-trimed.png" alt="icon">
                 <h1>$title</h1>
             </section>
 
@@ -68,14 +61,14 @@ class ClientView extends \mf\view\AbstractView
         $html = <<<EOT
         <section id="home">
             <div>
-                <img src="$req->root/html/elements/icon-1.png" alt="">
+                <img src="$req->root/html/elements/icon-1.png" alt="icon">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                     porro ullam obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus
                     dicta quia ducimus!</p>
             </div>
 
             <div>
-                <img src="$req->root/html/elements/icon-2.png" alt="">
+                <img src="$req->root/html/elements/icon-2.png" alt="icon">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                     porro ullam
                     obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
@@ -83,7 +76,7 @@ class ClientView extends \mf\view\AbstractView
             </div>
 
             <div>
-                <img src="$req->root/html/elements/icon-3.png" alt="">
+                <img src="$req->root/html/elements/icon-3.png" alt="icon">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo perferendis hic pariatur, error, illum
                     porro ullam
                     obcaecati corrupti similique maiores fugiat optio a, culpa repellat laborum repellendus dicta quia
@@ -116,8 +109,8 @@ class ClientView extends \mf\view\AbstractView
             <a href='$products_link'>Products</a>
             <a href='$producers_link'>Producers</a>
             <a href='$order_link'>Order</a>
-            <a href='$checkout_link'><img src="$req->root/html/elements/checkout-icon.png"></a>
-            <a href='$login_link'><img src="$req->root/html/elements/avatar.png"></a>
+            <a href='$checkout_link'><img src="$req->root/html/elements/checkout-icon.png" alt=""></a>
+            <a href='$login_link'><img src="$req->root/html/elements/avatar.png" alt=""></a>
         NAV;
 
         return $header_nav_html;
@@ -172,14 +165,14 @@ class ClientView extends \mf\view\AbstractView
 
             $products_list .= <<<EOT
                             <div>
-                                <img src="$product->img_url" alt="">
+                                <img src="$product->img_url" alt="icon">
                                 <ul>
                                     <li><b><a href="$product_link">$product->name </a></b></li>
                                     <li>$product->unit_price €</li>
                                     <li>
                                         <form method="post" action="$add_to_order">
                                             <input type="number" step="1" min="1" value="$value" name="quantity" required>
-                                            <button type="submit" name="product_id" value="$product->id" ><img src="$req->root/html/elements/checkout-btn.png" alt=""></button>
+                                            <button type="submit" name="product_id" value="$product->id" ><img src="$req->root/html/elements/checkout-btn.png" alt="icon"></button>
                                         </form>
                                     </li>
                                 </ul>
@@ -222,7 +215,7 @@ class ClientView extends \mf\view\AbstractView
         $link_producer = $route->urlFor('clientProducer', [['id', $producer->id]]);
 
         $product_article = <<<IMG
-            <div><img src="$product->img_url"></div>
+            <div><img src="$product->img_url" alt=""></div>
             <div>
                 <ul>
                     <li>
@@ -271,7 +264,7 @@ class ClientView extends \mf\view\AbstractView
             <div id="producerProducts">
                 <ul>
                     <li><h4>$producer_user->name</h4></li>
-                    <li><img src="$req->root/html/elements/producer-avatar.png" alt=""></li>
+                    <li><img src="$req->root/html/elements/producer-avatar.png" alt="icon"></li>
                     <li>$producer_user->mail</li>
                     <li>Products : {$producer->products->count()} </li>
                     <li>$producer_user->phone | $producer->location</li>
@@ -297,14 +290,14 @@ class ClientView extends \mf\view\AbstractView
 
             $producer_product_html .= <<<PRODUCT
             <div>
-                <img src="$product->img_url" alt="">
+                <img src="$product->img_url" alt="icon">
                 <ul>
                     <li><b><a href="$product_link">$product->name</a></b></li>
                     <li>$product->unit_price €</li>
                     <li>
                         <form method="post" action="$add_to_order">
                             <input type="number" step="1" min="1" value="$value" name="quantity" required>
-                            <button type="submit" name="product_id" value="$product->id" ><img src="$req->root/html/elements/checkout-btn.png" alt=""></button>
+                            <button type="submit" name="product_id" value="$product->id" ><img src="$req->root/html/elements/checkout-btn.png" alt="icon"></button>
                         </form>
                     </li>
                 </ul>
@@ -343,7 +336,7 @@ class ClientView extends \mf\view\AbstractView
             <div>
                 <ul>
                     <li>$producer_user->name</li>
-                    <li><img src="$req->root/html/elements/producer-avatar.png" alt=""></li>
+                    <li><img src="$req->root/html/elements/producer-avatar.png" alt="icon"></li>
                     <li>$producer->location</li>
                     <li>Orders : 15 orders</li>
                     <li>Products : {$producer->products->count()}</li>
